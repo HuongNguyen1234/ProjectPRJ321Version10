@@ -5,6 +5,7 @@
  */
 package com.function;
 
+import com.controller.ListPostController;
 import com.data.DAO;
 import com.entity.Post;
 import java.io.IOException;
@@ -38,9 +39,9 @@ public class ShowInforPost extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try {
             DAO dao = new DAO();
-            List<Post> list;
+            ListPostController list = null;
             String huyen = request.getParameter("huyen");
-            list = dao.getPost(huyen);
+            list.setListPost(dao.getPost(huyen))  ;
             request.setAttribute("currentHuyen", huyen);
             request.setAttribute("listpost", list);
             request.getRequestDispatcher("PostOffice.jsp").forward(request, response);

@@ -5,6 +5,10 @@
  */
 package com.entity;
 
+import com.data.DAO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author huong karatedo
@@ -12,20 +16,27 @@ package com.entity;
 public class Post {
     private float maBC;
     private String tenBC;
-    private String tinh;
-    private String huyen;
+    private String Matinh;
+    private String MaHuyen;
     private String xa;
     private String thon;
-
-    public Post(float maBC, String tenBC, String tinh, String huyen, String xa, String thon) {
+    
+    public Post(float maBC, String tenBC, String Matinh, String MaHuyen, String xa, String thon) {
         this.maBC = maBC;
         this.tenBC = tenBC;
-        this.tinh = tinh;
-        this.huyen = huyen;
+        this.Matinh = Matinh;
+        this.MaHuyen = MaHuyen;
         this.xa = xa;
         this.thon = thon;
     }
-
+    public String getTenTinh(String maTinh) throws Exception{
+        DAO dao=new DAO();
+        return dao.getTenTinh(maTinh);
+    }
+    public String getTenHuyen(String maHuyen) throws Exception{
+        DAO dao=new DAO();
+        return dao.getTenHuyen(maHuyen);
+    }
     public float getMaBC() {
         return maBC;
     }
@@ -42,20 +53,20 @@ public class Post {
         this.tenBC = tenBC;
     }
 
-    public String getTinh() {
-        return tinh;
+    public String getMatinh() {
+        return Matinh;
     }
 
-    public void setTinh(String tinh) {
-        this.tinh = tinh;
+    public void setMatinh(String Matinh) {
+        this.Matinh = Matinh;
     }
 
-    public String getHuyen() {
-        return huyen;
+    public String getMaHuyen() {
+        return MaHuyen;
     }
 
-    public void setHuyen(String huyen) {
-        this.huyen = huyen;
+    public void setMaHuyen(String MaHuyen) {
+        this.MaHuyen = MaHuyen;
     }
 
     public String getXa() {
@@ -74,9 +85,16 @@ public class Post {
         this.thon = thon;
     }
 
+   
+
     @Override
     public String toString() {
-        return  "Mã bưu cục:"+maBC+"\n"+"Bưu Cục"+tenBC+"\n"+"Địa Chỉ: "+thon+","+xa+","+huyen+","+tinh+"\n";
+        try {
+            return  "Mã bưu cục:"+maBC+"\n"+"Bưu Cục"+tenBC+"\n"+"Địa Chỉ: "+thon+","+xa+","+getTenHuyen(MaHuyen)+","+getTenTinh(Matinh)+"\n";
+        } catch (Exception ex) {
+            Logger.getLogger(Post.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     
