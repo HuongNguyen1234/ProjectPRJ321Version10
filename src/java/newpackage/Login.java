@@ -6,7 +6,7 @@
 package newpackage;
 
 import com.controller.ManagementController;
-import com.data.DAO;
+import com.data1.DAO;
 import com.entity.Post;
 import com.entity.Staff;
 import java.io.IOException;

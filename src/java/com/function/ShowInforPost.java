@@ -6,7 +6,7 @@
 package com.function;
 
 import com.controller.ListPostController;
-import com.data.DAO;
+import com.data1.DAO;
 import com.entity.Post;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,11 +39,13 @@ public class ShowInforPost extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try {
             DAO dao = new DAO();
-            ListPostController list = null;
-            String huyen = request.getParameter("huyen");
-            list.setListPost(dao.getPost(huyen))  ;
+            ListPostController list = new ListPostController();
+            float huyen = Float.parseFloat(request.getParameter("huyen"));
+            float tinh = Float.parseFloat(request.getParameter("tinh"));
+            list.setListPost(dao.getPostHuyen(huyen));
             request.setAttribute("currentHuyen", huyen);
-            request.setAttribute("listpost", list);
+            request.setAttribute("currentTinh", tinh);
+            request.setAttribute("listpost", list.getListPost());
             request.getRequestDispatcher("PostOffice.jsp").forward(request, response);
         } catch (Exception e) {
             Logger.getLogger(AddInforOrderServlet.class.getName()).log(Level.SEVERE, null, e);

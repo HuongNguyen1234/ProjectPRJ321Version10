@@ -6,6 +6,7 @@
 package com.controller;
 
 import com.entity.Tinh;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,8 +16,8 @@ import java.util.List;
 public class TinhController {
    List<Tinh> listTinh;
 
-    public TinhController(List<Tinh> listTinh) {
-        this.listTinh = listTinh;
+    public TinhController() {
+        this.listTinh = new ArrayList<>();
     }
 
     public List<Tinh> getListTinh() {

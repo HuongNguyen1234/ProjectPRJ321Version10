@@ -6,7 +6,7 @@ import javax.servlet.jsp.*;
 import com.controller.TinhController;
 import java.util.logging.Level;
 import java.util.List;
-import com.data.DAO;
+import com.data1.DAO;
 
 public final class PostOffice_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -79,9 +79,8 @@ public final class PostOffice_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <body>\n");
       out.write("    <center>\n");
       out.write("        <div class=\"searchPosHeader\">\n");
-      out.write("            <img src=\"Image/crown.png\" style=\"width: 100px;position: absolute;top: -60px;margin: 0 auto;left: 0;right: 0;\">\n");
+      out.write("            <img src=\"Image/crown.png\" alt=\"\" style=\"width: 100px;position: absolute;top: -60px;margin: 0 auto;left: 0;right: 0;\">\n");
       out.write("            <div>\n");
-      out.write("\n");
       out.write("                <h2>Mạng lưới dịch vụ bưu điện</h2>        \n");
       out.write("            </div>\n");
       out.write("        </div>\n");
@@ -92,16 +91,14 @@ public final class PostOffice_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("    ");
 
-        if (request.getParameter("tinh") == null) {
-            request.getRequestDispatcher("/ShowHuyenServlet?tinh=1").forward(request, response);
-        }
+//        if (request.getParameter("tinh") == null) {
+//            request.getRequestDispatcher("/ShowHuyenServlet?tinh=1").forward(request, response);
+//        }
         DAO dao = new DAO();
-        TinhController listTinh=null;
+        TinhController listTinh=new TinhController();
         listTinh.setListTinh(dao.getAllTinhBuuCuc());
         
-//        list.setListTen(dao.getTenTinh());
-//            request.setAttribute("tinh", listTinh);
-//            request.getRequestDispatcher("PostOffice.jsp").forward(request, response);
+
 
     
       out.write("\n");
@@ -131,14 +128,14 @@ public final class PostOffice_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
       _jspx_th_c_forEach_0.setParent(null);
       _jspx_th_c_forEach_0.setVar("i");
-      _jspx_th_c_forEach_0.setItems(listTinh);
+      _jspx_th_c_forEach_0.setItems(listTinh.getListTinh());
       int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
       try {
         int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
         if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
           do {
             out.write("\n");
-            out.write("                        ");
+            out.write("                         ");
             if (_jspx_meth_c_if_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
               return;
             out.write("\n");
@@ -146,6 +143,7 @@ public final class PostOffice_jsp extends org.apache.jasper.runtime.HttpJspBase
             if (_jspx_meth_c_if_2((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
               return;
             out.write("\n");
+            out.write("                        \n");
             out.write("                    ");
             int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
             if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -345,7 +343,7 @@ public final class PostOffice_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.RedirectTag _jspx_th_c_redirect_0 = (org.apache.taglibs.standard.tag.rt.core.RedirectTag) _jspx_tagPool_c_redirect_url_nobody.get(org.apache.taglibs.standard.tag.rt.core.RedirectTag.class);
     _jspx_th_c_redirect_0.setPageContext(_jspx_page_context);
     _jspx_th_c_redirect_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_if_0);
-    _jspx_th_c_redirect_0.setUrl("/ShowHuyenServlet?tinh=HN");
+    _jspx_th_c_redirect_0.setUrl("/ShowHuyenServlet?tinh=1");
     int _jspx_eval_c_redirect_0 = _jspx_th_c_redirect_0.doStartTag();
     if (_jspx_th_c_redirect_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_redirect_url_nobody.reuse(_jspx_th_c_redirect_0);
@@ -480,7 +478,7 @@ public final class PostOffice_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_3 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_if_3.setPageContext(_jspx_page_context);
     _jspx_th_c_if_3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_1);
-    _jspx_th_c_if_3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${currentHuyen != null && currentHuyen != i}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    _jspx_th_c_if_3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${currentHuyen != null && currentHuyen != i.getMaHuyen()}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
     int _jspx_eval_c_if_3 = _jspx_th_c_if_3.doStartTag();
     if (_jspx_eval_c_if_3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -512,7 +510,7 @@ public final class PostOffice_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_4 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_if_4.setPageContext(_jspx_page_context);
     _jspx_th_c_if_4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_1);
-    _jspx_th_c_if_4.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${currentHuyen != null && currentHuyen == i}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    _jspx_th_c_if_4.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${currentHuyen != null && currentHuyen == i.getMaHuyen()}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
     int _jspx_eval_c_if_4 = _jspx_th_c_if_4.doStartTag();
     if (_jspx_eval_c_if_4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
