@@ -35,7 +35,13 @@
             </section>  
             <section name="section">
                 <jsp:include page="confirmInfoPackage.jsp"/>    
-            </section>  
+            </section> 
+            <section name="section">
+                <jsp:include page="manageStaff.jsp"/>    
+            </section> 
+            <section name="section">
+                <jsp:include page="About.jsp"/>    
+            </section> 
         </div>
         <script type="text/javascript">
             
