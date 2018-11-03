@@ -6,6 +6,7 @@
 package com.function;
 
 import com.data.DAO;
+import com.entity.Huyen;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
@@ -37,10 +38,10 @@ public class ShowHuyenServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try {
             DAO dao = new DAO();
-            List<String> listHuyen;
+            List<Huyen> listHuyen;
             String tinh = request.getParameter("tinh");
-            listHuyen = dao.getAllQuan(tinh);
-           request.setAttribute("currentTinh", tinh);
+            listHuyen = dao.getAllHuyen("tinh");
+            request.setAttribute("currentTinh", tinh);
             request.setAttribute("huyen", listHuyen);
             request.getRequestDispatcher("PostOffice.jsp").forward(request, response);
         } catch (Exception e) {

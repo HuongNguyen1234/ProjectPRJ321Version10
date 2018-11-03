@@ -4,7 +4,7 @@
     Author     : Nguyen Bao Long
 --%>
 
-<%@page import="com.controller.ListTinhController"%>
+<%@page import="com.controller.TinhController"%>
 <%@page import="java.util.logging.Level"%>
 <%@page import="java.util.List"%>
 <%@page import="com.data.DAO"%>
@@ -28,18 +28,17 @@
         </div>
     </center> 
     <c:if test="${currentTinh == null}">
-        <c:redirect url="/ShowHuyenServlet?tinh=HN"/>
+        <c:redirect url="/ShowHuyenServlet?tinh=1"/>
     </c:if>
     <%
 //        if (request.getParameter("tinh") == null) {
-//            request.getRequestDispatcher("/ShowHuyenServlet?tinh=Hà%20Nội").forward(request, response);
+//            request.getRequestDispatcher("/ShowHuyenServlet?tinh=1").forward(request, response);
 //        }
         DAO dao = new DAO();
-        ListTinhController list=null;
-        list.setListMa(dao.getAllTinhBuuCuc());
-//        list.setListTen(dao.getTenTinh());
-//            request.setAttribute("tinh", listTinh);
-//            request.getRequestDispatcher("PostOffice.jsp").forward(request, response);
+        TinhController listTinh=null;
+        listTinh.setListTinh(dao.getAllTinhBuuCuc());
+        
+
 
     %>
     <form action="/ProjectPRJ321Version10/ShowHuyenServlet" method="post">
@@ -62,11 +61,11 @@
                 <select id="tinh" onchange="change()" >
                     <%--<c:choose>--%>
                     <c:forEach  var="i" items="<%=listTinh%>">
-                        <c:if test="${currentTinh != i}">
-                            <option value="${i}" >${i}</option>
+                        <c:if test="${currentTinh != i. getMaTinh()}">
+                            <option value="${i.getMaTinh()}" >${i.getTen()}</option>
                         </c:if>
-                        <c:if test="${currentTinh == i}">
-                            <option value="${i}" selected >${i}</option>
+                        <c:if test="${currentTinh == i.getMaTinh()}">
+                            <option value="${i.getMaTinh()}" selected >${i.getTen()}</option>
                         </c:if>
                     </c:forEach>
                     <%--</c:choose>--%>
@@ -143,13 +142,13 @@
                     <%--<c:choose>--%>
                     <c:forEach  var="i" items="${huyen}">
                         <%--<c:if test="${currentHuyen == null}">--%>
-                        <option value="${i}" >${i}</option>
+                        <option value="${i.getMaHuyen()}" >${i.getTenHuyen()}</option>
                         <%--</c:if>--%>
-                        <c:if test="${currentHuyen != null && currentHuyen != i}">
-                            <option value="${i}" >${i}</option>
+                        <c:if test="${currentHuyen != null && currentHuyen != i.getMaHuyen()}">
+                            <option value="${i.getMaHuyen()}" >${i.getTenHuyen()}</option>
                         </c:if>
-                        <c:if test="${currentHuyen != null && currentHuyen == i}">
-                            <option value="${i}" selected>${i}</option>
+                        <c:if test="${currentHuyen != null && currentHuyen == i.getMaHuyen()}">
+                            <option value="${i.getMaHuyen()}" selected>${i.getTenHuyen()}</option>
                         </c:if>
                     </c:forEach>
                     <%--</c:choose>--%>

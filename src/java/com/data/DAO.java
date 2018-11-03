@@ -5,11 +5,13 @@
  */
 package com.data;
 
+import com.entity.Huyen;
 import com.entity.Journal;
 import com.entity.Order;
 import com.entity.Post;
 import com.entity.Service;
 import com.entity.Staff;
+import com.entity.Tinh;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +19,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -61,10 +62,9 @@ public class DAO {
             return list;
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            throw ex;
         }
 
-        return null;
     }
 
     public Post getPost(float mBC) throws SQLException, Exception {
@@ -90,7 +90,7 @@ public class DAO {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            throw ex;
         }
         return null;
     }
@@ -122,7 +122,7 @@ public class DAO {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            throw ex;
         }
         return null;
     }
@@ -151,35 +151,37 @@ public class DAO {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            throw ex;
         }
         return null;
     }
 
-    public List<String> getAllTinhBuuCuc() throws SQLException, Exception {
-        String xSql = "select distinct MaTinh from BuuCuc";
+    public List<Tinh> getAllTinhBuuCuc() throws SQLException, Exception {
+        String xSql = "select* from Tinh";
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
             ResultSet rs = ps.executeQuery();
-            List<String> list = new ArrayList<>();
+            List<Tinh> list = new ArrayList<>();
             while (rs.next()) {
-                String t = rs.getString("MaTinh");
-                list.add(t);
+                String ma = rs.getString("MaTinh");
+                String ten = rs.getString("Ten");
+                Tinh t1 = new Tinh(ma, ten);
+                list.add(t1);
             }
 
             return list;
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            throw ex;
         }
 
-        return null;
     }
-    public List<String> getTenTinh(String maTinh) throws SQLException, Exception {
-        String xSql = "select  Ten from Tinh where MaTinh=?";
+
+    public List<Huyen> getAllHuyen(String maTinh) throws SQLException, Exception {
+        String xSql = "select * from Huyen where MaTinh=? ";
         Connection conn = null;
         PreparedStatement ps = null;
         try {
@@ -187,72 +189,70 @@ public class DAO {
             ps = conn.prepareStatement(xSql);
             ps.setString(1, maTinh);
             ResultSet rs = ps.executeQuery();
-            List<String> list = new ArrayList<>();
+            List<Huyen> list = new ArrayList<>();
             while (rs.next()) {
-                String t = rs.getString("Ten");
-                list.add(t);
-            }
-
-            return list;
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-
-        return null;
-    }
-    
-
-    public List<String> getAllQuan(String matinh) throws SQLException, Exception {
-        String xSql = "select MaHuyen from BuuCuc where MaTinh=?";
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = db.getConnection();
-            ps = conn.prepareStatement(xSql);
-            ps.setString(1, matinh);
-            ResultSet rs = ps.executeQuery();
-            List<String> list = new ArrayList<>();
-            while (rs.next()) {
-                String ma = rs.getString("MaHuyen");
-                if (ma != null)  
-                list.add(ma);
-            }
-
-            return list;
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-
-        return null;
-    }
-    public List<String> getTenQuan(String mahuyen ) throws SQLException, Exception {
-        String xSql = "select TenHuyen from BuuCuc where MaHuyen=?";
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = db.getConnection();
-            ps = conn.prepareStatement(xSql);
-            ps.setString(1, mahuyen);
-            ResultSet rs = ps.executeQuery();
-            List<String> list = new ArrayList<>();
-            while (rs.next()) {
+                String matinh = rs.getString("MaTinh");
+                String mahuyen = rs.getString("MaHuyen");
                 String ten = rs.getString("TenHuyen");
-                list.add(ten);
+                Huyen h = new Huyen(matinh, mahuyen, ten);
+//                if (ma != null)  
+                list.add(h);
             }
 
             return list;
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            throw ex;
+        }
+    }
+
+    public String getTenHuyen(String maHuyen) throws SQLException, Exception {
+        String xSql = "select TenHuyen from Huyen where MaHuyen=? ";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            ps.setString(1, maHuyen);
+            ResultSet rs = ps.executeQuery();
+            List<Huyen> list = new ArrayList<>();
+            while (rs.next()) {
+
+                String ten = rs.getString("TenHuyen");
+                return ten;
+            }
+
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return null;
+
+    }
+
+    public String getTenTinh(String maTinh) throws SQLException, Exception {
+        String xSql = "select Ten from Tinh";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            ResultSet rs = ps.executeQuery();
+            List<Tinh> list = new ArrayList<>();
+            while (rs.next()) {
+                String ten = rs.getString("Ten");
+
+                return ten;
+            }
+
+        } catch (SQLException ex) {
+            throw ex;
         }
 
         return null;
     }
 
     public List<Post> getPost(String huyen) throws SQLException, Exception {
-        String xSql = "select * from BuuCuc where Huyen=?";
+        String xSql = "select * from BuuCuc where MaHuyen=?";
         Connection conn = null;
         PreparedStatement ps = null;
         try {
@@ -264,10 +264,10 @@ public class DAO {
             while (rs.next()) {
                 float maBc = rs.getFloat("MaBC");
                 String tenBC = rs.getString("TenBC");
-                String tin = rs.getString("Tinh");
-                String huye = rs.getString("Huyen");
-                String xa = rs.getString("Xa/phuong");
-                String thon = rs.getString("thon");
+                String tin = rs.getString("MaTinh");
+                String huye = rs.getString("MaHuyen");
+                String xa = rs.getString("Xa");
+                String thon = rs.getString("Thon");
                 Post p = new Post(maBc, tenBC, tin, huye, xa, thon);
                 list.add(p);
             }
@@ -275,11 +275,9 @@ public class DAO {
             return list;
 
         } catch (SQLException ex) {
-            throw  ex;
+            throw ex;
         }
     }
-
-   
 
     public Journal getJournal(int idHT) throws Exception {
         String result = "";
@@ -302,9 +300,8 @@ public class DAO {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            throw ex;
         }
-
         return null;
     }
 
@@ -349,29 +346,28 @@ public class DAO {
             ps.setFloat(13, order.getTongTien());
             ps.executeUpdate();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            throw ex;
         }
     }
 
-    public void addPost(Post p) throws SQLException, Exception {
-        String xsql = "insert into BuuCuc (MaBC,TenBC,Tinh,Huyen,Xa,Thon)" + "value(?,?,?,?,?,?)";
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = db.getConnection();
-            ps = conn.prepareStatement(xsql);
-            ps.setFloat(1, p.getMaBC());
-            ps.setString(2, p.getTenBC());
-            ps.setString(3, p.getTinh());
-            ps.setString(4, p.getHuyen());
-            ps.setString(5, p.getXa());
-            ps.setString(6, p.getThon());
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-    }
-
+//    public void addPost(Post p) throws SQLException, Exception {
+//        String xsql = "insert into BuuCuc (MaBC,TenBC,Tinh,Huyen,Xa,Thon)" + "value(?,?,?,?,?,?)";
+//        Connection conn = null;
+//        PreparedStatement ps = null;
+//        try {
+//            conn = db.getConnection();
+//            ps = conn.prepareStatement(xsql);
+//            ps.setFloat(1, p.getMaBC());
+//            ps.setString(2, p.getTenBC());
+//            ps.setString(3, p.getTinh());
+//            ps.setString(4, p.getHuyen());
+//            ps.setString(5, p.getXa());
+//            ps.setString(6, p.getThon());
+//            ps.executeUpdate();
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, ex.getMessage());
+//        }
+//    }
     public void addDichVu(Service s) throws SQLException, Exception {
         String xsql = "insert into DichVu (MaBC,TenDV,GiaDV)" + "value(?,?,?)";
         Connection conn = null;
@@ -383,7 +379,7 @@ public class DAO {
             ps.setString(1, s.getTenDV());
             ps.setFloat(3, s.getGiaDV());
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            throw ex;
         }
     }
 
@@ -403,7 +399,7 @@ public class DAO {
             ps.setString(7, staff.getUserName());
             ps.setString(8, staff.getPassword());
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            throw ex;
         }
     }
 
@@ -421,7 +417,7 @@ public class DAO {
             ps.setString(5, j.getDiaChi());
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            throw ex;
         }
     }
 //
@@ -436,7 +432,7 @@ public class DAO {
             ps.setString(1, id);
             ps.executeUpdate();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            throw ex;
         }
     }
 
