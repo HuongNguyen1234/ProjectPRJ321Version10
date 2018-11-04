@@ -14,7 +14,7 @@
         <!--slide show-->
         <div style="width: 100%;height: 50px;background: linear-gradient(0.25turn,rgb(233, 180, 69),rgb(249, 100, 0));">
             <div style="width: 150px;float: left;height: 10px;">
-                <img src="Image/logo.png" style="position: absolute;left: 15px;z-index: 2;" width="80" height="50" onclick="">
+                <img src="Image/logo.png" onclick="addSectionActive(9)" style="position: absolute;left: 15px;z-index: 2;" width="80" height="50" onclick="">
             </div>
             
             <%

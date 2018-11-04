@@ -525,3 +525,28 @@ input:checked + .slider:before {
     margin: 75px auto;
 }
 
+/*=========================Footer======================================*/
+.footerImageContain{
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-color: red;
+    background: linear-gradient(0.25turn,rgb(233, 180, 69),rgb(249, 100, 0));
+}
+
+.footerImageContainInfor{
+    position: absolute;
+    width: 20%;
+    height: 80%;
+    margin:  auto 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: rgb(128, 0, 0);
+    top: 0;
+    bottom: 0;
+}
+
+.footerImageContainInfor p {
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}

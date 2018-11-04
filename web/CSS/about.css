@@ -1,6 +1,112 @@
-body
-{
-    background-color: white;
-     background-image: url("../Image/aboutImage.jpg");
-    
+.playground{
+  perspective: 800px;
+  height: 600px;
+  background-color: #EF820D;
+  z-index: 999;
+}
+
+.cube{
+  -webkit-transform-style: preserve-3d;
+  position: relative;
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  /* Uncomment to make it spin */
+  animation: spin 16s infinite linear;
+  margin: 20px auto;
+  top:100px;
+  -webkit-transform-origin: 100% 50%;
+}
+
+@-webkit-keyframes spin{
+  from { 
+    -webkit-transform: rotateX(-45deg) rotateY(0deg); 
+  }
+  to { 
+    -webkit-transform: rotateX(-45deg) rotateY(360deg);
+  }
+}
+
+@-webkit-keyframes pulsate{
+  from{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0.25;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+.face{
+  width: 300px;
+  height: 300px;
+  border: 6px outset #ccc;
+  text-align: center;
+  font-size: 60pt;
+  position: absolute;
+  background-color: #2653ad;
+  /*-webkit-animation: pulsate 8s infinite linear;*/  
+  -webkit-transition: -webkit-transform 1s ease-out, opacity 1s linear;
+  box-sizing: border-box;
+  -webkit-transform-origin: 50% 300px;
+}
+
+.cube:hover .left{
+  -webkit-transform: rotateY(90deg) translateZ(150px) rotateX(-90deg);
+}
+
+.left{
+  -webkit-transform: rotateY(90deg) translateZ(150px) rotateX(0deg);
+  background: url("../Image/QRImage.png");
+  background-size: 150%;
+}
+
+.cube:hover .right{
+  -webkit-transform: rotateY(-90deg) translateZ(150px) rotateX(-90deg);
+}
+
+.right{
+   -webkit-transform: rotateY(-90deg) translateZ(150px);
+  background: url("../Image/QRImage.png");
+  background-size: 150%;
+}
+
+.cube:hover .front{
+  -webkit-transform: translateZ(150px) rotateX(-90deg);
+}
+
+.front{
+  -webkit-transform: translateZ(150px);
+   background: url("../Image/QRImage.png");
+  background-size: 180%;
+}
+
+.cube:hover .rear{
+  -webkit-transform: translateZ(-150px) rotateX(90deg);
+}
+
+.rear{
+  -webkit-transform: translateZ(-150px);
+  background: url("../Image/QRImage.png");
+  background-size: 150%;
+}
+
+.cube:hover .top{
+  opacity: 0;
+}
+
+.top{
+   -webkit-transform: rotateX(90deg) translateZ(150px);
+  background: url("../Image/QRImage.png");
+  background-size: 150%;
+  -webkit-transform-origin: 50% 50%;
+}
+
+.bottom{
+  -webkit-transform: rotateX(90deg) translateZ(-150px);
+  background: url("../Image/QRImage.png");
+  background-size: 150%;
+  -webkit-transform-origin: 50% 50%;
 }

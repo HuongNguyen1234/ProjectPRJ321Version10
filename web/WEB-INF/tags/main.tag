@@ -30,7 +30,7 @@
             <section name="section" >
                 <jsp:include page="editInfoPackage.jsp"/>    
             </section>   
-            <section name="section" class="sectionActive">
+            <section name="section" >
                 <jsp:include page="scanCodeQR.jsp"/>    
             </section>  
             <section name="section">
@@ -41,6 +41,9 @@
             </section> 
             <section name="section">
                 <jsp:include page="About.jsp"/>    
+            </section> 
+            <section name="section" class="sectionActive">
+                <jsp:include page="employee.jsp"/>    
             </section> 
         </div>
         <script type="text/javascript">
