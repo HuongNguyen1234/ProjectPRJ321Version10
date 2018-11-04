@@ -32,8 +32,8 @@
                 </td>
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
-                        <b>
-                            SE0321321
+                        <b >
+                            ${maDH}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -210,7 +210,7 @@
                     </div>                  
                 </td>
             </tr>
-            
+
             <tr>
                 <td>
                     <div class="labelInforPackageOdd">                     
@@ -278,5 +278,30 @@
                 </td>
             </tr>                       
         </table>
+        <link
+            href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
+            rel="stylesheet" type="text/css" />
+
+        <script
+            src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"
+        type="text/javascript"></script>
+        <script
+            src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"
+        type="text/javascript"></script>
+        <script
+            src="http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.js"
+        type="text/javascript"></script> 
+        <script src="/resources/scripts/mysamplecode.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                $("#samplecode").validate({
+                    rules: {
+                        maDH: "required"
+                    }
+                });
+
+            });
+        </script> 
     </body>
 </html>

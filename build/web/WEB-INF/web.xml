@@ -12,6 +12,10 @@
         <servlet-name>ShowInforPost</servlet-name>
         <servlet-class>com.function.ShowInforPost</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChargeDeliveryShowInforPost</servlet-name>
+        <servlet-class>com.function.ChargeDeliveryShowInforPost</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ChargeDeliveryServlet</servlet-name>
         <url-pattern>/ChargeDeliveryServlet</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>ShowInforPost</servlet-name>
         <url-pattern>/ShowInforPost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChargeDeliveryShowInforPost</servlet-name>
+        <url-pattern>/ChargeDeliveryShowInforPost</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

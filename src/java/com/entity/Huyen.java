@@ -10,38 +10,41 @@ package com.entity;
  * @author huong karatedo
  */
 public class Huyen {
-    private String maTinh;
-    private String maHuyen;
-    private String tenTinh;
+    private float maTinh;
+    private float maHuyen;
+    private String tenHuyen;
 
-    public Huyen(String maTinh, String maHuyen, String tenTinh) {
+    public Huyen(float maTinh, float maHuyen, String tenHuyen) {
         this.maTinh = maTinh;
         this.maHuyen = maHuyen;
-        this.tenTinh = tenTinh;
+        this.tenHuyen = tenHuyen;
     }
 
-    public String getMaTinh() {
+    public float getMaTinh() {
         return maTinh;
     }
 
-    public void setMaTinh(String maTinh) {
+    public void setMaTinh(float maTinh) {
         this.maTinh = maTinh;
     }
 
-    public String getMaHuyen() {
+    public float getMaHuyen() {
         return maHuyen;
     }
 
-    public void setMaHuyen(String maHuyen) {
+    public void setMaHuyen(float maHuyen) {
         this.maHuyen = maHuyen;
     }
 
-    public String getTenTinh() {
-        return tenTinh;
+    public String getTenHuyen() {
+        return tenHuyen;
     }
 
-    public void setTenTinh(String tenTinh) {
-        this.tenTinh = tenTinh;
+    public void setTenHuyen(String tenHuyen) {
+        this.tenHuyen = tenHuyen;
     }
+
+   
+    
      
 }

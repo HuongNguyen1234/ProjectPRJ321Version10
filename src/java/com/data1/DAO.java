@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.data;
+package com.data1;
 
 import com.entity.Huyen;
 import com.entity.Journal;
+import com.entity.Mien;
 import com.entity.Order;
 import com.entity.Post;
 import com.entity.Service;
 import com.entity.Staff;
 import com.entity.Tinh;
+import com.entity.TinhPhi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -80,8 +82,8 @@ public class DAO {
             while (rs.next()) {
                 float maBC = rs.getFloat("maBC");
                 String tenBC = rs.getString("TenBC");
-                String tinh = rs.getString("Tinh");
-                String huyen = rs.getString("Huyen");
+                float tinh = rs.getFloat("MaTinh");
+                float huyen = rs.getFloat("MaHuyen");
                 String xa = rs.getString("Xa");
                 String thon = rs.getString("Thon");
 
@@ -166,7 +168,7 @@ public class DAO {
             ResultSet rs = ps.executeQuery();
             List<Tinh> list = new ArrayList<>();
             while (rs.next()) {
-                String ma = rs.getString("MaTinh");
+                float ma = rs.getFloat("MaTinh");
                 String ten = rs.getString("Ten");
                 Tinh t1 = new Tinh(ma, ten);
                 list.add(t1);
@@ -180,20 +182,22 @@ public class DAO {
 
     }
 
-    public List<Huyen> getAllHuyen(String maTinh) throws SQLException, Exception {
+    public List<Huyen> getAllHuyen(float maTinh) throws SQLException, Exception {
         String xSql = "select * from Huyen where MaTinh=? ";
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
-            ps.setString(1, maTinh);
+            ps.setFloat(1, maTinh);
             ResultSet rs = ps.executeQuery();
             List<Huyen> list = new ArrayList<>();
+            Huyen tmp = new Huyen(-1, -1, "");
+            list.add(tmp);
             while (rs.next()) {
-                String matinh = rs.getString("MaTinh");
-                String mahuyen = rs.getString("MaHuyen");
-                String ten = rs.getString("TenHuyen");
+                float matinh = rs.getFloat("MaTinh");
+                float mahuyen = rs.getFloat("MaHuyen");
+                String ten = rs.getString("Ten");
                 Huyen h = new Huyen(matinh, mahuyen, ten);
 //                if (ma != null)  
                 list.add(h);
@@ -206,19 +210,19 @@ public class DAO {
         }
     }
 
-    public String getTenHuyen(String maHuyen) throws SQLException, Exception {
-        String xSql = "select TenHuyen from Huyen where MaHuyen=? ";
+    public String getTenHuyen(float maHuyen) throws SQLException, Exception {
+        String xSql = "select Ten from Huyen where MaHuyen=? ";
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
-            ps.setString(1, maHuyen);
+            ps.setFloat(1, maHuyen);
             ResultSet rs = ps.executeQuery();
             List<Huyen> list = new ArrayList<>();
             while (rs.next()) {
 
-                String ten = rs.getString("TenHuyen");
+                String ten = rs.getString("Ten");
                 return ten;
             }
 
@@ -229,18 +233,18 @@ public class DAO {
 
     }
 
-    public String getTenTinh(String maTinh) throws SQLException, Exception {
-        String xSql = "select Ten from Tinh";
+    public String getTenTinh(float maTinh) throws SQLException, Exception {
+        String xSql = "select Ten from Tinh where MaTinh=?";
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
+            ps.setFloat(1, maTinh);
             ResultSet rs = ps.executeQuery();
             List<Tinh> list = new ArrayList<>();
             while (rs.next()) {
                 String ten = rs.getString("Ten");
-
                 return ten;
             }
 
@@ -251,21 +255,21 @@ public class DAO {
         return null;
     }
 
-    public List<Post> getPost(String huyen) throws SQLException, Exception {
+    public List<Post> getPostHuyen(float huyen) throws SQLException, Exception {
         String xSql = "select * from BuuCuc where MaHuyen=?";
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
-            ps.setString(1, huyen);
+            ps.setFloat(1, huyen);
             ResultSet rs = ps.executeQuery();
             List<Post> list = new ArrayList<>();
             while (rs.next()) {
                 float maBc = rs.getFloat("MaBC");
                 String tenBC = rs.getString("TenBC");
-                String tin = rs.getString("MaTinh");
-                String huye = rs.getString("MaHuyen");
+                float tin = rs.getFloat("MaTinh");
+                float huye = rs.getFloat("MaHuyen");
                 String xa = rs.getString("Xa");
                 String thon = rs.getString("Thon");
                 Post p = new Post(maBc, tenBC, tin, huye, xa, thon);
@@ -278,7 +282,49 @@ public class DAO {
             throw ex;
         }
     }
-
+   public List<Mien> getMien()throws SQLException,Exception{
+        String xSql = "select * from Mien ";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            ResultSet rs = ps.executeQuery();
+            List<Mien> list= new ArrayList<>();
+            while (rs.next()) {
+                String maDH = rs.getString("MaMien");
+                String ten = rs.getString("TenMien");
+                Mien m= new Mien(maDH, ten);
+                list.add(m);
+            }
+                return list;
+        } catch (SQLException ex) {
+            throw ex;
+        }
+   }
+   public TinhPhi getPhi(String maMien)throws SQLException,Exception{
+        String xSql = "select MaMien,Gia from TinhPhi where MaMien=? ";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            ps.setString(1, maMien);
+            ResultSet rs = ps.executeQuery();
+            List<Mien> list= new ArrayList<>();
+            while (rs.next()) {
+               float gia= rs.getFloat("Gia");
+                String ma= rs.getString("MaMien");
+                TinhPhi p= new TinhPhi(ma, gia);
+               return p;
+            }
+        
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return null;
+       
+   }
     public Journal getJournal(int idHT) throws Exception {
         String result = "";
         String xSql = "select * from HanhTrinh where IdHT = ?";
@@ -480,4 +526,8 @@ public class DAO {
 //        }         // TODO add your handling code here:
 //        return null;
 //    }
+
+    public List<Huyen> getAllHuyen(String tinh) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

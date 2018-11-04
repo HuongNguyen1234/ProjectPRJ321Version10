@@ -5,9 +5,12 @@
  */
 package com.function;
 
+import com.controller.ListPostController;
 import com.data1.DAO;
 import com.entity.Huyen;
+import com.entity.TinhPhi;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author huong karatedo
  */
-public class ShowHuyenServlet extends HttpServlet {
+public class ChargeDeliveryShowInforPost extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,15 +39,52 @@ public class ShowHuyenServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try {
             DAO dao = new DAO();
-            List<Huyen> listHuyen;
+            ListPostController list = new ListPostController();
+            String type=request.getParameter("type");
+            int gam=Integer.parseInt(request.getParameter("gam"));
             float tinh = Float.parseFloat(request.getParameter("tinh"));
-            listHuyen = dao.getAllHuyen(tinh);
-            
-            request.setAttribute("currentTinh", tinh);
+            float huyen = Float.parseFloat(request.getParameter("huyen"));
+            List<Huyen> listHuyen = listHuyen = dao.getAllHuyen(tinh);
+            String mien = request.getParameter("mien");
+            list.setListPost(dao.getPostHuyen(huyen));
+            TinhPhi t = dao.getPhi(mien);
+            float payment = 0;
+            if (0 < gam && gam < 0.25) {
+                if (mien.equals(t.getMaMien())) {
+                    payment = t.getGia();
+                }
+
+            } else if (0.25 <= gam && gam <= 0.5) {
+                if (mien.equals(t.getMaMien())) {
+                    payment = t.getGia();
+                }
+            } else if (0.5 < gam && gam <= 1) {
+                if (mien.equals(t.getMaMien())) {
+                    payment = t.getGia();
+                }
+            } else if (1 < gam && gam <= 1.5) {
+                if (mien.equals(t.getMaMien())) {
+                    payment = t.getGia();
+                }
+            } else if(gam>1.5){
+               if (mien.equals(t.getMaMien())) {
+                    payment = t.getGia()*gam/2;
+                }
+            }
+            if (mien.equalsIgnoreCase("")) {
+                request.setAttribute("currentMien", mien);
+            }
+            request.setAttribute("mien",mien);
+            request.setAttribute("payment",payment);
+            request.setAttribute("type", type);
+            request.setAttribute("gam", gam);
             request.setAttribute("huyen", listHuyen);
-            request.getRequestDispatcher("PostOffice.jsp").forward(request, response);
+            request.setAttribute("currentTinh", tinh);
+            request.setAttribute("currentHuyen", huyen);
+            request.setAttribute("listpost", list.getListPost());
+            request.getRequestDispatcher("chargeAndDelivery.jsp").forward(request, response);
         } catch (Exception e) {
-            Logger.getLogger(ShowHuyenServlet.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(ChargeDeliveryShowInforPost.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 

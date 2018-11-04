@@ -5,7 +5,7 @@
  */
 package com.function;
 
-import com.data.DAO;
+import com.data1.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
@@ -53,6 +53,8 @@ public class AddInforOrderServlet extends HttpServlet {
             float phiShip=0;
             float phiThuHo= Float.parseFloat(request.getParameter("phiThuHo"));
             String maDH= randomString(13);
+            //
+            //tien
             if(0<khoiLuong && khoiLuong<0.25){
                if(mienGui.equalsIgnoreCase("cung mien")){
                    phiShip=(float) 25.000;
@@ -158,6 +160,7 @@ public class AddInforOrderServlet extends HttpServlet {
                    }
                }
             }
+            //
            
         } catch (Exception e) {
              Logger.getLogger(AddInforOrderServlet.class.getName()).log(Level.SEVERE, null, e);

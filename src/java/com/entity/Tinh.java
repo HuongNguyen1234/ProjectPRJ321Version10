@@ -10,19 +10,20 @@ package com.entity;
  * @author huong karatedo
  */
 public class Tinh {
-    private String maTinh;
+    private float maTinh;
     private String ten;
 
-    public Tinh(String maTinh, String ten) {
-        this.maTinh = maTinh;
-        this.ten = ten;
-    }
-
-    public String getMaTinh() {
+    public float getMaTinh() {
         return maTinh;
     }
 
-    public void setMaTinh(String maTinh) {
+    public Tinh(float maTinh, String ten) {
+        this.maTinh = maTinh;
+        this.ten = ten;
+    }
+    
+
+    public void setMaTinh(float maTinh) {
         this.maTinh = maTinh;
     }
 
@@ -33,5 +34,9 @@ public class Tinh {
     public void setTen(String ten) {
         this.ten = ten;
     }
+
+    
+
+    
     
 }

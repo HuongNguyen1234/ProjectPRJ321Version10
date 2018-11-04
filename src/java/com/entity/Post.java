@@ -5,7 +5,7 @@
  */
 package com.entity;
 
-import com.data.DAO;
+import com.data1.DAO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,12 +16,12 @@ import java.util.logging.Logger;
 public class Post {
     private float maBC;
     private String tenBC;
-    private String Matinh;
-    private String MaHuyen;
+    private float Matinh;
+    private float MaHuyen;
     private String xa;
     private String thon;
-    
-    public Post(float maBC, String tenBC, String Matinh, String MaHuyen, String xa, String thon) {
+
+    public Post(float maBC, String tenBC, float Matinh, float MaHuyen, String xa, String thon) {
         this.maBC = maBC;
         this.tenBC = tenBC;
         this.Matinh = Matinh;
@@ -29,16 +29,19 @@ public class Post {
         this.xa = xa;
         this.thon = thon;
     }
-    public String getTenTinh(String maTinh) throws Exception{
+    
+   
+    public String getTenTinh(float maTinh) throws Exception{
         DAO dao=new DAO();
         return dao.getTenTinh(maTinh);
     }
-    public String getTenHuyen(String maHuyen) throws Exception{
+    public String getTenHuyen(float maHuyen) throws Exception{
         DAO dao=new DAO();
         return dao.getTenHuyen(maHuyen);
     }
-    public float getMaBC() {
-        return maBC;
+
+    public int getMaBC() {
+        return Integer.parseInt(xa);
     }
 
     public void setMaBC(float maBC) {
@@ -53,19 +56,19 @@ public class Post {
         this.tenBC = tenBC;
     }
 
-    public String getMatinh() {
+    public float getMatinh() {
         return Matinh;
     }
 
-    public void setMatinh(String Matinh) {
+    public void setMatinh(float Matinh) {
         this.Matinh = Matinh;
     }
 
-    public String getMaHuyen() {
+    public float getMaHuyen() {
         return MaHuyen;
     }
 
-    public void setMaHuyen(String MaHuyen) {
+    public void setMaHuyen(float MaHuyen) {
         this.MaHuyen = MaHuyen;
     }
 
@@ -84,13 +87,13 @@ public class Post {
     public void setThon(String thon) {
         this.thon = thon;
     }
-
    
 
     @Override
     public String toString() {
+        int a=(int)maBC;
         try {
-            return  "Mã bưu cục:"+maBC+"\n"+"Bưu Cục"+tenBC+"\n"+"Địa Chỉ: "+thon+","+xa+","+getTenHuyen(MaHuyen)+","+getTenTinh(Matinh)+"\n";
+            return  "Mã bưu cục:"+a+"\n"+"Bưu Cục"+tenBC+"\n"+"Địa Chỉ: "+thon+","+xa+","+getTenHuyen(MaHuyen)+","+getTenTinh(Matinh)+"\n";
         } catch (Exception ex) {
             Logger.getLogger(Post.class.getName()).log(Level.SEVERE, null, ex);
         }

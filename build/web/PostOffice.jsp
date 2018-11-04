@@ -7,7 +7,7 @@
 <%@page import="com.controller.TinhController"%>
 <%@page import="java.util.logging.Level"%>
 <%@page import="java.util.List"%>
-<%@page import="com.data.DAO"%>
+<%@page import="com.data1.DAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -20,22 +20,21 @@
     <body>
     <center>
         <div class="searchPosHeader">
-            <img src="Image/crown.png" style="width: 100px;position: absolute;top: -60px;margin: 0 auto;left: 0;right: 0;">
+            <img src="Image/crown.png" alt="" style="width: 100px;position: absolute;top: -60px;margin: 0 auto;left: 0;right: 0;">
             <div>
-
                 <h2>Mạng lưới dịch vụ bưu điện</h2>        
             </div>
         </div>
     </center> 
     <c:if test="${currentTinh == null}">
-        <c:redirect url="/ShowHuyenServlet?tinh=1"/>
+        <c:redirect url="/ShowHuyenServlet?tinh=1&huyen=11"/>
     </c:if>
     <%
 //        if (request.getParameter("tinh") == null) {
 //            request.getRequestDispatcher("/ShowHuyenServlet?tinh=1").forward(request, response);
 //        }
         DAO dao = new DAO();
-        TinhController listTinh=null;
+        TinhController listTinh=new TinhController();
         listTinh.setListTinh(dao.getAllTinhBuuCuc());
         
 
@@ -60,13 +59,14 @@
             <center>
                 <select id="tinh" onchange="change()" >
                     <%--<c:choose>--%>
-                    <c:forEach  var="i" items="<%=listTinh%>">
-                        <c:if test="${currentTinh != i. getMaTinh()}">
+                    <c:forEach  var="i" items="<%=listTinh.getListTinh()%>">
+                         <c:if test="${currentTinh != i. getMaTinh()}">
                             <option value="${i.getMaTinh()}" >${i.getTen()}</option>
                         </c:if>
                         <c:if test="${currentTinh == i.getMaTinh()}">
                             <option value="${i.getMaTinh()}" selected >${i.getTen()}</option>
                         </c:if>
+                        
                     </c:forEach>
                     <%--</c:choose>--%>
                     <!--                    <option value="-1"></option>
@@ -139,19 +139,16 @@
             <td>
             <center>
                 <select id="huyen" onchange="changeHuyen()">
-                    <%--<c:choose>--%>
                     <c:forEach  var="i" items="${huyen}">
-                        <%--<c:if test="${currentHuyen == null}">--%>
-                        <option value="${i.getMaHuyen()}" >${i.getTenHuyen()}</option>
-                        <%--</c:if>--%>
-                        <c:if test="${currentHuyen != null && currentHuyen != i.getMaHuyen()}">
+                        
+                        <c:if test="${currentHuyen != i.getMaHuyen()}">
                             <option value="${i.getMaHuyen()}" >${i.getTenHuyen()}</option>
                         </c:if>
-                        <c:if test="${currentHuyen != null && currentHuyen == i.getMaHuyen()}">
+                        <c:if test="${ currentHuyen == i.getMaHuyen()}">
                             <option value="${i.getMaHuyen()}" selected>${i.getTenHuyen()}</option>
                         </c:if>
                     </c:forEach>
-                    <%--</c:choose>--%>
+                 
                 </select>
             </center>
             </td>
@@ -171,7 +168,7 @@
         </div>
         <textarea class="listPostOfficeTextArea" >
             <c:forEach  var="i" items="${listpost}">
-                            <p>i.toString()</p><br>
+                ${i.toString()} 
             </c:forEach>
         </textarea>
     </div>              
@@ -192,7 +189,7 @@
 
         function changeHuyen() {
             var xmlhttp = new XMLHttpRequest();
-             window.location.href = "http://localhost:8084/ProjectPRJ321Version10/ShowInforPost?huyen=" + document.getElementById('huyen').value;
+             window.location.href = "http://localhost:8084/ProjectPRJ321Version10/ShowInforPost?huyen=" + document.getElementById('huyen').value + "&tinh=" + document.getElementById('tinh').value;
 ////            xmlhttp.open("POST", "/ProjectPRJ321Version10/ShowInforPost", true);
 ////            xmlhttp.send(document.getElementById('huyen').value);
         }
