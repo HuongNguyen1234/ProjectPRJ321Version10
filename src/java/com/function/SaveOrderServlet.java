@@ -50,6 +50,7 @@ public class SaveOrderServlet extends HttpServlet {
             float phiship=Float.parseFloat(request.getParameter("phiShip"));
             float phiThuHo=Float.parseFloat(request.getParameter("phiThuHo"));
             float tongtien=Float.parseFloat(request.getParameter("tongTien"));
+            String idTrangThai=request.getParameter();
            Order order= new Order(maDH, maBC, tenGui, diaChiGui, sdtGui, tenNhan, diaChiNhan, loaiHang, gam, sdtNhan, phiship, phiThuHo, tongtien);
             dao.addOrders(order);
         } catch (Exception e) {

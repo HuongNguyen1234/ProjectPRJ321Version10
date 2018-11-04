@@ -56,8 +56,9 @@ public class DAO {
                 int sdtNhan = rs.getInt("SdtNhan");
                 float phiShip = rs.getFloat("PhiShip");
                 float phiThuHo = rs.getFloat("PhiThuHo");
+                String idTrangThai=rs.getString("IdTrangThai");
                 float tongTien = rs.getFloat("TongTien");
-                Order order = new Order(maDH, maBC, tenNguoiGui, diaChiGui, sdtGui, tenNguoiNhan, diaChiNhan, loaiHang, khoiLuong, sdtNhan, phiShip, phiThuHo, tongTien);
+                Order order = new Order(maDH, maBC, tenNguoiGui, diaChiGui, sdtGui, tenNguoiNhan, diaChiNhan, loaiHang, khoiLuong, sdtNhan, idTrangThai, phiShip, phiThuHo, tongTien);
                 list.add(order);
             }
 
@@ -348,7 +349,7 @@ public class DAO {
         return null;
 
     }
-
+    
     public Journal getJournal(int idHT) throws Exception {
         String result = "";
         String xSql = "select * from HanhTrinh where IdHT = ?";
