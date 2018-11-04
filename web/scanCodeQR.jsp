@@ -28,7 +28,7 @@
                 %>
             </div>
             <div class="scanCodeSub" style="width: 30%;background-color: coral;">
-                <div class="scanCodeSubContainVideo">
+<!--                <div class="scanCodeSubContainVideo">
                     <video id="videoID" autoplay></video>
                 </div>           
                 <h1><b>Quét Mã QR</b></h1>
@@ -38,7 +38,8 @@
                 <div class="scanCodeSubContainCanvas">
                     <canvas id="canvasID">
                     </canvas>
-                </div> 
+                </div> -->
+                <jsp:include page="QRcode.jsp"/>   
             </div>
         </div>
             <script type="text/javascript">

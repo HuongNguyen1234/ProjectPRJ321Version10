@@ -9,26 +9,43 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="CSS/status.css">
+        <link rel="stylesheet" type="text/css" href="CSS/sstatus.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
         <title>Status</title>
     </head>
     <body>
-        <div class="searchItemStatus">           
+<!--===============================================Search bar=================================================================-->
+<!--        <div class="searchItemStatus">           
             <div class="searchItemStatusContainText">
                 <input type="text" placeholder="Search...">
                 <button><i class="fas fa-search" ></i></button>
             </div>
-        </div>
+        </div>-->
+<!--==========================================================================================================================-->
         
-        <div class="mainStatusDesign">
-            <button class="buttonEdit" id="edit" onclick="editInformation()">
+    <div class="statusContainAll">
+        <div class="mainStatusDesign" style="width: 70%;">
+<!--===============================================Edit and Save==============================================================-->            
+<!--            <button class="buttonEdit" id="edit" onclick="editInformation()">
                 Edit
             </button>
             <button class="buttonEdit" id="save" style="display: none;" onclick="saveInformation()">
                 Save
-            </button>
+            </button>-->
+<!--==========================================================================================================================-->
+            <div class="headTableStatus">
+                <div class="headSubnetTableStatus">
+                    <div><i class="fas fa-barcode"> Trạng thái trước</i></div>
+                    <p name="containInfor"><b><input name="infor" type="button" value="Chưa gửi đi" onclick="non()"></b></p>
+                </div>
+                
+                <div class="headSubnetTableStatus">
+                    <div><i class="fas fa-barcode"> Trạng thái sau</i></div>
+                    <p name="containInfor"><b><input name="infor" type="button" value="Đã Nhận" onclick="non()"></b></p>
+                </div>   
+            </div>
+
             <div class="headTableStatus">
                 <div class="headSubnetTableStatus">
                     <div><i class="fas fa-barcode"> Bưu gửi số</i></div>
@@ -36,6 +53,12 @@
                 </div>
                 
                 <div class="headSubnetTableStatus">
+                    <div><i class="fas fa-barcode"> Trạng thái</i></div>
+                    <p name="containInfor"><b><input name="infor" type="text" value="Trạng thái" onclick="non()"></b></p>
+                </div>          
+                
+<!--======================Icon Trạng thái(Cái này t có cách nhưng chắc mai nói sau) ==========================================-->                
+<!--                <div class="headSubnetTableStatus">
                     <div><i class="fab fa-free-code-camp"> Trạng thái</i></div>
                     <a href="?trangthai=1">
                     <div class="headSubnetTableStatusIconContain" name="status" onclick="Active(1)">
@@ -60,11 +83,12 @@
                             <i class="fa fa-check-circle " style="" aria-hidden="true"></i>
                         </div>
                         <div class="IconContainSub">
-                            <!--<i class="fas fa-box"></i>-->  
+                            <i class="fas fa-box"></i>  
                             <i class="fas fa-boxes" ></i>                        
                         </div>
                     </div>                   
-                </div>   
+                </div>   -->
+<!--==========================================================================================================================-->
                 <div class="headSubnetTableStatus" >
                     <div><i class="fas fa-balance-scale"> Khối lượng (gram)</i></div>
                     <p name="containInfor"><b><input name="infor" type="text" value="1090" disabled></b></p>
@@ -77,7 +101,9 @@
                         <p> </p>
                     </div>
                 </fieldset>
-                <div>
+                
+<!--======================================Tạm thời đóng lại để nếu có gì cần thì cho vào======================================-->                
+<!--                <div>
                     <div class="labelMainTableStatus">
                         <div class="labelMainTableStatusCenter">
                         Thông tin phát
@@ -142,12 +168,22 @@
                             </td>
                         </tr>
                     </table>
-                </div>
+                </div>-->
+<!--==========================================================================================================================-->
             </div>
-        </div>        
+        </div>  
+        <div class="statusContainAllQR" style="width: 30%;">
+            <jsp:include page="QRcode.jsp"/>          
+        </div>               
+    </div>    
+    
         <script type="text/javascript">
             var name = "<%= session.getAttribute("name")%>";
             var textArea = document.getElementById("StatusTableTextArea");
+            
+                function non(){
+                    alert("fail");
+                }
             
                 function Active(x){
                     var status = document.getElementsByName("status");
@@ -172,8 +208,8 @@
                 //deactive class
                 var containInfor = document.getElementsByName("containInfor");
                 for (var i = 0; i < containInfor.length; i++){
-                    containInfor[i].classList.remove("ActiveInputClass");
-                    containInfor[i].classList.add("InActiveInputClass");                 
+                    containInfor[i].classList.add("ActiveInputClass");
+                    containInfor[i].classList.remove("InActiveInputClass");                 
                 }
                 
                 function editInformation(){

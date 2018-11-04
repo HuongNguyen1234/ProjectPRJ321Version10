@@ -1,3 +1,11 @@
+.statusContainAll{
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: gray;
+}
+
 .searchItemStatus{
     position: relative;
     width: 80%;
@@ -38,7 +46,7 @@
 .mainStatusDesign{
     color: wheat;
     position: relative;
-    width: 80%;
+    /*width: 60%;*/
     background-color: rgb(139,64,0);
     margin: 25px auto;  
     border-radius: 5px;

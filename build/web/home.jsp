@@ -15,7 +15,7 @@
         <link rel="stylesheet" type="text/css" href="CSS/homStyle.css">       
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">       
     </head>
-    <body>        
+    <body onload="loadPage()">        
     <div class="grid-container">
         <!-----------------------------------------------------------header-------------------------------------------------->
         <div id = "header">

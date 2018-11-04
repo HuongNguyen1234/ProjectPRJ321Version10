@@ -33,10 +33,33 @@ function checkwin(){
     alert(document.getElementById("img1").style.height);
 }
 
-function addSectionActive(x){
-    var section = document.getElementsByName("section");
+//function addSectionActive(x){
+//    var section = document.getElementsByName("section");
+//    for(var i=0;i<section.length;i++){
+//        section[i].classList.remove("sectionActive");
+//    } 
+//    section[x].classList.add("sectionActive");
+//}
+
+function loadPage(){
+    var section = document.getElementsByName("section");              
     for(var i=0;i<section.length;i++){
         section[i].classList.remove("sectionActive");
-    } 
-    section[x].classList.add("sectionActive");
+    }               
+    section[sessionStorage.getItem("index")].classList.add("sectionActive"); 
+}
+            
+function addSectionActive(x){               
+    var section = document.getElementsByName("section");              
+    for(var i=0;i<section.length;i++){
+        section[i].classList.remove("sectionActive");
+    }               
+    section[x].classList.add("sectionActive");   
+                
+    if (typeof(Storage) !== "undefined") {
+        // Store
+        sessionStorage.setItem("index", x);                                
+    } else {
+        alert("Sorry, your browser does not support Web Storage...");
+    }
 }
