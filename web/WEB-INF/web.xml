@@ -16,6 +16,22 @@
         <servlet-name>ChargeDeliveryShowInforPost</servlet-name>
         <servlet-class>com.function.ChargeDeliveryShowInforPost</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OrderShowMienServlet</servlet-name>
+        <servlet-class>com.function.OrderShowMienServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddInforOrderServlet</servlet-name>
+        <servlet-class>com.function.AddInforOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SaveOrderServlet</servlet-name>
+        <servlet-class>com.function.SaveOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddInforOrderServlet</servlet-name>
+        <url-pattern>/AddInforOrderServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChargeDeliveryServlet</servlet-name>
         <url-pattern>/ChargeDeliveryServlet</url-pattern>
@@ -31,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>ChargeDeliveryShowInforPost</servlet-name>
         <url-pattern>/ChargeDeliveryShowInforPost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderShowMienServlet</servlet-name>
+        <url-pattern>/OrderShowMienServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SaveOrderServlet</servlet-name>
+        <url-pattern>/SaveOrderServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

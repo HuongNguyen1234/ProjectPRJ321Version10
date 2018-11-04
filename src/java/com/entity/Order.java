@@ -18,14 +18,13 @@ public class Order {
     private String tenNguoiNhan;
     private String diaChiNhan;
     private String loaiHang;
-    private float khoiLuong;
+    private int khoiLuong;
     private int sdtNhan;
     private float phiShip;
     private float phiThuHo;
     private float tongTien;
-    private String guiTinh;
 
-    public Order(String maDH, int maBC, String tenNguoiGui, String diaChiGui, int sdtGui, String tenNguoiNhan, String diaChiNhan, String loaiHang, float khoiLuong, int sdtNhan, float phiShip, float phiThuHo, float tongTien, String guiTinh) {
+    public Order(String maDH, int maBC, String tenNguoiGui, String diaChiGui, int sdtGui, String tenNguoiNhan, String diaChiNhan, String loaiHang, int khoiLuong, int sdtNhan, float phiShip, float phiThuHo, float tongTien) {
         this.maDH = maDH;
         this.maBC = maBC;
         this.tenNguoiGui = tenNguoiGui;
@@ -39,10 +38,8 @@ public class Order {
         this.phiShip = phiShip;
         this.phiThuHo = phiThuHo;
         this.tongTien = tongTien;
-        this.guiTinh = guiTinh;
     }
 
-    
     public String getMaDH() {
         return maDH;
     }
@@ -107,6 +104,14 @@ public class Order {
         this.loaiHang = loaiHang;
     }
 
+    public int getKhoiLuong() {
+        return khoiLuong;
+    }
+
+    public void setKhoiLuong(int khoiLuong) {
+        this.khoiLuong = khoiLuong;
+    }
+
     public int getSdtNhan() {
         return sdtNhan;
     }
@@ -138,22 +143,7 @@ public class Order {
     public void setTongTien(float tongTien) {
         this.tongTien = tongTien;
     }
-
-    public float getKhoiLuong() {
-        return khoiLuong;
-    }
-
-    public void setKhoiLuong(float khoiLuong) {
-        this.khoiLuong = khoiLuong;
-    }
-
-    public String getGuiTinh() {
-        return guiTinh;
-    }
-
-    public void setGuiTinh(String guiTinh) {
-        this.guiTinh = guiTinh;
-    }
+   
 
    
 

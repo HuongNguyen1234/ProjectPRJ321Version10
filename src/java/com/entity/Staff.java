@@ -80,8 +80,8 @@ public class Staff {
         this.chucVu = chucVu;
     }
 
-    public float getMaBC() {
-        return maBC;
+    public int getMaBC() {
+        return (int)maBC;
     }
 
     public void setMaBC(float maBC) {

@@ -33,12 +33,11 @@
                 </div>           
                 <h1><b>Quét Mã QR</b></h1>
                 <div> 
-                    <!--<input type="button" value="Take photo" onclick="capture()" style="width: 200px; height: 30px;"/>--> 
-                    <input class="buttonScanCodeSubContain"type="button" value="Send" onclick="send()" /> 
+                    <input class="buttonScanCodeSubContain" type="button" value="Send" onclick="send()" /> 
                 </div>
                 <div class="scanCodeSubContainCanvas">
-<!--                    <canvas id="canvasID">
-                    </canvas>-->
+                    <canvas id="canvasID">
+                    </canvas>
                 </div> 
             </div>
         </div>

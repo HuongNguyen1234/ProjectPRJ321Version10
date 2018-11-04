@@ -184,6 +184,8 @@
           <div class="subnav">
             <button class="subnavbtn"><i class="fas fa-users-cog"></i> Services <i class="fa fa-caret-down"></i></button>
             <div class="subnav-content">
+<!--                <a href="#Tính Giá Cước" onclick="addSectionActive(1)"><i class="fas fa-money-check-alt"></i> Tính giá cước</a>
+              <a href="#Mạng lưới Bưu cục" onclick="addSectionActive(3)"><i class="fas fa-globe"></i> Mạng lưới Bưu cục</a>-->
               <a href="/ProjectPRJ321Version10/chargeAndDelivery.jsp" onclick="addSectionActive(1)"><i class="fas fa-money-check-alt"></i> Tính giá cước</a>
               <a href="/ProjectPRJ321Version10/PostOffice.jsp" onclick="addSectionActive(3)"><i class="fas fa-globe"></i> Mạng lưới Bưu cục</a>
               <a href="#Quét ="/ProjectPRJ321Version10mã QR" onclick="addSectionActive(5)"><i class="fas fa-qrcode"></i> Quét mã QR</a>
@@ -192,7 +194,7 @@
           <div class="subnav">
             <button class="subnavbtn"><i class="fas fa-address-book"></i> Contact <i class="fa fa-caret-down"></i></button>
             <div class="subnav-content">
-              <a href="#Điền thông tin đơn hàng" onclick="addSectionActive(4)"><i class="fas fa-clipboard-list"></i> Điền thông tin đơn hàng</a>
+              <a href="/ProjectPRJ321Version10/editInfoPackage.jsp" onclick="addSectionActive(4)"><i class="fas fa-clipboard-list"></i> Điền thông tin đơn hàng</a>
               <a href="#Cập nhật trạng thái hành trình" onclick="addSectionActive(2)"><i class="fas fa-chart-area"></i> Cập nhật trạng thái hành trình</a>
               
             </div>

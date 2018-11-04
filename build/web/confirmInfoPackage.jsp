@@ -19,6 +19,8 @@
             <div id="divTop"></div>  
             <div id="divBottom"></div> 
         </div>
+        <form method="Post" action="ProjectPRJ321Version10/SaveOrderServlet" >
+        
         <table class="InforPackageTable">
             <tr>
                 <td>
@@ -52,7 +54,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            Dictrict 1
+                            ${sessionScope.maBC}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -71,7 +73,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            Long hansomu
+                            ${tenGui}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -90,7 +92,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            Dom C
+                            ${diaChiGui}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -109,7 +111,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            0934538675
+                            ${sdtGui}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -128,7 +130,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            Hường Béo
+                            ${tenNhan}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -147,7 +149,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            Thạch Thất Tân Xã 
+                            ${diaChiNhan} 
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -166,7 +168,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            0964048439
+                            ${sdtNhan}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -184,9 +186,7 @@
                 </td>
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
-                        <b>
-                            Bưu Phẩm
-                        </b>
+                        <b>${productType}</b>
                         <div class="divlast"></div>
                     </div>                  
                 </td>
@@ -204,7 +204,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            500000 tấn
+                            ${khoiLuong}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -224,7 +224,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            Infinity
+                            ${phiShip}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -243,7 +243,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            100000000 $
+                            ${phiThuHo}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -262,46 +262,28 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            ???
+                            ${tongTien}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
                 </td>
             </tr>
+         
             <tr>
                 <td colspan="3">                 
                     <div class="InforPackageQR"> 
                         <div class="divfirstQR"></div>
-                        <img src="Image/QRImage.png" width="200px" height="200px">
+                       
+                            <!--<legend><b>&nbsp;&nbsp;&nbsp;QR Code Generator - Response&nbsp;&nbsp;&nbsp;</b></legend>-->
+                            <!--qrText=">-->
+                         <b  width="200px" height="200px">${maDH}</b>
+                        <img src="${qrImg}" width="200px" height="200px">
                         <div class="divlastQR"></div>
                     </div>                  
                 </td>
             </tr>                       
         </table>
-        <link
-            href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
-            rel="stylesheet" type="text/css" />
-
-        <script
-            src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"
-        type="text/javascript"></script>
-        <script
-            src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"
-        type="text/javascript"></script>
-        <script
-            src="http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.js"
-        type="text/javascript"></script> 
-        <script src="/resources/scripts/mysamplecode.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-
-                $("#samplecode").validate({
-                    rules: {
-                        maDH: "required"
-                    }
-                });
-
-            });
-        </script> 
+           <button type="submit" style="width: 10%;height: 50px;border-radius: 5px;background-color: rgb(255, 116, 23);margin-left: 450px;"><b>SAVE</b></button>
+        </form>
     </body>
 </html>

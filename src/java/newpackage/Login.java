@@ -58,6 +58,7 @@ public class Login extends HttpServlet {
                 request.setAttribute("error", "Tên đăng nhập hoặc mật khẩu sai!");
                 request.getRequestDispatcher("home.jsp").include(request, response);
             } else {
+                session.setAttribute("maBC", staff.getMaBC());
                 session.setAttribute("name", name);
                 session.setAttribute("cart", staff.getMaBC());
                 request.getRequestDispatcher("home.jsp").forward(request, response);

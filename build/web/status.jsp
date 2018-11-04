@@ -37,6 +37,7 @@
                 
                 <div class="headSubnetTableStatus">
                     <div><i class="fab fa-free-code-camp"> Trạng thái</i></div>
+                    <a href="?trangthai=1">
                     <div class="headSubnetTableStatusIconContain" name="status" onclick="Active(1)">
                         <div class="IconContainCircle">
                             <i class="fa fa-check-circle " style="" aria-hidden="true"></i>
@@ -45,6 +46,7 @@
                             <i class="fas fa-file-invoice"></i>
                         </div>
                     </div>
+                        </a>
                     <div class="headSubnetTableStatusIconContain" name="status" onclick="Active(2)">
                         <div class="IconContainCircle">
                             <i class="fa fa-check-circle " style="" aria-hidden="true"></i>

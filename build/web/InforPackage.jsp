@@ -32,7 +32,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            SE0321321
+                            ${maDH}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -51,7 +51,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            Dictrict 1
+                            ${sessionScope.maBC}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -70,7 +70,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            Long hansomu
+                           ${tenGui}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -89,7 +89,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            Dom C
+                            ${diaChiGui}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -108,7 +108,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            0934538675
+                              ${sdtGui}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -127,7 +127,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            Hường Béo
+                              ${tenNhan}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -146,7 +146,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            Thạch Thất Tân Xã 
+                              ${diaChiNhan} 
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -165,7 +165,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            0964048439
+                             ${sdtNhan}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -184,7 +184,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            Bưu Phẩm
+                            ${productType}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -203,7 +203,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            500000 tấn
+                            ${khoiLuong}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -223,7 +223,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            Infinity
+                            ${phiShip}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -242,7 +242,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            100000000 $
+                            ${phiThuHo}
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -261,7 +261,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            ???
+                            ${tongTien}
                         </b>
                         <div class="divlast"></div>
                     </div>                  

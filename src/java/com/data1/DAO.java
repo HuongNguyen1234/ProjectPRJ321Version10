@@ -46,18 +46,18 @@ public class DAO {
             while (rs.next()) {
                 String maDH = rs.getString("MaHD");
                 int maBC = rs.getInt("MaBC");
-                String tenNguoiGui = rs.getString("TenNguoiGui");
+                String tenNguoiGui = rs.getString("TenGui");
                 String diaChiGui = rs.getString("DiaChiGui");
                 int sdtGui = rs.getInt("SdtGui");
-                String tenNguoiNhan = rs.getString("TenNguoiNhan");
+                String tenNguoiNhan = rs.getString("TenNhan");
                 String diaChiNhan = rs.getString("DiaChiNhan");
                 String loaiHang = rs.getString("LoaiHang");
-                float khoiLuong = rs.getFloat("KhoiLuong");
+                int khoiLuong = rs.getInt("KhoiLuong");
                 int sdtNhan = rs.getInt("SdtNhan");
                 float phiShip = rs.getFloat("PhiShip");
                 float phiThuHo = rs.getFloat("PhiThuHo");
                 float tongTien = rs.getFloat("TongTien");
-                Order order = new Order(maDH, maBC, tenNguoiGui, diaChiGui, sdtGui, tenNguoiNhan, diaChiNhan, loaiHang, khoiLuong, sdtNhan, phiShip, phiThuHo, tongTien, loaiHang);
+                Order order = new Order(maDH, maBC, tenNguoiGui, diaChiGui, sdtGui, tenNguoiNhan, diaChiNhan, loaiHang, khoiLuong, sdtNhan, phiShip, phiThuHo, tongTien);
                 list.add(order);
             }
 
@@ -282,7 +282,8 @@ public class DAO {
             throw ex;
         }
     }
-   public List<Mien> getMien()throws SQLException,Exception{
+
+    public List<Mien> getMien() throws SQLException, Exception {
         String xSql = "select * from Mien ";
         Connection conn = null;
         PreparedStatement ps = null;
@@ -290,19 +291,20 @@ public class DAO {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
             ResultSet rs = ps.executeQuery();
-            List<Mien> list= new ArrayList<>();
+            List<Mien> list = new ArrayList<>();
             while (rs.next()) {
                 String maDH = rs.getString("MaMien");
                 String ten = rs.getString("TenMien");
-                Mien m= new Mien(maDH, ten);
+                Mien m = new Mien(maDH, ten);
                 list.add(m);
             }
-                return list;
+            return list;
         } catch (SQLException ex) {
             throw ex;
         }
-   }
-   public TinhPhi getPhi(String maMien)throws SQLException,Exception{
+    }
+
+    public TinhPhi getPhi(String maMien) throws SQLException, Exception {
         String xSql = "select MaMien,Gia from TinhPhi where MaMien=? ";
         Connection conn = null;
         PreparedStatement ps = null;
@@ -311,20 +313,42 @@ public class DAO {
             ps = conn.prepareStatement(xSql);
             ps.setString(1, maMien);
             ResultSet rs = ps.executeQuery();
-            List<Mien> list= new ArrayList<>();
+            List<Mien> list = new ArrayList<>();
             while (rs.next()) {
-               float gia= rs.getFloat("Gia");
-                String ma= rs.getString("MaMien");
-                TinhPhi p= new TinhPhi(ma, gia);
-               return p;
+                float gia = rs.getFloat("Gia");
+                String ma = rs.getString("MaMien");
+                TinhPhi p = new TinhPhi(ma, gia);
+                return p;
             }
-        
+
         } catch (SQLException ex) {
             throw ex;
         }
         return null;
-       
-   }
+
+    }
+
+    public String getTenMien(String maMien) throws SQLException, Exception {
+        String xSql = "select TenMien from Mien where MaMien=? ";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            ps.setString(1, maMien);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String ma = rs.getString("TenMien");
+                return ma;
+
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return null;
+
+    }
+
     public Journal getJournal(int idHT) throws Exception {
         String result = "";
         String xSql = "select * from HanhTrinh where IdHT = ?";
@@ -369,7 +393,7 @@ public class DAO {
 //        //return null;
 //    }
     public void addOrders(Order order) throws SQLException, Exception {
-        String xSql = " insert into Orders (MaHD,MaBC,TenNguoiGui,DiaChiGui,SdtGui,TenNguoiNhan,DiaChiNhan,LoaiHang,KhoiLuong,SdtNhan,PhiShip,PhiThuHo,TongTien)"
+        String xSql = " insert into Orders (MaHD,MaBC,TenGui,DiaChiGui,SdtGui,TenNhan,DiaChiNhan,LoaiHang,KhoiLuong,SdtNhan,PhiShip,PhiThuHo,TongTien)"
                 + " values (?, ?, ?,?,?,?,?,?,?,?,?,?,?)";
 
         Connection conn = null;
@@ -526,7 +550,6 @@ public class DAO {
 //        }         // TODO add your handling code here:
 //        return null;
 //    }
-
     public List<Huyen> getAllHuyen(String tinh) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
