@@ -40,8 +40,8 @@ public class Post {
         return dao.getTenHuyen(maHuyen);
     }
 
-    public float getMaBC() {
-        return maBC;
+    public int getMaBC() {
+        return Integer.parseInt(xa);
     }
 
     public void setMaBC(float maBC) {
@@ -91,8 +91,9 @@ public class Post {
 
     @Override
     public String toString() {
+        int a=(int)maBC;
         try {
-            return  "Mã bưu cục:"+maBC+"\n"+"Bưu Cục"+tenBC+"\n"+"Địa Chỉ: "+thon+","+xa+","+getTenHuyen(MaHuyen)+","+getTenTinh(Matinh)+"\n";
+            return  "Mã bưu cục:"+a+"\n"+"Bưu Cục"+tenBC+"\n"+"Địa Chỉ: "+thon+","+xa+","+getTenHuyen(MaHuyen)+","+getTenTinh(Matinh)+"\n";
         } catch (Exception ex) {
             Logger.getLogger(Post.class.getName()).log(Level.SEVERE, null, ex);
         }

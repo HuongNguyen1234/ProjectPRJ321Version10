@@ -7,11 +7,13 @@ package com.data1;
 
 import com.entity.Huyen;
 import com.entity.Journal;
+import com.entity.Mien;
 import com.entity.Order;
 import com.entity.Post;
 import com.entity.Service;
 import com.entity.Staff;
 import com.entity.Tinh;
+import com.entity.TinhPhi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -190,6 +192,8 @@ public class DAO {
             ps.setFloat(1, maTinh);
             ResultSet rs = ps.executeQuery();
             List<Huyen> list = new ArrayList<>();
+            Huyen tmp = new Huyen(-1, -1, "");
+            list.add(tmp);
             while (rs.next()) {
                 float matinh = rs.getFloat("MaTinh");
                 float mahuyen = rs.getFloat("MaHuyen");
@@ -278,7 +282,49 @@ public class DAO {
             throw ex;
         }
     }
-
+   public List<Mien> getMien()throws SQLException,Exception{
+        String xSql = "select * from Mien ";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            ResultSet rs = ps.executeQuery();
+            List<Mien> list= new ArrayList<>();
+            while (rs.next()) {
+                String maDH = rs.getString("MaMien");
+                String ten = rs.getString("TenMien");
+                Mien m= new Mien(maDH, ten);
+                list.add(m);
+            }
+                return list;
+        } catch (SQLException ex) {
+            throw ex;
+        }
+   }
+   public TinhPhi getPhi(String maMien)throws SQLException,Exception{
+        String xSql = "select MaMien,Gia from TinhPhi where MaMien=? ";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            ps.setString(1, maMien);
+            ResultSet rs = ps.executeQuery();
+            List<Mien> list= new ArrayList<>();
+            while (rs.next()) {
+               float gia= rs.getFloat("Gia");
+                String ma= rs.getString("MaMien");
+                TinhPhi p= new TinhPhi(ma, gia);
+               return p;
+            }
+        
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return null;
+       
+   }
     public Journal getJournal(int idHT) throws Exception {
         String result = "";
         String xSql = "select * from HanhTrinh where IdHT = ?";

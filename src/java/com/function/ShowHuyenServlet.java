@@ -8,8 +8,6 @@ package com.function;
 import com.data1.DAO;
 import com.entity.Huyen;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.Reader;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,11 +39,12 @@ public class ShowHuyenServlet extends HttpServlet {
             List<Huyen> listHuyen;
             float tinh = Float.parseFloat(request.getParameter("tinh"));
             listHuyen = dao.getAllHuyen(tinh);
+            
             request.setAttribute("currentTinh", tinh);
             request.setAttribute("huyen", listHuyen);
             request.getRequestDispatcher("PostOffice.jsp").forward(request, response);
         } catch (Exception e) {
-            Logger.getLogger(AddInforOrderServlet.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(ShowHuyenServlet.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 

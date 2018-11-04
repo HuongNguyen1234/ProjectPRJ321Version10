@@ -5,8 +5,13 @@
  */
 package com.function;
 
+import com.data1.DAO;
+import com.entity.Huyen;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,17 +35,27 @@ public class ChargeDeliveryServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ChargeDeliveryServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ChargeDeliveryServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+       try {
+            String type=request.getParameter("type");
+            int gam=0;
+            if(request.getParameter("gam") != null || !request.getParameter("gam").isEmpty()) {
+                gam = Integer.parseInt(request.getParameter("gam"));
+            }
+            float tinh1 = Float.parseFloat(request.getParameter("tinh1"));
+            float tinh = Float.parseFloat(request.getParameter("tinh"));
+            String mien=request.getParameter("mien");
+            DAO dao = new DAO();
+            List<Huyen> listHuyen=new ArrayList<>();
+            listHuyen = dao.getAllHuyen(tinh);
+            request.setAttribute("currentMien", mien);
+            request.setAttribute("type",type);
+            request.setAttribute("gam",gam);
+            request.setAttribute("currentTinh1", tinh1);
+            request.setAttribute("currentTinh", tinh);
+            request.setAttribute("huyen", listHuyen);
+            request.getRequestDispatcher("chargeAndDelivery.jsp").forward(request, response);
+        } catch (Exception e) {
+            Logger.getLogger(ChargeDeliveryServlet.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 

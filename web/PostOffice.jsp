@@ -27,7 +27,7 @@
         </div>
     </center> 
     <c:if test="${currentTinh == null}">
-        <c:redirect url="/ShowHuyenServlet?tinh=1"/>
+        <c:redirect url="/ShowHuyenServlet?tinh=1&huyen=11"/>
     </c:if>
     <%
 //        if (request.getParameter("tinh") == null) {
@@ -139,11 +139,8 @@
             <td>
             <center>
                 <select id="huyen" onchange="changeHuyen()">
-                    <%--<c:choose>--%>
                     <c:forEach  var="i" items="${huyen}">
-                        <%--<c:if test="${currentHuyen == null}">--%>
-                       
-                        <%--</c:if>--%>
+                        
                         <c:if test="${currentHuyen != i.getMaHuyen()}">
                             <option value="${i.getMaHuyen()}" >${i.getTenHuyen()}</option>
                         </c:if>
@@ -151,7 +148,7 @@
                             <option value="${i.getMaHuyen()}" selected>${i.getTenHuyen()}</option>
                         </c:if>
                     </c:forEach>
-                    <%--</c:choose>--%>
+                 
                 </select>
             </center>
             </td>
