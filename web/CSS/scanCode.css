@@ -7,25 +7,25 @@
     
 }
 
-.scanCodeSub{
+.scanCodeContainer .scanCodeSub{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     position: relative;
 }
 
-.scanCodeSubContainVideo{
+.scanCodeContainer .scanCodeSubContainVideo{
     margin: 20px auto;
 }
 
-.scanCodeSubContainVideo video{
+.scanCodeContainer .scanCodeSubContainVideo video{
     border: 2px solid black; 
     width: 250px;
     height: 250px;
     border-radius: 20px;
 }
 
-.scanCodeSubContainCanvas {
+.scanCodeContainer .scanCodeSubContainCanvas {
     margin: 20px auto;
     width: 250px;
     height: 250px;;
@@ -33,7 +33,7 @@
     border-radius: 20px;
 }
 
-.scanCodeSubContainCanvas canvas{
+.scanCodeContainer .scanCodeSubContainCanvas canvas{
     width: 250px;
     height: 250px;;
     border: 2px solid brown;
@@ -41,7 +41,7 @@
     
 }
 
-.buttonScanCodeSubContain{
+.scanCodeContainer .buttonScanCodeSubContain{
     border-radius: 10px;
     border: 3px solid #8B4000;
     width: 200px; 

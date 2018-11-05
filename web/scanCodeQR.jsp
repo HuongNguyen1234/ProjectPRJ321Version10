@@ -20,18 +20,19 @@
            
             </div>-->
             <div class="scanCodeSub" style="width: 30%;background-color: coral;">
-<!--                <div class="scanCodeSubContainVideo">
+                <div class="scanCodeSubContainVideo">
                     <video id="videoID" autoplay></video>
-                </div>           
+                </div>        
+                <center>
                 <h1><b>Quét Mã QR</b></h1>
                 <div> 
                     <input class="buttonScanCodeSubContain" type="button" value="Send" onclick="send()" /> 
                 </div>
+                </center>
                 <div class="scanCodeSubContainCanvas">
                     <canvas id="canvasID">
-                    </canvas>
-                </div> -->
-                <jsp:include page="QRcode.jsp"/>   
+                    </canvas> 
+                </div> 
             </div>
         </div>
             <script type="text/javascript">
