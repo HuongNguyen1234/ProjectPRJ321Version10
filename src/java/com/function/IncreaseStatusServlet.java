@@ -5,13 +5,8 @@
  */
 package com.function;
 
-import com.controller.ListOrderController;
-import com.data1.DAO;
-import com.entity.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author huong karatedo
  */
-public class SaveOrderServlet extends HttpServlet {
+public class IncreaseStatusServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,27 +30,17 @@ public class SaveOrderServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
-            DAO dao= new DAO();
-            String maDH=request.getParameter("maDH");
-            int maBC=Integer.parseInt(request.getParameter("maBC"));
-            String tenGui = request.getParameter("tenGui");
-            String diaChiGui = request.getParameter("diaChiGui");
-            int sdtGui = Integer.parseInt(request.getParameter("sdtGui"));
-            String tenNhan = request.getParameter("tenNhan");
-            String diaChiNhan = request.getParameter("diaChiNhan");
-            int sdtNhan = Integer.parseInt(request.getParameter("sdtNhan"));
-            String loaiHang = request.getParameter("productType");
-            int gam = Integer.parseInt(request.getParameter("khoiLuong"));
-            float phiship=Float.parseFloat(request.getParameter("phiShip"));
-            float phiThuHo=Float.parseFloat(request.getParameter("phiThuHo"));
-            float tongtien=Float.parseFloat(request.getParameter("tongTien"));
-//            String idTrangThai=request.getParameter();
-//           Order order= new Order(maDH, maBC, tenGui, diaChiGui, sdtGui, tenNhan, diaChiNhan, loaiHang, gam, sdtNhan, phiship, phiThuHo, tongtien);
-//            dao.addOrders(order);
-        } catch (Exception e) {
-            Logger.getLogger(SaveOrderServlet.class.getName()).log(Level.SEVERE, null, e); 
-        
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet IncreaseStatusServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet IncreaseStatusServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

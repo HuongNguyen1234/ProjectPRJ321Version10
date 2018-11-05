@@ -14,19 +14,11 @@
     </head>
     <body>
         <div class="scanCodeContainer">
-            <div class="scanCodeSub" style="width: 70%;background-color: antiquewhite">
+<!--            <div class="scanCodeSub" style="width: 70%;background-color: antiquewhite">
                 <input type="button" style="position: absolute;
                        right: 0;" value="Show" onclick="conf()">
-                <%
-                    
-                    request.setAttribute("show", "null");
-                    if(request.getAttribute("show").equals("Cancel")){            
-                %>
-                    <jsp:include page="InforPackage.jsp"/>
-                <%
-                    };
-                %>
-            </div>
+           
+            </div>-->
             <div class="scanCodeSub" style="width: 30%;background-color: coral;">
 <!--                <div class="scanCodeSubContainVideo">
                     <video id="videoID" autoplay></video>

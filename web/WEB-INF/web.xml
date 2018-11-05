@@ -28,6 +28,18 @@
         <servlet-name>SaveOrderServlet</servlet-name>
         <servlet-class>com.function.SaveOrderServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PreviousStatusServlet</servlet-name>
+        <servlet-class>com.function.PreviousStatusServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>IncreaseStatusServlet</servlet-name>
+        <servlet-class>com.function.IncreaseStatusServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QrCodeServlet</servlet-name>
+        <servlet-class>com.function.QrCodeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddInforOrderServlet</servlet-name>
         <url-pattern>/AddInforOrderServlet</url-pattern>
@@ -55,6 +67,18 @@
     <servlet-mapping>
         <servlet-name>SaveOrderServlet</servlet-name>
         <url-pattern>/SaveOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PreviousStatusServlet</servlet-name>
+        <url-pattern>/PreviousStatusServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IncreaseStatusServlet</servlet-name>
+        <url-pattern>/IncreaseStatusServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QrCodeServlet</servlet-name>
+        <url-pattern>/QrCodeServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -36,13 +36,14 @@
 <!--==========================================================================================================================-->
             <div class="headTableStatus">
                 <div class="headSubnetTableStatus">
-                    <div><i class="fas fa-barcode"> Trạng thái trước</i></div>
-                    <p name="containInfor"><b><input name="infor" type="button" value="Chưa gửi đi" onclick="non()"></b></p>
+                    <!--<div><i class="fas fa-barcode"> Trạng thái trước</i></div>-->
+                    <p name="containInfor"><a href="/ProjectPRJ321Version10/PreviousStatusServlet"><input name="previous" type="button" value="Trạng thái trước" ></a></p>
                 </div>
                 
                 <div class="headSubnetTableStatus">
-                    <div><i class="fas fa-barcode"> Trạng thái sau</i></div>
-                    <p name="containInfor"><b><input name="infor" type="button" value="Đã Nhận" onclick="non()"></b></p>
+                    <!--<div><i class="fas fa-barcode"> Trạng thái sau</i></div>-->
+                    <!--onclick="non()-->
+                    <p name="containInfor"><a href="/ProjectPRJ321Version10/IncreaseStatusServlet"><input name="after" type="button" value="Trạng thái sau" ></a></p>
                 </div>   
             </div>
 
@@ -54,7 +55,7 @@
                 
                 <div class="headSubnetTableStatus">
                     <div><i class="fas fa-barcode"> Trạng thái</i></div>
-                    <p name="containInfor"><b><input name="infor" type="text" value="Trạng thái" onclick="non()"></b></p>
+                    <p name="containInfor"><b><input name="infor" type="text" value="Trạng thái" ></b></p>
                 </div>          
                 
 <!--======================Icon Trạng thái(Cái này t có cách nhưng chắc mai nói sau) ==========================================-->                
