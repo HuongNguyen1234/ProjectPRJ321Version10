@@ -9,7 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="CSS/sstatus.css">
+        <link rel="stylesheet" type="text/css" href="CSS/status.css">
+        <link rel="stylesheet" type="text/css" href="CSS/scanCode.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
         <title>Status</title>
@@ -173,10 +174,61 @@
             </div>
         </div>  
         <div class="statusContainAllQR" style="width: 30%;">
-            <jsp:include page="QRcode.jsp"/>          
+            <div class="scanCodeSubContainVideo">
+                <video id="videoID" autoplay></video>
+            </div>           
+            <center><h1><b>Quét Mã QR</b></h1>
+            <div> 
+                <input class="buttonScanCodeSubContain" type="button" value="Send" onclick="send()" /> 
+            </div>
+            </center>
+            <div class="scanCodeSubContainCanvas">
+                <canvas id="canvasID">
+                </canvas>
+            </div>          
         </div>               
     </div>    
-    
+         <script type="text/javascript">
+            var video = document.getElementById('videoID');
+            var canvas = document.getElementById('canvasID');
+            var context = canvas.getContext('2d');
+            window.URL = window.URL || window.webkitURL;
+            navigator.getUserMedia = navigator.getUserMedia 
+                    || navigator.webkitGetUserMedia 
+                    || navigator.mozGetUserMedia 
+                    || navigator.msGetUserMedia;
+            navigator.getUserMedia(
+                    { video : true }, 
+                    function(stream) { 
+                        video.src = window.URL.createObjectURL(stream); 
+                    }, 
+                    function(e) { 
+                        console.log('An error happened:', e); 
+                    }
+                            );
+            function send() { 
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                var imageData = canvas.toDataURL(); 
+                var xmlhttp = new XMLHttpRequest(); 
+                xmlhttp.open("POST", "/qrcode/QrCodeController", true); 
+                xmlhttp.send(imageData); 
+            };
+
+            function conf(){
+                alert("<%= request.getAttribute("show")%>");
+                var r = confirm("Press a button!");
+                if (r === true) {
+                    <%request.setAttribute("show","OK");%>
+                                alert("<%= request.getAttribute("show")%>");
+                } else {
+                    <%request.setAttribute("show","Cancel");%>
+                        alert("<%= request.getAttribute("show")%>");
+                }
+                
+            }
+
+        </script>
+
         <script type="text/javascript">
             var name = "<%= session.getAttribute("name")%>";
             var textArea = document.getElementById("StatusTableTextArea");
