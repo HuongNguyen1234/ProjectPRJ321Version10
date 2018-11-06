@@ -5,8 +5,15 @@
  */
 package com.function;
 
+import com.data1.DAO;
+import com.entity.Journal;
+import com.entity.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -33,11 +40,51 @@ public class PreviousStatusServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            
+            String maDH = request.getParameter("maDH");
+            DAO dao = new DAO();
+            Order or = dao.getOrderByDH(maDH);
+            String tt = or.getIdTrangThai();
+            String idHT = randomString(4);
+            Date date = java.util.Calendar.getInstance().getTime();
+            if (tt.equals("1d")) {
+                
+            } else if (tt.equals("2d")) {
+                String tt2 = "1d";
+                dao.updateTrangThaiOrder(maDH, tt2);
+                Journal j = new Journal(idHT, maDH, tt2, date, or.getDiaChiNhan());
+                dao.addJournal(j);
+            } else if (tt.equals("3d")){
+                String tt2 = "2d";
+                dao.updateTrangThaiOrder(maDH, tt2);
+                Journal j = new Journal(idHT, maDH, tt2, date, or.getDiaChiNhan());
+                dao.addJournal(j);
+            }
+            String t = dao.getTenTrangThai(or.getIdTrangThai());
+            List<Journal> jo = new ArrayList<>();
+            jo = dao.getListJournal(or.getMaDH());
+            String journalListToString = "";
+            for (Journal j : jo) {
+                journalListToString += j.toString() + "\n <br>";
+            }
+            request.setAttribute("journalList", journalListToString);
+            request.setAttribute("khoiLuong", or.getKhoiLuong());
+            request.setAttribute("tenTrangThai", t);
+            request.setAttribute("IdTrangThai", or.getIdTrangThai());
+            request.setAttribute("maDH", or.getMaDH());
+            request.getRequestDispatcher("status.jsp").forward(request, response);
         } catch (Exception e) {
-        Logger.getLogger(PreviousStatusServlet.class.getName()).log(Level.SEVERE, null, e);        
-        
+            e.printStackTrace();
         }
+    }
+
+    public String randomString(int length) {
+        String[] chars = "ABCD0123456789".split("");
+        String str = "";
+        Random ran = new Random();
+        for (int i = 0; i < length; i++) {
+            str += chars[ran.nextInt(chars.length)];
+        }
+        return str;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

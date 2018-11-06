@@ -40,6 +40,10 @@
         <servlet-name>QrCodeServlet</servlet-name>
         <servlet-class>com.function.QrCodeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>QrCodeGetInfoOrderServlet</servlet-name>
+        <servlet-class>com.function.QrCodeGetInfoOrderServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddInforOrderServlet</servlet-name>
         <url-pattern>/AddInforOrderServlet</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>QrCodeServlet</servlet-name>
         <url-pattern>/QrCodeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QrCodeGetInfoOrderServlet</servlet-name>
+        <url-pattern>/QrCodeGetInfoOrderServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -24,7 +24,7 @@ public class Order {
     private float phiShip;
     private float phiThuHo;
     private float tongTien;
-
+    
     public Order(String maDH, int maBC, String tenNguoiGui, String diaChiGui, int sdtGui, String tenNguoiNhan, String diaChiNhan, String loaiHang, int khoiLuong, int sdtNhan, String IdTrangThai, float phiShip, float phiThuHo, float tongTien) {
         this.maDH = maDH;
         this.maBC = maBC;

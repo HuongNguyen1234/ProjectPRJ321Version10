@@ -5,6 +5,10 @@
  */
 package com.function;
 
+import com.data1.DAO;
+import com.entity.Journal;
+import com.entity.Order;
+import com.entity.TrangThai;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.MultiFormatReader;
@@ -16,8 +20,9 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -44,18 +49,21 @@ public class QrCodeServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            StringBuffer buffer = new StringBuffer();
-            Reader reader = request.getReader();
-            int current;
-            while ((current = reader.read()) >= 0) {
-                buffer.append((char) current);
-            }
-            String data = new String(buffer);
+            DAO dao = new DAO();
+//            StringBuffer buffer = new StringBuffer();
+//            Reader reader = request.getReader();
+//            int current;
+//            while ((current = reader.read()) >= 0) {
+//                buffer.append((char) current);
+//            }
+//            String data = new String(buffer);
+            String data = request.getParameter("qrCode");
             data = data.substring(data.indexOf(",") + 1);
             Result result = null;
+
             BufferedImage image = null;
             BASE64Decoder decoder = new BASE64Decoder();
-            byte[] imgBytes = decoder.decodeBuffer(data);    
+            byte[] imgBytes = decoder.decodeBuffer(data);
             InputStream in = new ByteArrayInputStream(imgBytes);
             image = ImageIO.read(in);
             LuminanceSource source = new BufferedImageLuminanceSource(image);
@@ -67,15 +75,23 @@ public class QrCodeServlet extends HttpServlet {
             }
 
             if (result != null) {
-                System.out.println("QR code data is: " + result.getText());
+//                System.out.println("QR code data is: " + result.getText());
+                Order order = dao.getOrderByDH(result.getText());
+                String t = dao.getTenTrangThai(order.getIdTrangThai());
+                List<Journal> jo = new ArrayList<>();
+                jo = dao.getListJournal(order.getMaDH());
+                String journalListToString = "";
+                for (Journal j : jo) {
+                    journalListToString += j.toString() + "\n <br>";
+                }
+                request.setAttribute("journalList", journalListToString);
+                request.setAttribute("khoiLuong", order.getKhoiLuong());
+                request.setAttribute("tenTrangThai", t);
+                request.setAttribute("IdTrangThai", order.getIdTrangThai());
+                request.setAttribute("maDH", order.getMaDH());
             }
-//            System.out.println("PNG image data on Base64: " + data);
-//            FileOutputStream output = new FileOutputStream(
-//                    new File("C:\\Users\\DoThong\\Desktop\\"
-//                            + new Random().nextInt(100000) + ".png"));
-//            output.write(new BASE64Decoder().decodeBuffer(data));
-//            output.flush();
-//            output.close();
+                request.getRequestDispatcher("status.jsp").forward(request, response);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

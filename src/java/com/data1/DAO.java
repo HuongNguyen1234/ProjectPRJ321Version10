@@ -38,10 +38,11 @@ public class DAO {
         String xSql = "select * from Orders";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             List<Order> list = new ArrayList<>();
             while (rs.next()) {
                 String maDH = rs.getString("MaHD");
@@ -56,7 +57,7 @@ public class DAO {
                 int sdtNhan = rs.getInt("SdtNhan");
                 float phiShip = rs.getFloat("PhiShip");
                 float phiThuHo = rs.getFloat("PhiThuHo");
-                String idTrangThai=rs.getString("IdTrangThai");
+                String idTrangThai = rs.getString("IdTrangThai");
                 float tongTien = rs.getFloat("TongTien");
                 Order order = new Order(maDH, maBC, tenNguoiGui, diaChiGui, sdtGui, tenNguoiNhan, diaChiNhan, loaiHang, khoiLuong, sdtNhan, idTrangThai, phiShip, phiThuHo, tongTien);
                 list.add(order);
@@ -66,7 +67,46 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
+
+    }
+
+    public Order getOrderByDH(String donhang) throws Exception {
+        String xSql = "select * from Orders where MaDH=?";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            ps.setString(1, donhang);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String maDH = rs.getString("MaDH");
+                int maBC = rs.getInt("MaBC");
+                String tenNguoiGui = rs.getString("TenGui");
+                String diaChiGui = rs.getString("DiaChiGui");
+                int sdtGui = rs.getInt("SdtGui");
+                String tenNguoiNhan = rs.getString("TenNhan");
+                String diaChiNhan = rs.getString("DiaChiNhan");
+                String loaiHang = rs.getString("LoaiHang");
+                int khoiLuong = rs.getInt("KhoiLuong");
+                int sdtNhan = rs.getInt("SdtNhan");
+                float phiShip = rs.getFloat("PhiShip");
+                float phiThuHo = rs.getFloat("PhiThuHo");
+                String idTrangThai = rs.getString("IdTrangThai");
+                float tongTien = rs.getFloat("TongTien");
+                Order order = new Order(maDH, maBC, tenNguoiGui, diaChiGui, sdtGui, tenNguoiNhan, diaChiNhan, loaiHang, khoiLuong, sdtNhan, idTrangThai, phiShip, phiThuHo, tongTien);
+                return order;
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
+        }
+        return null;
 
     }
 
@@ -75,11 +115,12 @@ public class DAO {
         String xSql = "select * from BuuCuc where MaBC = ?";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
             ps.setFloat(1, mBC);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             while (rs.next()) {
                 float maBC = rs.getFloat("maBC");
                 String tenBC = rs.getString("TenBC");
@@ -94,6 +135,8 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
         return null;
     }
@@ -103,12 +146,13 @@ public class DAO {
         String xSql = "select * from NhanVien where UserName=? and Password=?";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
             ps.setString(1, name);
             ps.setString(2, pass);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             List<Staff> list = new ArrayList<>();
             while (rs.next()) {
                 String id = rs.getString("Id");
@@ -126,6 +170,8 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
         return null;
     }
@@ -135,11 +181,12 @@ public class DAO {
         String xSql = "select * from NhanVien where MaBC = ?";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
             ps.setFloat(1, mBC);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             while (rs.next()) {
                 String id = rs.getString("Id");
                 String ten = rs.getString("Ten");
@@ -155,6 +202,8 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
         return null;
     }
@@ -163,10 +212,11 @@ public class DAO {
         String xSql = "select* from Tinh";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             List<Tinh> list = new ArrayList<>();
             while (rs.next()) {
                 float ma = rs.getFloat("MaTinh");
@@ -179,6 +229,8 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
 
     }
@@ -187,11 +239,12 @@ public class DAO {
         String xSql = "select * from Huyen where MaTinh=? ";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
             ps.setFloat(1, maTinh);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             List<Huyen> list = new ArrayList<>();
             Huyen tmp = new Huyen(-1, -1, "");
             list.add(tmp);
@@ -208,6 +261,8 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
     }
 
@@ -215,11 +270,12 @@ public class DAO {
         String xSql = "select Ten from Huyen where MaHuyen=? ";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
             ps.setFloat(1, maHuyen);
-            ResultSet rs = ps.executeQuery();
+           rs = ps.executeQuery();
             List<Huyen> list = new ArrayList<>();
             while (rs.next()) {
 
@@ -229,6 +285,8 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
         return null;
 
@@ -238,11 +296,12 @@ public class DAO {
         String xSql = "select Ten from Tinh where MaTinh=?";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
             ps.setFloat(1, maTinh);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             List<Tinh> list = new ArrayList<>();
             while (rs.next()) {
                 String ten = rs.getString("Ten");
@@ -251,6 +310,8 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
 
         return null;
@@ -260,11 +321,12 @@ public class DAO {
         String xSql = "select * from BuuCuc where MaHuyen=?";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
             ps.setFloat(1, huyen);
-            ResultSet rs = ps.executeQuery();
+             rs = ps.executeQuery();
             List<Post> list = new ArrayList<>();
             while (rs.next()) {
                 float maBc = rs.getFloat("MaBC");
@@ -281,6 +343,8 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
     }
 
@@ -288,10 +352,11 @@ public class DAO {
         String xSql = "select * from Mien ";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
-            ResultSet rs = ps.executeQuery();
+             rs = ps.executeQuery();
             List<Mien> list = new ArrayList<>();
             while (rs.next()) {
                 String maDH = rs.getString("MaMien");
@@ -302,6 +367,8 @@ public class DAO {
             return list;
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
     }
 
@@ -309,11 +376,12 @@ public class DAO {
         String xSql = "select MaMien,Gia from TinhPhi where MaMien=? ";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
             ps.setString(1, maMien);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             List<Mien> list = new ArrayList<>();
             while (rs.next()) {
                 float gia = rs.getFloat("Gia");
@@ -324,6 +392,8 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
         return null;
 
@@ -333,11 +403,12 @@ public class DAO {
         String xSql = "select TenMien from Mien where MaMien=? ";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
             ps.setString(1, maMien);
-            ResultSet rs = ps.executeQuery();
+             rs = ps.executeQuery();
             while (rs.next()) {
                 String ma = rs.getString("TenMien");
                 return ma;
@@ -345,37 +416,97 @@ public class DAO {
             }
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
         return null;
 
     }
-    
-    public Journal getJournal(int idHT) throws Exception {
+
+    public List<Journal> getListJournal(int idHT) throws Exception {
         String result = "";
-        String xSql = "select * from HanhTrinh where IdHT = ?";
+        String xSql = "select * from Journal where IdHT = ?";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
             ps.setInt(1, idHT);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
+            List<Journal> list = new ArrayList<>();
             while (rs.next()) {
-                int IdHT = rs.getInt("IdHT");
+                String IdHT = rs.getString("IdHT");
                 String maDH = rs.getString("MaDH");
-                Date thoiGian = rs.getDate("ThoiGian");
-                String trangThai = rs.getString("TrangThai");
+                String thoiGian = rs.getString("ThoiGian");
+                Date trangThai = rs.getDate("TrangThai");
                 String DiaChi = rs.getString("DiaChi");
                 Journal jo = new Journal(IdHT, maDH, thoiGian, trangThai, DiaChi);
-                return jo;
+                list.add(jo);
+            }
+            return list;
+
+        } catch (SQLException ex) {
+            throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
+        }
+    }
+
+    public String getTenTrangThai(String t) throws Exception {
+        String xSql = "select * from TrangThai where IdTrangThai = ?";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            ps.setString(1, t);
+            rs = ps.executeQuery();
+            List<Journal> list = new ArrayList<>();
+            while (rs.next()) {
+                String ten = rs.getString("TenTrangThai");
+
+                return ten;
             }
 
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
         return null;
     }
 
+    public List<Journal> getListJournal(String mDH) throws Exception {
+        String result = "";
+        String xSql = "select * from Journal where MaDH = ?";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            ps.setString(1, mDH);
+             rs = ps.executeQuery();
+            List<Journal> list = new ArrayList<>();
+            while (rs.next()) {
+                String IdHT = rs.getString("IdHT");
+                String maDH = rs.getString("MaDH");
+                Date thoiGian = rs.getDate("ThoiGian");
+                String trangThai = rs.getString("IdTrangThai");
+                String DiaChi = rs.getString("DiaChi");
+                Journal jo = new Journal(IdHT, maDH, trangThai,  thoiGian, DiaChi);
+                list.add(jo);
+            }
+                return list;
+
+        } catch (SQLException ex) {
+            throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
+        }
+    }
 //    public void updatePassWordStaff(String username, String password) throws SQLException {
 ////        String result = "";
 //        String xSql = "UPDATE NhanVien SET (name = ?) where code = ?";
@@ -393,12 +524,15 @@ public class DAO {
 //        }
 //        //return null;
 //    }
+
     public void addOrders(Order order) throws SQLException, Exception {
-        String xSql = " insert into Orders (MaHD,MaBC,TenGui,DiaChiGui,SdtGui,TenNhan,DiaChiNhan,LoaiHang,KhoiLuong,SdtNhan,PhiShip,PhiThuHo,TongTien)"
+        String xSql = " insert into Orders (MaDH,MaBC,TenGui,DiaChiGui,"
+                + "SdtGui,TenNhan,DiaChiNhan,LoaiHang,KhoiLuong,IdTrangThai,SdtNhan,PhiShip,TongTien)"
                 + " values (?, ?, ?,?,?,?,?,?,?,?,?,?,?)";
 
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
@@ -410,14 +544,16 @@ public class DAO {
             ps.setString(6, order.getTenNguoiNhan());
             ps.setString(7, order.getDiaChiNhan());
             ps.setString(8, order.getLoaiHang());
-            ps.setFloat(9, order.getKhoiLuong());
-            ps.setInt(10, order.getSdtGui());
-            ps.setFloat(11, order.getPhiShip());
-            ps.setFloat(12, order.getPhiThuHo());
+            ps.setInt(9, order.getKhoiLuong());
+            ps.setString(10, order.getIdTrangThai());
+            ps.setInt(11, order.getSdtNhan());
+            ps.setFloat(12, order.getPhiShip());
             ps.setFloat(13, order.getTongTien());
             ps.executeUpdate();
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
     }
 
@@ -443,6 +579,7 @@ public class DAO {
         String xsql = "insert into DichVu (MaBC,TenDV,GiaDV)" + "value(?,?,?)";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xsql);
@@ -451,6 +588,8 @@ public class DAO {
             ps.setFloat(3, s.getGiaDV());
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
     }
 
@@ -458,6 +597,7 @@ public class DAO {
         String xsql = "insert into NhanVien (MaBC,Id,Ten,DiaChi,Sdt,ChucVu,UserName,Password)" + "value(?,?,?,?,?,?,?,?)";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xsql);
@@ -471,24 +611,46 @@ public class DAO {
             ps.setString(8, staff.getPassword());
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
     }
 
     public void addJournal(Journal j) throws SQLException, Exception {
-        String xsql = "insert into HanhTrinh (IdHT,MaDH,ThoiGian,TrangThai,DiaChi)" + "value(?,?,?,?,?)";
+        String xsql = "insert into Journal (IdHT,MaDH,ThoiGian,IdTrangThai,DiaChi)" + "values(?,?,?,?,?)";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xsql);
-            ps.setInt(1, j.getIdHT());
+            ps.setString(1, j.getIdHT());
             ps.setString(2, j.getMaDH());
-            ps.setDate(3, (java.sql.Date) j.getThoiGian());
+            ps.setDate(3, new java.sql.Date(j.getThoiGian().getTime()));
             ps.setString(4, j.getTrangThai());
             ps.setString(5, j.getDiaChi());
-
+            ps.executeUpdate();
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
+        }
+    }
+    public void updateTrangThaiOrder(String maDH, String iDTrangThaiTiepTheo) throws SQLException, Exception {
+        String xsql = "update Orders set IdTrangThai = ? where MaDH = ?";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xsql);
+            ps.setString(1, iDTrangThaiTiepTheo);
+            ps.setString(2, maDH);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
     }
 //
@@ -497,6 +659,7 @@ public class DAO {
         String xSql = "DELETE FROM NhanVien WHERE Id = ?";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
@@ -504,6 +667,8 @@ public class DAO {
             ps.executeUpdate();
         } catch (SQLException ex) {
             throw ex;
+        }finally{
+            closeConnection(rs, ps, conn);
         }
     }
 
@@ -551,7 +716,15 @@ public class DAO {
 //        }         // TODO add your handling code here:
 //        return null;
 //    }
-    public List<Huyen> getAllHuyen(String tinh) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void closeConnection(ResultSet rs, PreparedStatement ps, Connection conn) throws SQLException {
+        if (rs != null && !rs.isClosed()) {
+            rs.close();
+        }
+        if (ps != null && !ps.isClosed()) {
+            ps.close();
+        }
+        if (conn != null && !conn.isClosed()) {
+            conn.close();
+        }
     }
 }

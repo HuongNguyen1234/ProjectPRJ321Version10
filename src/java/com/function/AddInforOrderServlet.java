@@ -97,7 +97,7 @@ public class AddInforOrderServlet extends HttpServlet {
             request.setAttribute("diaChiNhan", diaChiNhan);
             request.setAttribute("sdtNhan", sdtNhan);
             request.setAttribute("khoiLuong", gam);
-            request.setAttribute("productType",loaiHang );
+            request.setAttribute("productType",loaiHang.equals("1") ? "Bưu phẩm" : "Thư");
             request.setAttribute("phiThuHo", phiThuHo);
             request.setAttribute("mienGui", tenMien);
             request.setAttribute("phiShip", payment);

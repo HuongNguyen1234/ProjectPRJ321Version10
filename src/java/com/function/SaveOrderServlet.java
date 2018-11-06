@@ -7,9 +7,15 @@ package com.function;
 
 import com.controller.ListOrderController;
 import com.data1.DAO;
+import com.entity.Journal;
 import com.entity.Order;
+import com.entity.Post;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -38,7 +44,7 @@ public class SaveOrderServlet extends HttpServlet {
         try {
             DAO dao= new DAO();
             String maDH=request.getParameter("maDH");
-            int maBC=Integer.parseInt(request.getParameter("maBC"));
+            int maBC=(int)request.getSession().getAttribute("maBC");
             String tenGui = request.getParameter("tenGui");
             String diaChiGui = request.getParameter("diaChiGui");
             int sdtGui = Integer.parseInt(request.getParameter("sdtGui"));
@@ -50,15 +56,30 @@ public class SaveOrderServlet extends HttpServlet {
             float phiship=Float.parseFloat(request.getParameter("phiShip"));
             float phiThuHo=Float.parseFloat(request.getParameter("phiThuHo"));
             float tongtien=Float.parseFloat(request.getParameter("tongTien"));
-//            String idTrangThai=request.getParameter();
-//           Order order= new Order(maDH, maBC, tenGui, diaChiGui, sdtGui, tenNhan, diaChiNhan, loaiHang, gam, sdtNhan, phiship, phiThuHo, tongtien);
-//            dao.addOrders(order);
+            String idTrangThai="1d";
+            String idHT= randomString(4);
+            Date date=java.util.Calendar.getInstance().getTime();  
+            Post p=dao.getPost(maBC);
+            String diaDiem= p.getThon()+p.getXa()+p.getTenHuyen(tongtien)+p.getTenTinh(tongtien);
+            Journal jo= new Journal(idHT, maDH, idTrangThai, date, diaChiGui);
+            dao.addJournal(jo);
+            Order order= new Order(maDH, maBC, tenGui, diaChiGui, sdtGui, tenNhan, diaChiNhan, loaiHang, sdtNhan, sdtNhan, idTrangThai, phiship, phiThuHo, tongtien);
+            dao.addOrders(order);
+            request.getRequestDispatcher("home.jsp").forward(request, response);
         } catch (Exception e) {
             Logger.getLogger(SaveOrderServlet.class.getName()).log(Level.SEVERE, null, e); 
         
         }
     }
-
+ public String randomString(int length) {
+        String[] chars = "ABCD0123456789".split("");
+        String str = "";
+        Random ran = new Random();
+        for (int i = 0; i < length; i++) {
+            str += chars[ran.nextInt(chars.length)];
+        }
+        return str;
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

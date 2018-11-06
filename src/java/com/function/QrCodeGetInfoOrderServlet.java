@@ -8,22 +8,32 @@ package com.function;
 import com.data1.DAO;
 import com.entity.Journal;
 import com.entity.Order;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import sun.misc.BASE64Decoder;
 
 /**
  *
  * @author huong karatedo
  */
-public class IncreaseStatusServlet extends HttpServlet {
+public class QrCodeGetInfoOrderServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,51 +48,38 @@ public class IncreaseStatusServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            String maDH = request.getParameter("maDH");
             DAO dao = new DAO();
-            Order or = dao.getOrderByDH(maDH);
-            String tt = or.getIdTrangThai();
-            String idHT = randomString(4);
-            Date date = java.util.Calendar.getInstance().getTime();
-            if (tt.equals("1d")) {
-                String tt2 = "2d";
-                dao.updateTrangThaiOrder(maDH, tt2);
-                Journal j = new Journal(idHT, maDH, tt2, date, or.getDiaChiNhan());
-                dao.addJournal(j);
-            } else if (tt.equals("2d")) {
-                String tt2 = "3d";
-                dao.updateTrangThaiOrder(maDH, tt2);
-                Journal j = new Journal(idHT, maDH, tt2, date, or.getDiaChiNhan());
-                dao.addJournal(j);
-            } else {
+            String data = request.getParameter("qrCode1");
+            data = data.substring(data.indexOf(",") + 1);
+            Result result = null;
 
+            BufferedImage image = null;
+            BASE64Decoder decoder = new BASE64Decoder();
+            byte[] imgBytes = decoder.decodeBuffer(data);
+            InputStream in = new ByteArrayInputStream(imgBytes);
+            image = ImageIO.read(in);
+            LuminanceSource source = new BufferedImageLuminanceSource(image);
+            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+            try {
+                result = new MultiFormatReader().decode(bitmap);
+            } catch (NotFoundException e) {
+                // fall thru, it means there is no QR code in image
             }
-            String t = dao.getTenTrangThai(or.getIdTrangThai());
-            List<Journal> jo = new ArrayList<>();
-            jo = dao.getListJournal(or.getMaDH());
-            String journalListToString = "";
-            for (Journal j : jo) {
-                journalListToString += j.toString() + "\n <br>";
+
+            if (result != null) {
+                String maDH = result.getText();
+                Order or = dao.getOrderByDH(maDH);
+                request.setAttribute("maDH", or.getMaDH());
+                request.setAttribute("diaChiGui", or.getDiaChiGui());
+                request.setAttribute("diaChiNhan", or.getDiaChiNhan());
+                request.setAttribute("maDH", or.getMaDH());
+                request.setAttribute("maDH", or.getMaDH());
             }
-            request.setAttribute("journalList", journalListToString);
-            request.setAttribute("khoiLuong", or.getKhoiLuong());
-            request.setAttribute("tenTrangThai", t);
-            request.setAttribute("IdTrangThai", or.getIdTrangThai());
-            request.setAttribute("maDH", or.getMaDH());
-            request.getRequestDispatcher("status.jsp").forward(request, response);
+                request.getRequestDispatcher("").forward(request, response);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public String randomString(int length) {
-        String[] chars = "ABCD0123456789".split("");
-        String str = "";
-        Random ran = new Random();
-        for (int i = 0; i < length; i++) {
-            str += chars[ran.nextInt(chars.length)];
-        }
-        return str;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

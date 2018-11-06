@@ -203,7 +203,7 @@
                     <td>
                         <div class="TextContainlabelLeftInforPackageOdd">  
                             <b>
-                                <input type="radio" name="productType" selected="true" value="Bưu"> 
+                                <input type="radio" name="productType" selected="true" value="0"> 
                                 Bưu Phẩm
                             </b>
                             <div class="divMain"></div>
@@ -212,7 +212,7 @@
                     <td>
                         <div class="TextContainlabelRightInforPackageOdd">  
                             <b>
-                                <input type="radio" name="productType" value="Thư">
+                                <input type="radio" name="productType" value="1">
                                 Thư
                             </b>
                             <div class="divlast"></div>
