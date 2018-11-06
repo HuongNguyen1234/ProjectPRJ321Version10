@@ -5,16 +5,14 @@
  */
 package com.function;
 
-import com.controller.ListOrderController;
 import com.data1.DAO;
 import com.entity.Journal;
 import com.entity.Order;
-import com.entity.Post;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author huong karatedo
  */
-public class SaveOrderServlet extends HttpServlet {
+public class PreviousStatusServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,36 +40,44 @@ public class SaveOrderServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            DAO dao= new DAO();
-            String maDH=request.getParameter("maDH");
-            int maBC=(int)request.getSession().getAttribute("maBC");
-            String tenGui = request.getParameter("tenGui");
-            String diaChiGui = request.getParameter("diaChiGui");
-            int sdtGui = Integer.parseInt(request.getParameter("sdtGui"));
-            String tenNhan = request.getParameter("tenNhan");
-            String diaChiNhan = request.getParameter("diaChiNhan");
-            int sdtNhan = Integer.parseInt(request.getParameter("sdtNhan"));
-            String loaiHang = request.getParameter("productType");
-            int gam = Integer.parseInt(request.getParameter("khoiLuong"));
-            float phiship=Float.parseFloat(request.getParameter("phiShip"));
-            float phiThuHo=Float.parseFloat(request.getParameter("phiThuHo"));
-            float tongtien=Float.parseFloat(request.getParameter("tongTien"));
-            String idTrangThai="1d";
-            String idHT= randomString(4);
-            Date date=java.util.Calendar.getInstance().getTime();  
-            Post p=dao.getPost(maBC);
-            String diaDiem= p.getThon()+p.getXa()+p.getTenHuyen(tongtien)+p.getTenTinh(tongtien);
-            Journal jo= new Journal(idHT, maDH, idTrangThai, date, diaChiGui);
-            dao.addJournal(jo);
-            Order order= new Order(maDH, maBC, tenGui, diaChiGui, sdtGui, tenNhan, diaChiNhan, loaiHang, sdtNhan, sdtNhan, idTrangThai, phiship, phiThuHo, tongtien);
-            dao.addOrders(order);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
+            String maDH = request.getParameter("maDH");
+            DAO dao = new DAO();
+            Order or = dao.getOrderByDH(maDH);
+            String tt = or.getIdTrangThai();
+            String idHT = randomString(4);
+            Date date = java.util.Calendar.getInstance().getTime();
+            if (tt.equals("1d")) {
+                
+            } else if (tt.equals("2d")) {
+                String tt2 = "1d";
+                dao.updateTrangThaiOrder(maDH, tt2);
+                Journal j = new Journal(idHT, maDH, tt2, date, or.getDiaChiNhan());
+                dao.addJournal(j);
+            } else if (tt.equals("3d")){
+                String tt2 = "2d";
+                dao.updateTrangThaiOrder(maDH, tt2);
+                Journal j = new Journal(idHT, maDH, tt2, date, or.getDiaChiNhan());
+                dao.addJournal(j);
+            }
+            String t = dao.getTenTrangThai(or.getIdTrangThai());
+            List<Journal> jo = new ArrayList<>();
+            jo = dao.getListJournal(or.getMaDH());
+            String journalListToString = "";
+            for (Journal j : jo) {
+                journalListToString += j.toString() + "\n <br>";
+            }
+            request.setAttribute("journalList", journalListToString);
+            request.setAttribute("khoiLuong", or.getKhoiLuong());
+            request.setAttribute("tenTrangThai", t);
+            request.setAttribute("IdTrangThai", or.getIdTrangThai());
+            request.setAttribute("maDH", or.getMaDH());
+            request.getRequestDispatcher("status.jsp").forward(request, response);
         } catch (Exception e) {
-            Logger.getLogger(SaveOrderServlet.class.getName()).log(Level.SEVERE, null, e); 
-        
+            e.printStackTrace();
         }
     }
- public String randomString(int length) {
+
+    public String randomString(int length) {
         String[] chars = "ABCD0123456789".split("");
         String str = "";
         Random ran = new Random();
@@ -80,6 +86,7 @@ public class SaveOrderServlet extends HttpServlet {
         }
         return str;
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

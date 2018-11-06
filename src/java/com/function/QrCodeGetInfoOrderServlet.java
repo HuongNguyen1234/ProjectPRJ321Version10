@@ -5,29 +5,35 @@
  */
 package com.function;
 
-import com.controller.ListOrderController;
 import com.data1.DAO;
 import com.entity.Journal;
 import com.entity.Order;
-import com.entity.Post;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import sun.misc.BASE64Decoder;
 
 /**
  *
  * @author huong karatedo
  */
-public class SaveOrderServlet extends HttpServlet {
+public class QrCodeGetInfoOrderServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,44 +48,40 @@ public class SaveOrderServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            DAO dao= new DAO();
-            String maDH=request.getParameter("maDH");
-            int maBC=(int)request.getSession().getAttribute("maBC");
-            String tenGui = request.getParameter("tenGui");
-            String diaChiGui = request.getParameter("diaChiGui");
-            int sdtGui = Integer.parseInt(request.getParameter("sdtGui"));
-            String tenNhan = request.getParameter("tenNhan");
-            String diaChiNhan = request.getParameter("diaChiNhan");
-            int sdtNhan = Integer.parseInt(request.getParameter("sdtNhan"));
-            String loaiHang = request.getParameter("productType");
-            int gam = Integer.parseInt(request.getParameter("khoiLuong"));
-            float phiship=Float.parseFloat(request.getParameter("phiShip"));
-            float phiThuHo=Float.parseFloat(request.getParameter("phiThuHo"));
-            float tongtien=Float.parseFloat(request.getParameter("tongTien"));
-            String idTrangThai="1d";
-            String idHT= randomString(4);
-            Date date=java.util.Calendar.getInstance().getTime();  
-            Post p=dao.getPost(maBC);
-            String diaDiem= p.getThon()+p.getXa()+p.getTenHuyen(tongtien)+p.getTenTinh(tongtien);
-            Journal jo= new Journal(idHT, maDH, idTrangThai, date, diaChiGui);
-            dao.addJournal(jo);
-            Order order= new Order(maDH, maBC, tenGui, diaChiGui, sdtGui, tenNhan, diaChiNhan, loaiHang, sdtNhan, sdtNhan, idTrangThai, phiship, phiThuHo, tongtien);
-            dao.addOrders(order);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
+            DAO dao = new DAO();
+            String data = request.getParameter("qrCode1");
+            data = data.substring(data.indexOf(",") + 1);
+            Result result = null;
+
+            BufferedImage image = null;
+            BASE64Decoder decoder = new BASE64Decoder();
+            byte[] imgBytes = decoder.decodeBuffer(data);
+            InputStream in = new ByteArrayInputStream(imgBytes);
+            image = ImageIO.read(in);
+            LuminanceSource source = new BufferedImageLuminanceSource(image);
+            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+            try {
+                result = new MultiFormatReader().decode(bitmap);
+            } catch (NotFoundException e) {
+                // fall thru, it means there is no QR code in image
+            }
+
+            if (result != null) {
+                String maDH = result.getText();
+                Order or = dao.getOrderByDH(maDH);
+                request.setAttribute("maDH", or.getMaDH());
+                request.setAttribute("diaChiGui", or.getDiaChiGui());
+                request.setAttribute("diaChiNhan", or.getDiaChiNhan());
+                request.setAttribute("maDH", or.getMaDH());
+                request.setAttribute("maDH", or.getMaDH());
+            }
+                request.getRequestDispatcher("").forward(request, response);
+
         } catch (Exception e) {
-            Logger.getLogger(SaveOrderServlet.class.getName()).log(Level.SEVERE, null, e); 
-        
+            e.printStackTrace();
         }
     }
- public String randomString(int length) {
-        String[] chars = "ABCD0123456789".split("");
-        String str = "";
-        Random ran = new Random();
-        for (int i = 0; i < length; i++) {
-            str += chars[ran.nextInt(chars.length)];
-        }
-        return str;
-    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

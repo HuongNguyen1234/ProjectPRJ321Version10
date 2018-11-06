@@ -19,7 +19,7 @@
             <div id="divTop"></div>  
             <div id="divBottom"></div> 
         </div>
-        <form method="Post" action="ProjectPRJ321Version10/SaveOrderServlet" >
+        <form method="Post" action="/ProjectPRJ321Version10/SaveOrderServlet" >
         
         <table class="InforPackageTable">
             <tr>
@@ -34,8 +34,8 @@
                 </td>
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
-                        <b >
-                            ${maDH}
+                        <b>
+                            <input type="text" name="maDH" value="${maDH}"  style="color: black"/>
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -73,7 +73,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            ${tenGui}
+                            <input type="text" name="tenGui" value="${tenGui}"  style="color: black"/>
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -92,7 +92,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            ${diaChiGui}
+                            <input type="text" name="diaChiGui" value="${diaChiGui}"  style="color: black"/>
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -111,7 +111,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            ${sdtGui}
+                            <input type="text" name="sdtGui" value="${sdtGui}"  style="color: black"/>
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -130,7 +130,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            ${tenNhan}
+                            <input type="text" name="tenNhan" value="${tenNhan}"  style="color: black"/>
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -149,7 +149,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            ${diaChiNhan} 
+                            <input type="text" name="diaChiNhan" value="${diaChiNhan}"  style="color: black"/>
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -168,7 +168,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            ${sdtNhan}
+                            <input type="text" name="sdtNhan" value="${sdtNhan}"  style="color: black"/>
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -186,7 +186,9 @@
                 </td>
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
-                        <b>${productType}</b>
+                        <b>
+                            <input type="text" name="productType" value="${productType}"  style="color: black"/>
+                        </b>
                         <div class="divlast"></div>
                     </div>                  
                 </td>
@@ -204,7 +206,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            ${khoiLuong}
+                            <input type="number" name="khoiLuong" value="${khoiLuong}"  style="color: black"/>
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -224,7 +226,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            ${phiShip}
+                            <input type="number" name="phiShip" value="${phiShip}"  style="color: black"/>
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -243,7 +245,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            ${phiThuHo}
+                            <input type="number" name="phiThuHo" value="${phiThuHo}"  style="color: black"/>
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -262,7 +264,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            ${tongTien}
+                            <input type="number" name="tongTien" value="${tongTien}"  style="color: black"/>
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -273,10 +275,6 @@
                 <td colspan="3">                 
                     <div class="InforPackageQR"> 
                         <div class="divfirstQR"></div>
-                       
-                            <!--<legend><b>&nbsp;&nbsp;&nbsp;QR Code Generator - Response&nbsp;&nbsp;&nbsp;</b></legend>-->
-                            <!--qrText=">-->
-                         <b  width="200px" height="200px">${maDH}</b>
                         <img src="${qrImg}" width="200px" height="200px">
                         <div class="divlastQR"></div>
                     </div>                  

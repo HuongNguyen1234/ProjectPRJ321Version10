@@ -3,7 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Nguyen%20Bao%20Long/Desktop/ProjectPRJ321Version10/src/java/newpackage/Login.java</file>
+=======
+            <file>file:/F:/ki4/PRJ321/ProjectPRJ321Version10/src/java/com/function/QrCodeServlet.java</file>
+            <file>file:/F:/ki4/PRJ321/ProjectPRJ321Version10/src/java/com/function/QrCodeGetInfoOrderServlet.java</file>
+            <file>file:/F:/ki4/PRJ321/ProjectPRJ321Version10/web/scanCodeQR.jsp</file>
+>>>>>>> d8dc65e6341c38d5ee1b13cb9eef5df946acac52
         </group>
     </open-files>
 </project-private>

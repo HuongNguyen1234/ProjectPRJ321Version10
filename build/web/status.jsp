@@ -16,313 +16,217 @@
         <title>Status</title>
     </head>
     <body>
-<!--===============================================Search bar=================================================================-->
-<!--        <div class="searchItemStatus">           
-            <div class="searchItemStatusContainText">
-                <input type="text" placeholder="Search...">
-                <button><i class="fas fa-search" ></i></button>
-            </div>
-        </div>-->
-<!--==========================================================================================================================-->
-        
-    <div class="statusContainAll">
-        <div class="mainStatusDesign" style="width: 70%;">
-<!--===============================================Edit and Save==============================================================-->            
-<!--            <button class="buttonEdit" id="edit" onclick="editInformation()">
-                Edit
-            </button>
-            <button class="buttonEdit" id="save" style="display: none;" onclick="saveInformation()">
-                Save
-            </button>-->
-<!--==========================================================================================================================-->
-            <div class="headTableStatus">
-                <div class="headSubnetTableStatus">
-                    <div><i class="fas fa-barcode"> Trạng thái trước</i></div>
-                    <p name="containInfor"><b><input name="infor" type="button" value="Chưa gửi đi" onclick="non()"></b></p>
-                </div>
-                
-                <div class="headSubnetTableStatus">
-                    <div><i class="fas fa-barcode"> Trạng thái sau</i></div>
-                    <p name="containInfor"><b><input name="infor" type="button" value="Đã Nhận" onclick="non()"></b></p>
-                </div>   
-            </div>
-
-            <div class="headTableStatus">
-                <div class="headSubnetTableStatus">
-                    <div><i class="fas fa-barcode"> Bưu gửi số</i></div>
-                    <p name="containInfor"><b><input name="infor" type="text" value="CB926483058VN" disabled></b></p>
-                </div>
-                
-                <div class="headSubnetTableStatus">
-                    <div><i class="fas fa-barcode"> Trạng thái</i></div>
-                    <p name="containInfor"><b><input name="infor" type="text" value="Trạng thái" onclick="non()"></b></p>
-                </div>          
-                
-<!--======================Icon Trạng thái(Cái này t có cách nhưng chắc mai nói sau) ==========================================-->                
-<!--                <div class="headSubnetTableStatus">
-                    <div><i class="fab fa-free-code-camp"> Trạng thái</i></div>
-                    <a href="?trangthai=1">
-                    <div class="headSubnetTableStatusIconContain" name="status" onclick="Active(1)">
-                        <div class="IconContainCircle">
-                            <i class="fa fa-check-circle " style="" aria-hidden="true"></i>
-                        </div>
-                        <div class="IconContainSub">
-                            <i class="fas fa-file-invoice"></i>
-                        </div>
+        <!--===============================================Search bar=================================================================-->
+        <!--        <div class="searchItemStatus">           
+                    <div class="searchItemStatusContainText">
+                        <input type="text" placeholder="Search...">
+                        <button><i class="fas fa-search" ></i></button>
                     </div>
-                        </a>
-                    <div class="headSubnetTableStatusIconContain" name="status" onclick="Active(2)">
-                        <div class="IconContainCircle">
-                            <i class="fa fa-check-circle " style="" aria-hidden="true"></i>
-                        </div>
-                        <div class="IconContainSub">
-                            <i class="fas fa-truck"></i>
-                        </div>
-                    </div> 
-                    <div class="headSubnetTableStatusIconContain" name="status" onclick="Active(3)">
-                        <div class="IconContainCircle">
-                            <i class="fa fa-check-circle " style="" aria-hidden="true"></i>
-                        </div>
-                        <div class="IconContainSub">
-                            <i class="fas fa-box"></i>  
-                            <i class="fas fa-boxes" ></i>                        
-                        </div>
-                    </div>                   
-                </div>   -->
-<!--==========================================================================================================================-->
-                <div class="headSubnetTableStatus" >
-                    <div><i class="fas fa-balance-scale"> Khối lượng (gram)</i></div>
-                    <p name="containInfor"><b><input name="infor" type="text" value="1090" disabled></b></p>
-                </div>
-            </div>
-            <div class="mainTableStatus">
-                <fieldset>
-                    <legend>Thông tin trạng thái</legend>
-                    <div id="StatusTableTextArea" class="containStatusTableText">
-                        <p> </p>
-                    </div>
-                </fieldset>
-                
-<!--======================================Tạm thời đóng lại để nếu có gì cần thì cho vào======================================-->                
-<!--                <div>
-                    <div class="labelMainTableStatus">
-                        <div class="labelMainTableStatusCenter">
-                        Thông tin phát
-                        </div>
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Ngày</th>
-                            <th>Bưu cục</th>
-                            <th>Chi tiết</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div name="containInfor">
-                                    <input name="infor" value="17" type="text" disabled>
-                                </div>    
-                            </td>
-                            <td>
-                                <div name="containInfor">
-                                    <input name="infor" value="SỐ 5" type="text" disabled>
-                                </div>
-                            </td>
-                            <td>
-                                <div name="containInfor">
-                                    <input name="infor" value="Không có chi tiết" type="text" disabled>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                    <div class="labelMainTableStatus">
-                        <div class="labelMainTableStatusCenter">
-                        Thông tin chuyển thư
-                        </div>
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Ngày đóng</th>
-                            <th>Bưu cục đóng</th>
-                            <th>Bưu cục nhận</th>
-                            <th>Thông tin CT</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div name="containInfor">
-                                    <input name="infor" value="I don't know" type="text" disabled>
-                                </div>
-                            </td>
-                            <td>
-                                <div name="containInfor">
-                                    <input name="infor" value="don't do" type="text" disabled>
-                                </div>
-                            </td>
-                            <td>
-                                <div name="containInfor">
-                                    <input name="infor" value="hello" type="text" disabled>
-                                </div>
-                            </td>
-                            <td>
-                                <div name="containInfor">
-                                    <input name="infor" value="alo" type="text" disabled>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
                 </div>-->
-<!--==========================================================================================================================-->
-            </div>
-        </div>  
-        <div class="statusContainAllQR" style="width: 30%;">
-            <div class="scanCodeSubContainVideo">
-                <video id="videoID" autoplay></video>
-            </div>           
-            <center><h1><b>Quét Mã QR</b></h1>
-            <div> 
-                <input class="buttonScanCodeSubContain" type="button" value="Send" onclick="send()" /> 
-            </div>
-            </center>
-            <div class="scanCodeSubContainCanvas">
-                <canvas id="canvasID">
-                </canvas>
-            </div>          
-        </div>               
-    </div>    
-         <script type="text/javascript">
+        <!--==========================================================================================================================-->
+
+        <div class="statusContainAll">
+            <div class="mainStatusDesign" style="width: 70%;">
+                <!--===============================================Edit and Save==============================================================-->            
+                <!--            <button class="buttonEdit" id="edit" onclick="editInformation()">
+                                Edit
+                            </button>
+                            <button class="buttonEdit" id="save" style="display: none;" onclick="saveInformation()">
+                                Save
+                            </button>-->
+                <!--==========================================================================================================================-->
+                <div class="headTableStatus">
+                    <div class="headSubnetTableStatus">
+                        <!--<div><i class="fas fa-barcode"> Trạng thái trước</i></div>-->
+                        <p name="containInfor"><a href="/ProjectPRJ321Version10/PreviousStatusServlet?maDH=${maDH}"><input name="previous" type="button" value="Trạng thái trước" ></a></p>
+                    </div>
+
+                    <div class="headSubnetTableStatus">
+                        <!--<div><i class="fas fa-barcode"> Trạng thái sau</i></div>-->
+                        <!--onclick="non()-->
+                        <p name="containInfor"><a href="/ProjectPRJ321Version10/IncreaseStatusServlet?maDH=${maDH}"><input name="after" type="button" value="Trạng thái sau" ></a></p>
+                    </div>   
+                </div>
+
+                <div class="headTableStatus">
+                    <div class="headSubnetTableStatus">
+                        <div><i class="fas fa-barcode"> Bưu gửi số</i></div>
+                        <p name="containInfor"><b><input name="maDH" type="text" value="${maDH}" disabled></b></p>
+                    </div>
+
+                    <div class="headSubnetTableStatus">
+                        <div><i class="fas fa-barcode"> Trạng thái</i></div>
+                        <p name="containInfor"><b><input name="tenTrangThai" type="text" value="${tenTrangThai}" ></b></p>
+                    </div>          
+
+                    <!--======================Icon Trạng thái(Cái này t có cách nhưng chắc mai nói sau) ==========================================-->                
+                    <!--                <div class="headSubnetTableStatus">
+                                        <div><i class="fab fa-free-code-camp"> Trạng thái</i></div>
+                                        <a href="?trangthai=1">
+                                        <div class="headSubnetTableStatusIconContain" name="status" onclick="Active(1)">
+                                            <div class="IconContainCircle">
+                                                <i class="fa fa-check-circle " style="" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="IconContainSub">
+                                                <i class="fas fa-file-invoice"></i>
+                                            </div>
+                                        </div>
+                                            </a>
+                                        <div class="headSubnetTableStatusIconContain" name="status" onclick="Active(2)">
+                                            <div class="IconContainCircle">
+                                                <i class="fa fa-check-circle " style="" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="IconContainSub">
+                                                <i class="fas fa-truck"></i>
+                                            </div>
+                                        </div> 
+                                        <div class="headSubnetTableStatusIconContain" name="status" onclick="Active(3)">
+                                            <div class="IconContainCircle">
+                                                <i class="fa fa-check-circle " style="" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="IconContainSub">
+                                                <i class="fas fa-box"></i>  
+                                                <i class="fas fa-boxes" ></i>                        
+                                            </div>
+                                        </div>                   
+                                    </div>   -->
+                    <!--==========================================================================================================================-->
+                    <div class="headSubnetTableStatus" >
+                        <div><i class="fas fa-balance-scale"> Khối lượng (gram)</i></div>
+                        <p name="containInfor"><b><input name="infor" type="text" value="${khoiLuong}" disabled></b></p>
+                    </div>
+                </div>
+                <div class="mainTableStatus">
+                    <fieldset>
+                        <legend>Thông tin trạng thái</legend>
+                        <div id="StatusTableTextArea" class="containStatusTableText">
+                            <p> ${journalList}</p>
+                        </div>
+                    </fieldset>
+
+                    <!--======================================Tạm thời đóng lại để nếu có gì cần thì cho vào======================================-->                
+                    <!--                <div>
+                                        <div class="labelMainTableStatus">
+                                            <div class="labelMainTableStatusCenter">
+                                            Thông tin phát
+                                            </div>
+                                        </div>
+                                        <table>
+                                            <tr>
+                                                <th>Ngày</th>
+                                                <th>Bưu cục</th>
+                                                <th>Chi tiết</th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div name="containInfor">
+                                                        <input name="infor" value="17" type="text" disabled>
+                                                    </div>    
+                                                </td>
+                                                <td>
+                                                    <div name="containInfor">
+                                                        <input name="infor" value="SỐ 5" type="text" disabled>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div name="containInfor">
+                                                        <input name="infor" value="Không có chi tiết" type="text" disabled>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <div class="labelMainTableStatus">
+                                            <div class="labelMainTableStatusCenter">
+                                            Thông tin chuyển thư
+                                            </div>
+                                        </div>
+                                        <table>
+                                            <tr>
+                                                <th>Ngày đóng</th>
+                                                <th>Bưu cục đóng</th>
+                                                <th>Bưu cục nhận</th>
+                                                <th>Thông tin CT</th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div name="containInfor">
+                                                        <input name="infor" value="I don't know" type="text" disabled>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div name="containInfor">
+                                                        <input name="infor" value="don't do" type="text" disabled>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div name="containInfor">
+                                                        <input name="infor" value="hello" type="text" disabled>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div name="containInfor">
+                                                        <input name="infor" value="alo" type="text" disabled>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>-->
+                    <!--==========================================================================================================================-->
+                </div>
+            </div>  
+            <div class="statusContainAllQR" style="width: 30%;">
+                <div class="scanCodeSubContainVideo">
+                    <video id="videoID" autoplay></video>
+                </div>           
+                <center><h1><b>Quét Mã QR</b></h1>
+                    <div> 
+                        <form id="myForm" method="POST" action="/ProjectPRJ321Version10/QrCodeServlet">
+                            <input type="text"  name="qrCode" value="${qrCode}" id="qrCode"/>
+                            <input class="buttonScanCodeSubContain" type="button" value="Send" onclick="send()" /> 
+                        </form>
+                    </div>
+                </center>
+                <div class="scanCodeSubContainCanvas">
+                    <canvas id="canvasID">
+                    </canvas>
+                </div>          
+            </div> 
+
+        </div>    
+        <script type="text/javascript">
             var video = document.getElementById('videoID');
             var canvas = document.getElementById('canvasID');
             var context = canvas.getContext('2d');
             window.URL = window.URL || window.webkitURL;
-            navigator.getUserMedia = navigator.getUserMedia 
-                    || navigator.webkitGetUserMedia 
-                    || navigator.mozGetUserMedia 
+            navigator.getUserMedia = navigator.getUserMedia
+                    || navigator.webkitGetUserMedia
+                    || navigator.mozGetUserMedia
                     || navigator.msGetUserMedia;
             navigator.getUserMedia(
-                    { video : true }, 
-                    function(stream) { 
-                        video.src = window.URL.createObjectURL(stream); 
-                    }, 
-                    function(e) { 
-                        console.log('An error happened:', e); 
+                    {video: true},
+                    function (stream) {
+                        video.src = window.URL.createObjectURL(stream);
+                    },
+                    function (e) {
+                        console.log('An error happened:', e);
                     }
-                            );
-            function send() { 
+            );
+            function send() {
                 context.drawImage(video, 0, 0, canvas.width, canvas.height);
-                var imageData = canvas.toDataURL(); 
-                var xmlhttp = new XMLHttpRequest(); 
-                xmlhttp.open("POST", "/qrcode/QrCodeController", true); 
-                xmlhttp.send(imageData); 
-            };
-
-            function conf(){
-                alert("<%= request.getAttribute("show")%>");
-                var r = confirm("Press a button!");
-                if (r === true) {
-                    <%request.setAttribute("show","OK");%>
-                                alert("<%= request.getAttribute("show")%>");
-                } else {
-                    <%request.setAttribute("show","Cancel");%>
-                        alert("<%= request.getAttribute("show")%>");
-                }
-                
+                var imageData = canvas.toDataURL();
+                document.getElementById('qrCode').value = imageData;
+                console.log(document.getElementById('qrCode').value);
+//                console.log(imageData);
+                document.getElementById('myForm').submit();
+//                var xmlhttp = new XMLHttpRequest();
+//                xmlhttp.open("POST", "/ProjectPRJ321Version10/QrCodeServlet", true);
+//                xmlhttp.send(imageData);
+//                console.log(imageData);
             }
+            ;
 
-        </script>
 
-        <script type="text/javascript">
-            var name = "<%= session.getAttribute("name")%>";
-            var textArea = document.getElementById("StatusTableTextArea");
-            
-                function non(){
-                    alert("fail");
-                }
-            
-                function Active(x){
-                    var status = document.getElementsByName("status");
-                    //remove all the active
-                    for(var i=0;i<status.length;i++){
-                        status[i].classList.remove("ActiveClass");
-                    }
-                    
-                    //add the active for it
-                    for(var i=0;i<status.length;i++){
-                        if(i!==x){
-                            status[i].classList.add("ActiveClass");
-                        } else {
-                            break;
-                        }
-                    } 
-                    // x = 1 là trạng thái nhận yêu cầu đặt hàng
-                    // x = 2 là trạng thái đã chuyển giao cho bộ phận giao nhận
-                    // x = 3 là trạng thái đã giao hàng
-                }           
-                
-                //deactive class
-                var containInfor = document.getElementsByName("containInfor");
-                for (var i = 0; i < containInfor.length; i++){
-                    containInfor[i].classList.add("ActiveInputClass");
-                    containInfor[i].classList.remove("InActiveInputClass");                 
-                }
-                
-                function editInformation(){
-                    if(name === "null"){
-                        alert("You haven't login yet");            
-                    } else {
-                        var infor = document.getElementsByName("infor");
-                        
-                        //add active for class
-                        var containInfor = document.getElementsByName("containInfor");
-                        for (var i = 0; i < containInfor.length; i++){
-                            containInfor[i].classList.remove("InActiveInputClass");
-                            containInfor[i].classList.add("ActiveInputClass");                 
-                        }
-                        
-                        for (var i = 0; i < infor.length; i++){
-                            infor[i].removeAttribute("disabled");
-                        }
-                        document.getElementById("edit").style.display = "none";
-                        document.getElementById("save").style.display = "block";
-                    }
-                }                
-                
-                function saveInformation(){                   
-                    var infor = document.getElementsByName("infor");
-                    var nameNewDivStatus = document.getElementsByName("nameNewDivStatus");
-                    
-                    //deactive class
-                    var containInfor = document.getElementsByName("containInfor");
-                    for (var i = 0; i < containInfor.length; i++){
-                        containInfor[i].classList.remove("ActiveInputClass");
-                        containInfor[i].classList.add("InActiveInputClass");                 
-                    }
-                    
-                    //remove toàn bộ class ban đầu đi để add thêm class khác với màu là màu xám
-                    for (var i = 0; i < nameNewDivStatus.length; i++){
-                        nameNewDivStatus[i].removeAttribute("class");
-                        nameNewDivStatus[i].setAttribute("class","newDivLastStatusClass");
-                    }
-                    //div được tạo ra để chứa các text
-                    var div = document.createElement("div");
-                    div.classList.add("newDivStatusClass");
-  
-                    //quá trình lấy các phần tử mà có tên là infor và chuyển hết disabled sang enabled
-                    for (var i = 0; i < infor.length; i++){
-                        infor[i].setAttribute("disabled",true);                      
-                        //text mà mình cần lưu trong cái text area
-                        var text = document.createTextNode(infor[i].value+" /-/ ");    
-                        div.appendChild(text);                 
-                    }                    
-                    
-                    //add màu cho thanh đầu tiên
-                    var divfirst = document.createElement("div"); 
-                    divfirst.setAttribute("name", "nameNewDivStatus");                  
-                    divfirst.setAttribute("class","newDivFirstStatusClass");
-             
-                    textArea.insertBefore(div, textArea.childNodes[0]);
-                    textArea.insertBefore(divfirst, textArea.childNodes[0]);
-                    document.getElementById("edit").style.display = "block";
-                    document.getElementById("save").style.display = "none";                                      
-                }       
+
         </script>
     </body>
 </html>

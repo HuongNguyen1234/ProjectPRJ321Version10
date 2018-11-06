@@ -12,25 +12,26 @@ import java.util.Date;
  * @author huong karatedo
  */
 public class Journal {
-    private int IdHT;
+
+    private String IdHT;
     private String maDH;
+    private String trangThai ;
     private Date thoiGian;
-    private String trangThai;
     private String diaChi;
 
-    public Journal(int IdHT, String maDH, Date thoiGian, String trangThai, String diaChi) {
+    public Journal(String IdHT, String maDH, String trangThai, Date thoiGian, String diaChi) {
         this.IdHT = IdHT;
         this.maDH = maDH;
-        this.thoiGian = thoiGian;
         this.trangThai = trangThai;
+        this.thoiGian = thoiGian;
         this.diaChi = diaChi;
     }
 
-    public int getIdHT() {
+    public String getIdHT() {
         return IdHT;
     }
 
-    public void setIdHT(int IdHT) {
+    public void setIdHT(String IdHT) {
         this.IdHT = IdHT;
     }
 
@@ -42,20 +43,20 @@ public class Journal {
         this.maDH = maDH;
     }
 
-    public Date getThoiGian() {
-        return thoiGian;
-    }
-
-    public void setThoiGian(Date thoiGian) {
-        this.thoiGian = thoiGian;
-    }
-
     public String getTrangThai() {
         return trangThai;
     }
 
     public void setTrangThai(String trangThai) {
         this.trangThai = trangThai;
+    }
+
+    public Date getThoiGian() {
+        return thoiGian;
+    }
+
+    public void setThoiGian(Date thoiGian) {
+        this.thoiGian = thoiGian;
     }
 
     public String getDiaChi() {
@@ -67,4 +68,18 @@ public class Journal {
     }
 
     
+
+    @Override
+    public String toString() {
+        String tt;
+        if (trangThai.equals("1d")) {
+            tt = "Đã nhận đơn";
+        } else if (trangThai.equals("2d")) {
+            tt = "Đang vẫn chuyển";
+        } else {
+            tt = "Đã Giao Thành Công";
+        }
+        return thoiGian.toString() + " : " + tt + " tại " + diaChi + ".";
+    }
+
 }

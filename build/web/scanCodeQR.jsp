@@ -14,31 +14,34 @@
     </head>
     <body>
         <div class="scanCodeContainer">
-            <div class="scanCodeSub" style="width: 70%;background-color: antiquewhite">
+<!--            <div class="scanCodeSub" style="width: 70%;background-color: antiquewhite">
                 <input type="button" style="position: absolute;
                        right: 0;" value="Show" onclick="conf()">
-                    <jsp:include page="InforPackage.jsp"/>
-            </div>
+           
+            </div>-->
             <div class="scanCodeSub" style="width: 30%;background-color: coral;">
                 <div class="scanCodeSubContainVideo">
-                    <video id="videoID" autoplay></video>
+                    <video id="videoID1" autoplay></video>
                 </div>        
                 <center>
                 <h1><b>Quét Mã QR</b></h1>
                 <div> 
-                    <input class="buttonScanCodeSubContain" type="button" value="Send" onclick="send()" /> 
+                    <form id="myForm1" method="POST" action="/ProjectPRJ321Version10/QrCodeGetInfoOrderServlet">
+                        <input type="text"  name="qrCode1" value="${qrCode1}" id="qrCode1"/>
+                    <input class="buttonScanCodeSubContain" type="button" value="Send" onclick="send1()" /> 
+                    </form>
                 </div>
                 </center>
                 <div class="scanCodeSubContainCanvas">
-                    <canvas id="canvasID">
+                    <canvas id="canvasID1">
                     </canvas> 
                 </div> 
             </div>
         </div>
             <script type="text/javascript">
-            var video = document.getElementById('videoID');
-            var canvas = document.getElementById('canvasID');
-            var context = canvas.getContext('2d');
+            var video1 = document.getElementById('videoID1');
+            var canvas1 = document.getElementById('canvasID1');
+            var context1 = canvas1.getContext('2d');
             window.URL = window.URL || window.webkitURL;
             navigator.getUserMedia = navigator.getUserMedia 
                     || navigator.webkitGetUserMedia 
@@ -53,12 +56,14 @@
                         console.log('An error happened:', e); 
                     }
                             );
-            function send() { 
-                context.drawImage(video, 0, 0, canvas.width, canvas.height);
-                var imageData = canvas.toDataURL(); 
+            function send1() { 
+                context1.drawImage(video1, 0, 0, canvas1.width, canvas1.height);
+                var imageData = canvas1.toDataURL(); 
                 var xmlhttp = new XMLHttpRequest(); 
-                xmlhttp.open("POST", "/qrcode/QrCodeController", true); 
-                xmlhttp.send(imageData); 
+                document.getElementById('qrCode1').value = imageData;
+                document.getElementById('myForm1').submit();
+//                xmlhttp.open("POST", "/qrcode/QrCodeController", true); 
+//                xmlhttp.send(imageData); 
             };
 
             function conf(){
