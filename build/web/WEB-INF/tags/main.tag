@@ -14,9 +14,9 @@
     </head>
     <body>
         <div class="containMain" style="text-align: center;">
-            <section name="section" id="home">  
+            <section name="section" id="home" class="sectionActive">  
                 <!--home-->
-                homepage
+                <jsp:include page="homePage.jsp"/>
             </section>
             <section name="section"  id="chargeAndDelivery">           
                 <jsp:include page="chargeAndDelivery.jsp"/>
@@ -42,7 +42,7 @@
             <section name="section">
                 <jsp:include page="About.jsp"/>    
             </section> 
-            <section name="section" class="sectionActive">
+            <section name="section" >
                 <jsp:include page="employee.jsp"/>    
             </section> 
         </div>
