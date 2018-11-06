@@ -53,7 +53,7 @@ section:not(.sectionActive){
 }
 
 .subnav .subnavbtn {
-
+    
     font-size: 16px;    
     border: none;
     outline: none;
@@ -88,7 +88,7 @@ section:not(.sectionActive){
     float: left;
     color: white;
     text-decoration: none;
-
+    
 }
 
 .subnav-content a:hover {   
@@ -522,7 +522,7 @@ input:checked + .slider:before {
 }
 
 .containMain{
-    margin: 75px auto;
+    margin: 0 auto;
 }
 
 /*=========================Footer======================================*/

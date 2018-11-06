@@ -4,7 +4,7 @@
     flex-wrap: wrap;
     width: 100%;
     background-color: gray;
-    
+    background: linear-gradient(0.25turn,rgb(233, 180, 69),rgb(249, 100, 0));
 }
 
 .scanCodeContainer .scanCodeSub{

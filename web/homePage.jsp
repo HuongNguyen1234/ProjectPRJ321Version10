@@ -102,6 +102,17 @@
                     <button>Read More</button>
                 </figcaption><a href="#"></a>
             </figure>
+            <figure class="snip1208">
+                <img src="Image/tải xuống.jpg" alt="sample66"/>
+                <div class="date"><span class="day">28</span><span class="month">Oct</span></div><i class="ion-film-marker"></i>
+                <figcaption>
+                    <h3>CHương Trình Từ Thiện " Chuyến Đi Vàng " </h3>
+                    <p>
+                        I don't need to compromise my principles, because they don't have the slightest bearing on what happens to me anyway.
+                    </p>
+                    <button>Read More</button>
+                </figcaption><a href="#"></a>
+            </figure>
 
         </div>
         <script>$(".hover").mouseleave(

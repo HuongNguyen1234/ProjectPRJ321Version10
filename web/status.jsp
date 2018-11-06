@@ -24,8 +24,11 @@
                     </div>
                 </div>-->
         <!--==========================================================================================================================-->
-
-        <div class="statusContainAll">
+        <div style="position: relative;margin-top: 50px;height: 150px;color: white;background: linear-gradient(0.75turn,rgb(233, 180, 69),rgb(249, 100, 0)); ">
+            <div style="position: absolute;top: 0;bottom: 0;right: 0;left: 0;font-size: 40px;margin:auto;width: 50%;height: 50px; ">Information of Status</div>
+        </div>
+        <div class="statusContainAll">  
+            
             <div class="mainStatusDesign" style="width: 70%;">
                 <!--===============================================Edit and Save==============================================================-->            
                 <!--            <button class="buttonEdit" id="edit" onclick="editInformation()">
@@ -56,7 +59,7 @@
 
                     <div class="headSubnetTableStatus">
                         <div><i class="fas fa-barcode"> Trạng thái</i></div>
-                        <p name="containInfor"><b><input name="tenTrangThai" type="text" value="${tenTrangThai}" ></b></p>
+                        <p name="containInfor"><b><input name="tenTrangThai" type="text" value="${tenTrangThai}" disabled></b></p>
                     </div>          
 
                     <!--======================Icon Trạng thái(Cái này t có cách nhưng chắc mai nói sau) ==========================================-->                
@@ -176,15 +179,17 @@
             </div>  
             <div class="statusContainAllQR" style="width: 30%;">
                 <div class="scanCodeSubContainVideo">
-                    <video id="videoID" autoplay></video>
+                    <video id="videoID" autoplay></video>                  
                 </div>           
-                <center><h1><b>Quét Mã QR</b></h1>
+                <center><h1><b>Quét Mã QR</b></h1> 
+                <form id="myForm" method="POST" action="/ProjectPRJ321Version10/QrCodeServlet">    
                     <div> 
-                        <form id="myForm" method="POST" action="/ProjectPRJ321Version10/QrCodeServlet">
-                            <input type="text"  name="qrCode" value="${qrCode}" id="qrCode"/>
-                            <input class="buttonScanCodeSubContain" type="button" value="Send" onclick="send()" /> 
-                        </form>
+                        <input class="buttonScanCodeSubContain" type="button" value="Send" onclick="send()" />                        
                     </div>
+                    <div>
+                        <input type="text" style="background-color: rgb(235, 167, 58);border: none;"  name="qrCode" value="${qrCode}" id="qrCode"/>       
+                    </div>
+                </form>
                 </center>
                 <div class="scanCodeSubContainCanvas">
                     <canvas id="canvasID">
@@ -227,6 +232,76 @@
 
 
 
+        </script>
+        <script type="text/javascript">
+            var name = "<%= session.getAttribute("name")%>";
+            var textArea = document.getElementById("StatusTableTextArea");
+            
+                function Active(x){
+                    var status = document.getElementsByName("status");
+                    //remove all the active
+                    for(var i=0;i<status.length;i++){
+                        status[i].classList.remove("ActiveClass");
+                    }
+                    
+                    //add the active for it
+                    for(var i=0;i<status.length;i++){
+                        if(i!==x){
+                            status[i].classList.add("ActiveClass");
+                        } else {
+                            break;
+                        }
+                    } 
+                    // x = 1 là trạng thái nhận yêu cầu đặt hàng
+                    // x = 2 là trạng thái đã chuyển giao cho bộ phận giao nhận
+                    // x = 3 là trạng thái đã giao hàng
+                }           
+                
+                //deactive class
+                var containInfor = document.getElementsByName("containInfor");
+                for (var i = 0; i < containInfor.length; i++){
+                    containInfor[i].classList.add("ActiveInputClass");
+                    containInfor[i].classList.remove("InActiveInputClass");                 
+                }                         
+                
+                function saveInformation(){                   
+                    var infor = document.getElementsByName("infor");
+                    var nameNewDivStatus = document.getElementsByName("nameNewDivStatus");
+                    
+                    //deactive class
+                    var containInfor = document.getElementsByName("containInfor");
+                    for (var i = 0; i < containInfor.length; i++){
+                        containInfor[i].classList.remove("ActiveInputClass");
+                        containInfor[i].classList.add("InActiveInputClass");                 
+                    }
+                    
+                    //remove toàn bộ class ban đầu đi để add thêm class khác với màu là màu xám
+                    for (var i = 0; i < nameNewDivStatus.length; i++){
+                        nameNewDivStatus[i].removeAttribute("class");
+                        nameNewDivStatus[i].setAttribute("class","newDivLastStatusClass");
+                    }
+                    //div được tạo ra để chứa các text
+                    var div = document.createElement("div");
+                    div.classList.add("newDivStatusClass");
+  
+                    //quá trình lấy các phần tử mà có tên là infor và chuyển hết disabled sang enabled
+                    for (var i = 0; i < infor.length; i++){
+                        infor[i].setAttribute("disabled",true);                      
+                        //text mà mình cần lưu trong cái text area
+                        var text = document.createTextNode(infor[i].value+" /-/ ");    
+                        div.appendChild(text);                 
+                    }                    
+                    
+                    //add màu cho thanh đầu tiên
+                    var divfirst = document.createElement("div"); 
+                    divfirst.setAttribute("name", "nameNewDivStatus");                  
+                    divfirst.setAttribute("class","newDivFirstStatusClass");
+             
+                    textArea.insertBefore(div, textArea.childNodes[0]);
+                    textArea.insertBefore(divfirst, textArea.childNodes[0]);
+                    document.getElementById("edit").style.display = "block";
+                    document.getElementById("save").style.display = "none";                                      
+                }       
         </script>
     </body>
 </html>
