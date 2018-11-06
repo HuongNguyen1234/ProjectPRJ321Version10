@@ -71,7 +71,7 @@ public class QrCodeGetInfoOrderServlet extends HttpServlet {
                 request.setAttribute("maDH", or.getMaDH());
                 request.setAttribute("maDH", or.getMaDH());
             }
-                request.getRequestDispatcher("").forward(request, response);
+                request.getRequestDispatcher("scanCodeQR.jsp").forward(request, response);
 
         } catch (Exception e) {
             e.printStackTrace();

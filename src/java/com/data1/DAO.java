@@ -206,6 +206,52 @@ public class DAO {
         }
 
     }
+    public Staff getStaffById(String id)throws SQLException, Exception{
+        String xSql = "select * from NhanVien where Id=?";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String i = rs.getString("Id");
+                String ten = rs.getString("Ten");
+                String diaChi = rs.getString("DiaChi");
+                int sdt = rs.getInt("Sdt");
+                String chucVu = rs.getString("ChucVu");
+                int maBC = rs.getInt("maBC");
+                String userName = rs.getString("UserName");
+                String password = rs.getString("Password");
+                Staff s = new Staff(id, ten, diaChi, sdt, chucVu, maBC, userName, password);
+               return s;
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return null;
+    }
+    public String getChucVuStaff(String id) throws SQLException, Exception {
+        String xSql = "select * from NhanVien where Id=?";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String chucVu = rs.getString("ChucVu");
+                return chucVu;
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return null;
+    }
 
     public void getDeleteStaff(String id) throws SQLException, Exception {
         String xSql = "DELETE FROM NhanVien WHERE id = ?";
@@ -629,6 +675,7 @@ public class DAO {
             closeConnection(rs, ps, conn);
         }
     }
+    
 
     public void addJournal(Journal j) throws SQLException, Exception {
         String xsql = "insert into Journal (IdHT,MaDH,ThoiGian,IdTrangThai,DiaChi)" + "values(?,?,?,?,?)";

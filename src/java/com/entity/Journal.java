@@ -5,6 +5,7 @@
  */
 package com.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -15,7 +16,7 @@ public class Journal {
 
     private String IdHT;
     private String maDH;
-    private String trangThai ;
+    private String trangThai;
     private Date thoiGian;
     private String diaChi;
 
@@ -67,8 +68,6 @@ public class Journal {
         this.diaChi = diaChi;
     }
 
-    
-
     @Override
     public String toString() {
         String tt;
@@ -79,7 +78,10 @@ public class Journal {
         } else {
             tt = "Đã Giao Thành Công";
         }
-        return thoiGian.toString() + " : " + tt + " tại " + diaChi + ".";
+//        Date date = java.util.Calendar.getInstance().getTime();
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+        String dateString = format.format(thoiGian);
+        return dateString + " : " + tt + " tại " + diaChi + ".";
     }
 
 }

@@ -4,6 +4,7 @@
     Author     : Nguyen Bao Long
 --%>
 
+<%@tag import="com.data1.DAO"%>
 <%@tag description="put the tag description here" pageEncoding="UTF-8"%>
 
 <html>
@@ -14,7 +15,7 @@
         <!--slide show-->
         <div style="width: 100%;height: 50px;background: linear-gradient(0.25turn,rgb(233, 180, 69),rgb(249, 100, 0));">
             <div style="width: 150px;float: left;height: 10px;">
-                <img src="Image/logo.png" onclick="addSectionActive(9)" style="position: absolute;left: 15px;z-index: 2;" width="80" height="50" onclick="">
+                <img src="Image/logo.png"  style="position: absolute;left: 15px;z-index: 2;" width="80" height="50" onclick="">
             </div>
             
             <%
@@ -97,7 +98,7 @@
             <div class="userProfile">              
                 <div>
                     Hello! <%=name%>
-                    <img src="Image/avatar4.jpg" width="50" height="50" style="z-index: 1;border-radius: 50%;right: 10%;">
+                    <img src="Image/avatar4.jpg" onclick="addSectionActive(9)" width="50" height="50" style="z-index: 1;border-radius: 50%;right: 10%;">
                     
                 </div>
                 <div>
@@ -202,11 +203,13 @@
             <%
                 session=request.getSession(false);  
                 if(session.getAttribute("name")==null){ 
-            %>
-            
-            <%
                 } else {    
                 String name=(String)session.getAttribute("name");
+                DAO dao= new DAO();
+//                String s=session.getAttribute("id").toString();
+//                String chucVu=dao.getChucVuStaff(s);
+//                if(chucVu.equals("Quanly"))
+//                {
             %>
             <a href="#manage" style="float: right;" onclick="addSectionActive(7)"> <i class="fas fa-users" style="font-size: 20px;" ></i> <b>Manage</b></a>
             <%
@@ -219,8 +222,6 @@
             var error = "<%= request.getAttribute("error")%>";
             if(error !== "null"){
                 document.getElementById("modalLogin").style.display="block";             
-            } else {
-                document.getElementById("modalLogin").style.display="none";               
-            }
+            } 
         </script>
 </html>

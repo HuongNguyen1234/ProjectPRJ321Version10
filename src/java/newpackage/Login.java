@@ -5,9 +5,7 @@
  */
 package newpackage;
 
-import com.controller.ManagementController;
 import com.data1.DAO;
-import com.entity.Post;
 import com.entity.Staff;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -55,11 +53,14 @@ public class Login extends HttpServlet {
             HttpSession session = request.getSession();
             if (staff == null) {
                 session.setAttribute("name", null);
+                session.setAttribute("id", null);
                 request.setAttribute("error", "Tên đăng nhập hoặc mật khẩu sai!");
                 request.getRequestDispatcher("home.jsp").include(request, response);
             } else {
                 session.setAttribute("maBC", staff.getMaBC());
                 session.setAttribute("name", name);
+                session.setAttribute("id", staff.getId());
+                session.setAttribute("chucVu",staff.getChucVu());
                 session.setAttribute("cart", staff.getMaBC());
                 request.getRequestDispatcher("home.jsp").forward(request, response);
             }
@@ -67,21 +68,6 @@ public class Login extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-//        PrintWriter out=response.getWriter(); 
-//        String name=request.getParameter("name");  
-//        String password=request.getParameter("password");  
-//          
-//        if(password.equals("123")){  
-//            HttpSession session=request.getSession();  
-//            session.setAttribute("name",name);
-//            request.getRequestDispatcher("home.jsp").include(request, response);
-//            request.setAttribute("error","null");
-//        } else{  
-//            request.setAttribute("error", "Sorry, username or password error!");
-//            request.getRequestDispatcher("home.jsp").include(request, response);  
-//        }    
-//        out.close(); 
     }
 
     /**
