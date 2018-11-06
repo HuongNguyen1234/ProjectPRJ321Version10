@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="CSS/confirmInfoPackage.css">
+        <link rel="stylesheet" type="text/css" href="CSS/confirInfoPackage.css">
         <title>Package Information</title>
     </head>
     <body>
@@ -35,7 +35,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            <input type="text" name="maDH" value="${maDH}"  style="color: black"/>
+                            <input type="text" name="maDH" value="${maDH}" disabled  >
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -54,7 +54,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            ${sessionScope.maBC}
+                            <input type="text"  value="${sessionScope.maBC}" disabled>
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -73,7 +73,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            <input type="text" name="tenGui" value="${tenGui}"  style="color: black"/>
+                            <input type="text" name="tenGui" value="${tenGui}" disabled >
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -92,7 +92,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            <input type="text" name="diaChiGui" value="${diaChiGui}"  style="color: black"/>
+                            <input type="text" name="diaChiGui" value="${diaChiGui}" disabled >
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -111,7 +111,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            <input type="text" name="sdtGui" value="${sdtGui}"  style="color: black"/>
+                            <input type="text" name="sdtGui" value="${sdtGui}" disabled >
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -130,7 +130,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            <input type="text" name="tenNhan" value="${tenNhan}"  style="color: black"/>
+                            <input type="text" name="tenNhan" value="${tenNhan}" disabled >
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -149,7 +149,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            <input type="text" name="diaChiNhan" value="${diaChiNhan}"  style="color: black"/>
+                            <input type="text" name="diaChiNhan" value="${diaChiNhan}" disabled >
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -168,7 +168,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            <input type="text" name="sdtNhan" value="${sdtNhan}"  style="color: black"/>
+                            <input type="text" name="sdtNhan" value="${sdtNhan}" disabled >
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -187,7 +187,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            <input type="text" name="productType" value="${productType}"  style="color: black"/>
+                            <input type="text" name="productType" value="${productType}" disabled />
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -206,7 +206,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            <input type="number" name="khoiLuong" value="${khoiLuong}"  style="color: black"/>
+                            <input type="number" name="khoiLuong" value="${khoiLuong}" disabled >
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -226,7 +226,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            <input type="number" name="phiShip" value="${phiShip}"  style="color: black"/>
+                            <input type="number" name="phiShip" value="${phiShip}" disabled >
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -245,7 +245,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackage">  
                         <b>
-                            <input type="number" name="phiThuHo" value="${phiThuHo}"  style="color: black"/>
+                            <input type="number" name="phiThuHo" value="${phiThuHo}" disabled >
                         </b>
                         <div class="divlast"></div>
                     </div>                  
@@ -264,7 +264,7 @@
                 <td colspan="2">
                     <div class="TextContainlabelInforPackageOdd">  
                         <b>
-                            <input type="number" name="tongTien" value="${tongTien}"  style="color: black"/>
+                            <input type="number" name="tongTien" value="${tongTien}" disabled >
                         </b>
                         <div class="divlast"></div>
                     </div>                  

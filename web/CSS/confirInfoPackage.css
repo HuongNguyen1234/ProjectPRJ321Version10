@@ -18,6 +18,7 @@
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: center;
 }
 
 .InforPackageHeader::before{
@@ -86,7 +87,24 @@
 
 .InforPackageTable tr:nth-child(odd) input{
     color: white;
+    /*width: 100%;*/
+    border:none;
+    /*height: 30px;*/
+    background-color: rgb(139, 64, 0);
+    text-align: center;
+    font-weight: bold;
 }
+
+.InforPackageTable tr:nth-child(even) input{
+    color:black;
+    /*width: 100%;*/
+    border:none;
+/*    height: 30px;*/
+    background-color: rgb(249, 129, 42);
+    text-align: center;
+    font-weight: bold;
+}
+
 
 .labelInforPackage{
     position: relative;
@@ -130,6 +148,7 @@
     left: 0;
     top: 0;
     bottom: 0;
+    text-align: center;
 }
 
 .divfirst::before{
@@ -365,6 +384,7 @@
     left: 0;
     top: 0;
     bottom: 0;
+    text-align: center;
 }
 
 

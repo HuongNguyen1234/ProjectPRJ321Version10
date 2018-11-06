@@ -16,19 +16,19 @@
         <div class="containMain" style="text-align: center;">
             <section name="section" id="home">  
                 <!--home-->
-                homepage
+                <jsp:include page="homePage.jsp"/>
             </section>
             <section name="section"  id="chargeAndDelivery">           
-                <jsp:include page="chargeAndDelivery.jsp"/>
+ 
             </section>    
             <section name="section" id="status"  >
                 <jsp:include page="status.jsp"/>
             </section>
             <section name="section">
-                <jsp:include page="PostOffice.jsp"/>
+
             </section>
             <section name="section" >
-                <jsp:include page="editInfoPackage.jsp"/>    
+ 
             </section>   
             <section name="section" >
                 <jsp:include page="scanCodeQR.jsp"/>    
@@ -42,7 +42,7 @@
             <section name="section">
                 <jsp:include page="About.jsp"/>    
             </section> 
-            <section name="section" class="sectionActive">
+            <section name="section" >
                 <jsp:include page="employee.jsp"/>    
             </section> 
         </div>

@@ -16,100 +16,177 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Charge and Delivery</title>
         <link rel="stylesheet" type="text/css" href="CSS/chargStyle.css">
+        <link rel="stylesheet" type="text/css" href="CSS/homeStyle.css">
     </head>
     <body>
         <c:if test="${currentTinh == null}&&${currentTinh1 == null}&&${currentMien==null}">
             <c:redirect url="/ChargeDeliveryServlet?tinh1=1&tinh=1&huyen=11&mien=11c"/>
         </c:if>
-        <%
-            //        if (request.getParameter("tinh") == null) {
-            //            request.getRequestDispatcher("/ShowHuyenServlet?tinh=1").forward(request, response);
-            //        }
-            DAO dao = new DAO();
-            TinhController listTinh = new TinhController();
-            MienController listMien= new MienController();
-            listTinh.setListTinh(dao.getAllTinhBuuCuc());
-            listMien.setMien(dao.getMien());
+        <div class="grid-container">
+            <div id = "header">
+                <header>    
+                    <!--slide show-->
+                    <div style="width: 100%;height: 50px;background: linear-gradient(0.25turn,rgb(233, 180, 69),rgb(249, 100, 0));">
+                    </div>
+                    <div class="slideshow-container" >          
+                        <div class="mySlides fade">
+                            <img src="Image/flashbox.jpg" style="width:100%;position: absolute;height: 550px;" >
 
-        %>
-        <form action="/ProjectPRJ321Version10/ChargeDeliveryServlet" method="Post">
-            <div class="chargeAndDeliveryTable">
-                <table >
-                    <tr>
-                        <th colspan="3">
-                            <div class="bannersMain">
-                                <center><div class="containText">Charge and Delivery Time</div></center>                          
-                            </div>
-                        </th>
-                    </tr>
-                    
-                      <tr>
-                        <td>
-                            <div class="banners">
-                                <center><div class="containText">
-                                        TYPE
-                                    </div></center>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="banners3">
-                                <input type="radio" name="type" id="type" value="Product" required checked="true">Product
-                            </div>
-                        </td>
-                        <td>
-                            <div class="banners2"  value="Letter" >
-                                <input type="radio" name="type" id="type" value="Letter" required>Letter
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="bannersodd">
-                                <center><div class="containText">
-                                        WEIGHT
-                                    </div></center>
-                            </div>
-                        </td>
-                        <td colspan="2" >
-                            <div class="banners2odd">
-                                <input type="number" name="gam" id="g" value="${gam}"  required  style="background-color: rgb(211, 109, 98);">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="bannersodd">
-                                <center><div class="containText">
-                                        Miền Gửi
-                                    </div></center>
-                            </div>
-                        </td>
-                        <td colspan="2" >
-                            <div class="banners2">
-                                <select id="mien"  style="background-color: rgb(211, 109, 98);">
-                                        <c:forEach  var="i" items="<%=listMien.getMien()%>">
-                                            <c:if test="${currentMien != i.getMaMien()}">
-                                                <option value="${i.getMaMien()}" >${i.getTenMien()}</option>
-                                            </c:if>
-                                            <c:if test="${currentMien ==i.getMaMien()}">
-                                                <option value="${i.getMaMien()}" selected >${i.getTenMien()}</option>
-                                            </c:if>
+                            <div class= "flashPostContain">
+                                <center><div class="flashPostHeader" >FLASH POST</div></center>  
+                                <div class="flashPostContent">
+                                    XUYÊN SUỐT 50 NĂM PHÁT TRIỂN , CÙNG VỚI SỰ TIN TƯỞNG CỦA NGƯỜI DÙNG ,
+                                    FLASHPOST ĐANG NGÀY CÀNG VỮNG MẠNH VÀ VƯƠN RA THẾ GIỚI . CÙNG VỚI CÁC NHÀ ĐẦU TƯ , FLASHPOST ĐÃ CHỨNG MINH RẰNG
+                                    FLASHPOST LÀ NƠI ĐẶT NIỀM TIN SỐ 1 CỦA HỌ . HÃY CÙNG FLASHPOST NHÌN LẠI MỘT SỐ THÀNH TỰU TIÊU BIỂU XUYÊN SUỐT 50 NĂM
+                                    PHÁT TRIỂN CỦA FLASHPOST .
+                                </div>
+                                <center><button class="flashPostButton" onclick="checkwin()">Flash Post</button></center>             
+                            </div>                
+                            <div class="numbertext">1 / 3</div>     
+     
+                        </div>
 
-                                        </c:forEach>
-                                    </select>
-                            </div>
-                        </td>
-                    </tr>
-                        <td>
-                            <div class="banners">
-                                <center><div class="containText">
-                                        FROM
-                                    </div></center>
-                            </div>
-                        </td>
-                        <td colspan="2">
-                            <div class="banners2">
-                                <select id="tinh1"  style="background-color: rgb(211, 109, 98);">
+                        <div class="mySlides fade">
+                            <img src="Image/flash.jpg" style="width:100%;position: absolute;height: 550px;">
+                            <div class= "flashPostContain">
+                                <center><div class="flashPostHeader" >FLASH POST</div></center>  
+                                <div class="flashPostContent">
+                                    XUYÊN SUỐT 50 NĂM PHÁT TRIỂN , CÙNG VỚI SỰ TIN TƯỞNG CỦA NGƯỜI DÙNG ,
+                                    FLASHPOST ĐANG NGÀY CÀNG VỮNG MẠNH VÀ VƯƠN RA THẾ GIỚI . CÙNG VỚI CÁC NHÀ ĐẦU TƯ , FLASHPOST ĐÃ CHỨNG MINH RẰNG
+                                    FLASHPOST LÀ NƠI ĐẶT NIỀM TIN SỐ 1 CỦA HỌ . HÃY CÙNG FLASHPOST NHÌN LẠI MỘT SỐ THÀNH TỰU TIÊU BIỂU XUYÊN SUỐT 50 NĂM
+                                    PHÁT TRIỂN CỦA FLASHPOST .
+                                </div>
+                                <center><button class="flashPostButton" onclick="checkwin()">Flash Post</button></center>             
+                            </div>     
+                            <div class="numbertext">2 / 3</div>
+
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="Image/backgroundtechnology.jpg" style="width:100%;position: absolute;height: 550px;">
+                            <div class= "flashPostContain">
+                                <center><div class="flashPostHeader" >FLASH POST</div></center>  
+                                <div class="flashPostContent">
+                                    XUYÊN SUỐT 50 NĂM PHÁT TRIỂN , CÙNG VỚI SỰ TIN TƯỞNG CỦA NGƯỜI DÙNG ,
+                                    FLASHPOST ĐANG NGÀY CÀNG VỮNG MẠNH VÀ VƯƠN RA THẾ GIỚI . CÙNG VỚI CÁC NHÀ ĐẦU TƯ , FLASHPOST ĐÃ CHỨNG MINH RẰNG
+                                    FLASHPOST LÀ NƠI ĐẶT NIỀM TIN SỐ 1 CỦA HỌ . HÃY CÙNG FLASHPOST NHÌN LẠI MỘT SỐ THÀNH TỰU TIÊU BIỂU XUYÊN SUỐT 50 NĂM
+                                    PHÁT TRIỂN CỦA FLASHPOST .
+                                </div>
+                                <center><button class="flashPostButton" onclick="checkwin()">Flash Post</button></center>             
+                            </div>             
+                            <div class="numbertext">3 / 3</div>
+
+                        </div>
+
+                        <div style="position: absolute;bottom: 10px;right: 50%;" >
+                            <span class="dot" onclick="currentSlide(1)"></span> 
+                            <span class="dot" onclick="currentSlide(2)"></span> 
+                            <span class="dot" onclick="currentSlide(3)"></span> 
+                        </div>
+
+                    </div>
+
+                    <!--slide show-->    
+                    <nav>          
+                        <div class="navbar">         
+                            <a href="/ProjectPRJ321Version10/home.jsp" ><i class="fas fa-home"></i> Home</a>
+                        </div>           
+                    </nav>
+                    <canvas id="canvasClock" onclick="topFunction()"></canvas>
+                </header>
+            </div>
+            <div id = "main" >
+
+                <%
+                    //        if (request.getParameter("tinh") == null) {
+                    //            request.getRequestDispatcher("/ShowHuyenServlet?tinh=1").forward(request, response);
+                    //        }
+                    DAO dao = new DAO();
+                    TinhController listTinh = new TinhController();
+                    MienController listMien = new MienController();
+                    listTinh.setListTinh(dao.getAllTinhBuuCuc());
+                    listMien.setMien(dao.getMien());
+
+                %>
+                <form action="/ProjectPRJ321Version10/ChargeDeliveryServlet" method="Post">
+                    <div class="chargeAndDeliveryTable" style="margin: 100px auto;">
+                        <table >
+                            <tr>
+                                <th colspan="3">
+                                    <div class="bannersMain">
+                                        <center><div class="containText" style="text-align: center;">Charge and Delivery Time</div></center>                          
+                                    </div>
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="bannersodd">
+                                        <center><div class="containText">
+                                                TYPE
+                                            </div></center>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="banners3odd">
+                                        <input type="radio" name="type" id="type" value="Product" required checked="true">Product
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="banners2odd"  value="Letter" >
+                                        <input type="radio" name="type" id="type" value="Letter" required>Letter
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="banners">
+                                        <center><div class="containText">
+                                                WEIGHT
+                                            </div></center>
+                                    </div>
+                                </td>
+                                <td colspan="2" >
+                                    <div class="banners2">
+                                        <input type="number" name="gam" id="g" value="${gam}"  required  style="height:38px;border: none;background-color: rgb(229, 99, 21);width: 100%;">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="bannersodd">
+                                        <center>
+                                            <div class="containText">
+                                                Miền Gửi
+                                            </div>
+                                        </center>
+                                    </div>
+                                </td>
+                                <td colspan="2" >
+                                    <div class="banners2odd">
+                                        <select id="mien"  style="background-color: rgb(129, 63, 11);color: white;">
+                                            <c:forEach  var="i" items="<%=listMien.getMien()%>">
+                                                <c:if test="${currentMien != i.getMaMien()}">
+                                                    <option value="${i.getMaMien()}" >${i.getTenMien()}</option>
+                                                </c:if>
+                                                <c:if test="${currentMien ==i.getMaMien()}">
+                                                    <option value="${i.getMaMien()}" selected >${i.getTenMien()}</option>
+                                                </c:if>
+
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <td>
+                                <div class="banners">
+                                    <center><div class="containText">
+                                            FROM
+                                        </div></center>
+                                </div>
+                            </td>
+                            <td colspan="2">
+                                <div class="banners2">
+                                    <select id="tinh1">
                                         <c:forEach  var="i" items="<%=listTinh.getListTinh()%>">
                                             <c:if test="${currentTinh1 != i. getMaTinh()}">
                                                 <option value="${i.getMaTinh()}" >${i.getTen()}</option>
@@ -120,93 +197,114 @@
 
                                         </c:forEach>
                                     </select>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="bannersodd">
-                                <center><div class="containText">
-                                        TO
-                                    </div></center>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="banners3odd">
-                                    <select id="tinh" onchange="change()" style="background-color: rgb(211, 109, 98);">
-                                        <c:forEach  var="i" items="<%=listTinh.getListTinh()%>">
-                                            <c:if test="${currentTinh != i. getMaTinh()}">
-                                                <option value="${i.getMaTinh()}" >${i.getTen()}</option>
-                                            </c:if>
-                                            <c:if test="${currentTinh == i.getMaTinh()}">
-                                                <option value="${i.getMaTinh()}" selected >${i.getTen()}</option>
-                                            </c:if>
+                                </div>
+                            </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="bannersodd">
+                                        <center><div class="containText">
+                                                TO
+                                            </div></center>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="banners3odd">
+                                        <select id="tinh" onchange="change()" style="background-color: rgb(129, 63, 11);color: white;">
+                                            <c:forEach  var="i" items="<%=listTinh.getListTinh()%>">
+                                                <c:if test="${currentTinh != i. getMaTinh()}">
+                                                    <option value="${i.getMaTinh()}" >${i.getTen()}</option>
+                                                </c:if>
+                                                <c:if test="${currentTinh == i.getMaTinh()}">
+                                                    <option value="${i.getMaTinh()}" selected >${i.getTen()}</option>
+                                                </c:if>
 
-                                        </c:forEach>
-                                    </select>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="banners2odd">
-                                    <select id="huyen" onchange="changeHuyen()" style="background-color: rgb(211, 109, 98);">
-                                        <c:forEach  var="i" items="${huyen}">
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="banners2odd">
+                                        <select id="huyen" onchange="changeHuyen()" style="background-color: rgb(129, 63, 11);color: white;">
+                                            <c:forEach  var="i" items="${huyen}">
 
-                                            <c:if test="${currentHuyen != i.getMaHuyen()}">
-                                                <option value="${i.getMaHuyen()}" >${i.getTenHuyen()}</option>
-                                            </c:if>
-                                            <c:if test="${ currentHuyen == i.getMaHuyen()}">
-                                                <option value="${i.getMaHuyen()}" selected>${i.getTenHuyen()}</option>
-                                            </c:if>
-                                        </c:forEach>
-                                    </select>
-                            </div>
-                        </td>
-                    </tr>
-                  
-                    <tr>
-                        <td>
-                            <div class="banners">
-                                <center><div class="containText">
-                                        PREPAYMENT
-                                    </div></center>
-                            </div>
-                        </td>
-                        <td colspan="2">
-                            <div class="banners2">
-                                <b>${payment}</b>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+                                                <c:if test="${currentHuyen != i.getMaHuyen()}">
+                                                    <option value="${i.getMaHuyen()}" >${i.getTenHuyen()}</option>
+                                                </c:if>
+                                                <c:if test="${ currentHuyen == i.getMaHuyen()}">
+                                                    <option value="${i.getMaHuyen()}" selected>${i.getTenHuyen()}</option>
+                                                </c:if>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="banners">
+                                        <center><div class="containText">
+                                                PREPAYMENT
+                                            </div></center>
+                                    </div>
+                                </td>
+                                <td colspan="2">
+                                    <div class="banners2">
+                                        <b>${payment}</b>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>  
+            <div id = "footer">
+                <footer>
+                    <div class="footerImageContain" >       
+                        <div class="footerImageContainInfor">
+                            <p><b>Team Project:</b> Flash Post </p>
+                            <p><b><i class="fas fa-users"></i> Member Of Team:</b> 
+                                <br><i class="fas fa-female"> Nguyễn Thị Hường</i>
+                                <br><i class="fas fa-male"> Nguyễn Bảo Long</i> 
+                                <br><i class="fas fa-male"> Lê Mạnh Hùng</i> 
+                            </p>
+                            <p><b>Class:</b> SE1210</p>
+                            <p></p>
+                        </div>
+                        <img src="Image/footerImage.png" width="100%" height="150px">
+                    </div>         
+                </footer>
             </div>
-        </form>
+        </div>
         <script type="text/javascript">
             function change() {
                 var xmlhttp = new XMLHttpRequest();
                 setTimeout(function () {
                     window.location.href = "http://localhost:8084/ProjectPRJ321Version10/ChargeDeliveryServlet?tinh1=" +
-                            document.getElementById('tinh1').value+
-                            "&tinh="+document.getElementById('tinh').value+
-                            "&mien="+document.getElementById('mien').value+
-                            "&gam="+document.getElementById('g').value+
-                           "&type="+document.getElementById('type').value;
+                            document.getElementById('tinh1').value +
+                            "&tinh=" + document.getElementById('tinh').value +
+                            "&mien=" + document.getElementById('mien').value +
+                            "&gam=" + document.getElementById('g').value +
+                            "&type=" + document.getElementById('type').value;
                 }, 400);
-    
+
             }
 
             function changeHuyen() {
                 var xmlhttp = new XMLHttpRequest();
                 window.location.href = "http://localhost:8084/ProjectPRJ321Version10/ChargeDeliveryShowInforPost?huyen=" +
-                        document.getElementById('huyen').value + "&tinh="+document.getElementById('tinh').value +
-                        "&tinh1=" + document.getElementById('tinh1').value+ 
-                        "&mien="+document.getElementById('mien').value+
-                        "&gam="+document.getElementById('g').value+
-                        "&type="+document.getElementById('type').value;
-    ////            xmlhttp.open("POST", "/ProjectPRJ321Version10/ShowInforPost", true);
-    ////            xmlhttp.send(document.getElementById('huyen').value);
+                        document.getElementById('huyen').value + "&tinh=" + document.getElementById('tinh').value +
+                        "&tinh1=" + document.getElementById('tinh1').value +
+                        "&mien=" + document.getElementById('mien').value +
+                        "&gam=" + document.getElementById('g').value +
+                        "&type=" + document.getElementById('type').value;
+                ////            xmlhttp.open("POST", "/ProjectPRJ321Version10/ShowInforPost", true);
+                ////            xmlhttp.send(document.getElementById('huyen').value);
             }
 
-            </script>
-            <script src="JS/chargeStyle.js" type="text/javascript"></script>
-        </body>
-    </html>
+        </script>
+        <script src="JS/chargeStyle.js" type="text/javascript"></script>
+        <script type="text/javascript" src="JS/homeStyle.js"></script>
+        <script type="text/javascript" src="JS/clock.js"></script>
+    </body>
+</html>

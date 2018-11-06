@@ -124,17 +124,18 @@
 
 .bannersodd{
     position: relative;
-    background-color: rgb(211, 109, 98);
+    background-color: rgb(129, 63, 11);
     height: 40px;
     width: 115%;
     font-size: 25px;
     white-space: nowrap;
+    color: white;
 }
 
 .bannersodd::before{
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
-    border-right: 25px solid rgb(211, 109, 98);
+    border-right: 25px solid rgb(129, 63, 11);
     content: "";
     left:-25px;
     height: 0;
@@ -155,16 +156,17 @@
 
 .banners2odd{
     position: relative;
-    background-color: rgb(211, 109, 98);
+    background-color: rgb(129, 63, 11);
     height: 40px;
     width: 100%;
     font-size: 20px;
     white-space: nowrap;
+    color: white;
 }
 
 .banners2odd::before{
     border-top: 20px solid transparent;
-    border-left: 20px solid rgb(211, 109, 98);
+    border-left: 20px solid rgb(129, 63, 11);
     content: "";
     bottom: 0;
     right: -20px;
@@ -175,7 +177,7 @@
 
 .banners2odd::after{
     border-bottom: 20px solid transparent;
-    border-left: 20px solid rgb(211, 109, 98);
+    border-left: 20px solid rgb(129, 63, 11);
     content: "";
     right: -20px;
     height: 0;
@@ -185,11 +187,12 @@
 
 .banners3odd{
     position: relative;
-    background-color: 	rgb(211, 109, 98);
+    background-color: 	rgb(129, 63, 11);
     height: 40px;
     width: 115%;
     font-size: 20px;
     white-space: nowrap;
+    color: white;
 }
 
 
