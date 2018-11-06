@@ -4,170 +4,148 @@
     Author     : Nguyen Bao Long
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.AbstractList"%>
+<%@page import="com.entity.Staff"%>
+<%@page import="java.util.List"%>
+<%@page import="com.data1.DAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="CSS/manageStaf.css">
         <title>ManageStaff</title>
-        
     </head>
     <body>
-        <table class="manageStaffTable">
-            <tr>
-                <th>
-                    <div class="manageStaffHeadContain">
-                        <div class="manageStaffHeadContainText">
-                            USER
+        <%
+            DAO dao = new DAO();
+            List<Staff> listStaff = new ArrayList<>();
+            listStaff=dao.getStaff();
+            
+        %>
+        <form method="Post" action="">
+            <table class="manageStaffTable">
+                <tr>
+                    <th>
+                        <div class="manageStaffHeadContain">
+                            <div class="manageStaffHeadContainText">
+                                USER
+                            </div>
                         </div>
-                    </div>
-                </th>
-                <th>
-                    <div class="manageStaffHeadContain">
-                        <div class="manageStaffHeadContainText">
-                            Mã Bưu Cục
+                    </th>
+                    <th>
+                        <div class="manageStaffHeadContain">
+                            <div class="manageStaffHeadContainText">
+                                Mã Bưu Cục
+                            </div>
                         </div>
-                    </div>
-                </th>
-                <th>
-                    <div class="manageStaffHeadContain">
-                        <div class="manageStaffHeadContainText">
-                            Id
+                    </th>
+                    <th>
+                        <div class="manageStaffHeadContain">
+                            <div class="manageStaffHeadContainText">
+                                Id
+                            </div>
                         </div>
-                    </div>
-                </th>
-                <th>
-                    <div class="manageStaffHeadContain">
-                        <div class="manageStaffHeadContainText">
-                            Tên
+                    </th>
+                    <th>
+                        <div class="manageStaffHeadContain">
+                            <div class="manageStaffHeadContainText">
+                                Tên
+                            </div>
                         </div>
-                    </div>
-                </th>
-                <th>
-                    <div class="manageStaffHeadContain">
-                        <div class="manageStaffHeadContainText">
-                            Địa Chỉ
+                    </th>
+                    <th>
+                        <div class="manageStaffHeadContain">
+                            <div class="manageStaffHeadContainText">
+                                Địa Chỉ
+                            </div>
                         </div>
-                    </div>
-                </th>
-                <th>
-                    <div class="manageStaffHeadContain">
-                        <div class="manageStaffHeadContainText">
-                            Số điện thoại 
+                    </th>
+                    <th>
+                        <div class="manageStaffHeadContain">
+                            <div class="manageStaffHeadContainText">
+                                Số điện thoại 
+                            </div>
                         </div>
-                    </div>
-                </th>
-                <th>
-                    <div class="manageStaffHeadContain">
-                        <div class="manageStaffHeadContainText">
-                            Chức vụ
+                    </th>
+                    <th>
+                        <div class="manageStaffHeadContain">
+                            <div class="manageStaffHeadContainText">
+                                Chức vụ
+                            </div>
                         </div>
-                    </div>
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="manageStaffContain">
-                        <div class="manageStaffContainText">
-                            Client 1
+                    </th>
+                    <th>
+                        <div class="manageStaffHeadContain">
+                            <div class="manageStaffHeadContainText">
+                                Xóa Nhân Viên
+                            </div>
                         </div>
-                    </div> 
-                </td>
-                <td>
-                    <div class="manageStaffContain">
-                        <div class="manageStaffContainText">
-                        05
-                        </div>
-                    </div> 
-                </td>
-                <td>
-                    <div class="manageStaffContain">
-                        <div class="manageStaffContainText">
-                        SE0000
-                        </div>
-                    </div> 
-                </td>
-                <td>
-                    <div class="manageStaffContain">
-                        <div class="manageStaffContainText">
-                        Nguyễn Bảo Longdcccccccccccccccccccccccccccccccccccccccccccccccccccccc
-                        </div>
-                    </div> 
-                </td>
-                <td>
-                    <div class="manageStaffContain">
-                        <div class="manageStaffContainText">
-                        Hà Nội
-                        </div>
-                    </div> 
-                </td>
-                <td>
-                    <div class="manageStaffContain">
-                        <div class="manageStaffContainText">
-                        0934538675
-                        </div>
-                    </div> 
-                </td>
-                <td>
-                    <div class="manageStaffContain">
-                        <div class="manageStaffContainText">
-                        Sinh Viên
-                        </div>
-                    </div> 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="manageStaffContain">
-                        <div class="manageStaffContainText">
-                            Client 2
-                        </div>
-                    </div> 
-                </td>
-                <td>
-                    <div class="manageStaffContain">
-                        <div class="manageStaffContainText">
-                        0fsdsdf
-                        </div>
-                    </div> 
-                </td>
-                <td>
-                    <div class="manageStaffContain">
-                        <div class="manageStaffContainText">
-                        SE03333
-                        </div>
-                    </div> 
-                </td>
-                <td>
-                    <div class="manageStaffContain">
-                        <div class="manageStaffContainText">
-                        Hường
-                        </div>
-                    </div> 
-                </td>
-                <td>
-                    <div class="manageStaffContain">
-                        <div class="manageStaffContainText">
-                        Hưng Yên
-                        </div>
-                    </div> 
-                </td>
-                <td>
-                    <div class="manageStaffContain">
-                        <div class="manageStaffContainText">
-                        #########
-                        </div>
-                    </div> 
-                </td>
-                <td>
-                    <div class="manageStaffContain">
-                        <div class="manageStaffContainText">
-                        Sinh Viên
-                        </div>
-                    </div> 
-                </td>
-            </tr>
-        </table>
+                    </th>
+                </tr>
+                <c:forEach var="i" items="${listStaff}">
+                    <tr>
+                        <td>
+                            <div class="manageStaffContain">
+                                <div class="manageStaffContainText">
+                                    ${i.getTen()}
+                                </div>
+                            </div> 
+                        </td>
+                        <td>
+                            <div class="manageStaffContain">
+                                <div class="manageStaffContainText">
+                                    ${i.getMaBC()}
+                                </div>
+                            </div> 
+                        </td>
+                        <td>
+                            <div class="manageStaffContain">
+                                <div class="manageStaffContainText">
+                                    <input  type="text" name="id" value="${i.getid}">
+                                </div>
+                            </div> 
+                        </td>
+                        <td>
+                            <div class="manageStaffContain">
+                                <div class="manageStaffContainText">
+                                    ${i.getTen()}
+                                </div>
+                            </div> 
+                        </td>
+                        <td> 
+                            <div class="manageStaffContain">
+                                <div class="manageStaffContainText">
+                                    ${i.getDiaChi()}
+                                </div>
+                            </div> 
+                        </td>
+                        <td>
+                            <div class="manageStaffContain">
+                                <div class="manageStaffContainText">
+                                    ${i.getSdt()}
+                                </div>
+                            </div> 
+                        </td>
+                        <td>
+                            <div class="manageStaffContain">
+                                <div class="manageStaffContainText">
+                                    ${i.getDiaChi()}
+                                </div>
+                            </div> 
+                        </td>
+                        <td>
+                            <div class="manageStaffContain">
+                                <div class="manageStaffContainText">
+                                    <a href="/ProjectPRJ321Version10/DeleteStaffServlet"> <input type="button" value="delete"></a>
+                                </div>
+                            </div> 
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </form>
     </body>
 </html>

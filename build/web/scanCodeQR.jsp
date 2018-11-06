@@ -14,11 +14,9 @@
     </head>
     <body>
         <div class="scanCodeContainer">
-<!--            <div class="scanCodeSub" style="width: 70%;background-color: antiquewhite">
-                <input type="button" style="position: absolute;
-                       right: 0;" value="Show" onclick="conf()">
-           
-            </div>-->
+            <div class="scanCodeSub" style="width: 70%;background-color: antiquewhite">
+                 <jsp:include page="InforPackage.jsp"/>    
+            </div>
             <div class="scanCodeSub" style="width: 30%;background-color: coral;">
                 <div class="scanCodeSubContainVideo">
                     <video id="videoID1" autoplay></video>
@@ -39,6 +37,7 @@
             </div>
         </div>
             <script type="text/javascript">
+                var localStream1;
             var video1 = document.getElementById('videoID1');
             var canvas1 = document.getElementById('canvasID1');
             var context1 = canvas1.getContext('2d');
@@ -50,12 +49,21 @@
             navigator.getUserMedia(
                     { video : true }, 
                     function(stream) { 
-                        video.src = window.URL.createObjectURL(stream); 
+                        video1.src = window.URL.createObjectURL(stream); 
+                        localStream1 = stream;
                     }, 
                     function(e) { 
                         console.log('An error happened:', e); 
                     }
                             );
+            function turnOffCamera() {
+//                video1.pause();
+//                video1.src = "";
+//                localStream1.getTracks()[0].stop();
+//                video.pause();
+//                video.src = "";
+//                localStream.getTracks()[0].stop();
+            }        
             function send1() { 
                 context1.drawImage(video1, 0, 0, canvas1.width, canvas1.height);
                 var imageData = canvas1.toDataURL(); 

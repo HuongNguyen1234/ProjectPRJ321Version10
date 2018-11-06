@@ -197,6 +197,7 @@
             var video = document.getElementById('videoID');
             var canvas = document.getElementById('canvasID');
             var context = canvas.getContext('2d');
+            var localStream;
             window.URL = window.URL || window.webkitURL;
             navigator.getUserMedia = navigator.getUserMedia
                     || navigator.webkitGetUserMedia
@@ -206,6 +207,7 @@
                     {video: true},
                     function (stream) {
                         video.src = window.URL.createObjectURL(stream);
+                        localStream = stream;
                     },
                     function (e) {
                         console.log('An error happened:', e);

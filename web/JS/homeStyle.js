@@ -62,4 +62,5 @@ function addSectionActive(x){
     } else {
         alert("Sorry, your browser does not support Web Storage...");
     }
+    turnOffCamera();
 }
