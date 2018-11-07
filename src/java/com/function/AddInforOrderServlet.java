@@ -40,6 +40,7 @@ public class AddInforOrderServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+       request.setCharacterEncoding("UTF-8");
         try {
             DAO dao = new DAO();
             HttpSession session = request.getSession();
@@ -49,10 +50,11 @@ public class AddInforOrderServlet extends HttpServlet {
             int sdtGui = Integer.parseInt(request.getParameter("sdtGui"));
             String tenNhan = request.getParameter("tenNhan");
             String diaChiNhan = request.getParameter("diaChiNhan");
+            
             int sdtNhan = Integer.parseInt(request.getParameter("sdtNhan"));
             String loaiHang = request.getParameter("productType");
             String mien = request.getParameter("mien");
-            int phiThuHo = Integer.parseInt(request.getParameter("phiThuHo"));
+            float phiThuHo = Integer.parseInt(request.getParameter("phiThuHo"));
            
             String tenMien = dao.getTenMien(mien);
             TinhPhi t = dao.getPhi(mien);
@@ -63,24 +65,24 @@ public class AddInforOrderServlet extends HttpServlet {
             String maDH = randomString(13);
             if (0 < gam && gam < 0.25) {
                 if (mien.equals(t.getMaMien())) {
-                    payment = t.getGia();
+                    payment =  t.getGia();
                 }
 
             } else if (0.25 <= gam && gam <= 0.5) {
                 if (mien.equals(t.getMaMien())) {
-                    payment = t.getGia();
+                    payment =  t.getGia();
                 }
             } else if (0.5 < gam && gam <= 1) {
                 if (mien.equals(t.getMaMien())) {
-                    payment = t.getGia();
+                    payment =  t.getGia();
                 }
             } else if (1 < gam && gam <= 1.5) {
                 if (mien.equals(t.getMaMien())) {
-                    payment = t.getGia();
+                    payment = (int) t.getGia();
                 }
             } else if (gam > 1.5) {
                 if (mien.equals(t.getMaMien())) {
-                    payment = t.getGia() * gam / 2;
+                    payment = (int) (t.getGia() * gam / 2);
                 }
             }
             tongTien = payment + phiThuHo;

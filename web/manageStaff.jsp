@@ -4,6 +4,7 @@
     Author     : Nguyen Bao Long
 --%>
 
+<%@page import="com.controller.ManagementController"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.AbstractList"%>
 <%@page import="com.entity.Staff"%>
@@ -21,8 +22,8 @@
     <body>
         <%
             DAO dao = new DAO();
-            List<Staff> listStaff = new ArrayList<>();
-            listStaff=dao.getStaff();
+            ManagementController listS = new ManagementController();
+            listS.setStaff(dao.getStaff());
             
         %>
         <form method="Post" action="">
@@ -38,7 +39,7 @@
                     <th>
                         <div class="manageStaffHeadContain">
                             <div class="manageStaffHeadContainText">
-                                Mã Bưu Cục
+                                PostCode
                             </div>
                         </div>
                     </th>
@@ -52,40 +53,47 @@
                     <th>
                         <div class="manageStaffHeadContain">
                             <div class="manageStaffHeadContainText">
-                                Tên
+                                Name
                             </div>
                         </div>
                     </th>
                     <th>
                         <div class="manageStaffHeadContain">
                             <div class="manageStaffHeadContainText">
-                                Địa Chỉ
+                                Address
                             </div>
                         </div>
                     </th>
                     <th>
                         <div class="manageStaffHeadContain">
                             <div class="manageStaffHeadContainText">
-                                Số điện thoại 
+                                Number phone
                             </div>
                         </div>
                     </th>
                     <th>
                         <div class="manageStaffHeadContain">
                             <div class="manageStaffHeadContainText">
-                                Chức vụ
+                                Position
                             </div>
                         </div>
                     </th>
                     <th>
                         <div class="manageStaffHeadContain">
                             <div class="manageStaffHeadContainText">
-                                Xóa Nhân Viên
+                                Delete Employee
+                            </div>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="manageStaffHeadContain">
+                            <div class="manageStaffHeadContainText">
+                                Add Employee
                             </div>
                         </div>
                     </th>
                 </tr>
-                <c:forEach var="i" items="${listStaff}">
+                <c:forEach var="i" items="<%= listS.getStaff()%>">
                     <tr>
                         <td>
                             <div class="manageStaffContain">
@@ -104,7 +112,7 @@
                         <td>
                             <div class="manageStaffContain">
                                 <div class="manageStaffContainText">
-                                    <input  type="text" name="id" value="${i.getid}">
+                                    <input  type="text" name="id" value="${i.getId()} " disabled>
                                 </div>
                             </div> 
                         </td>
@@ -140,6 +148,13 @@
                             <div class="manageStaffContain">
                                 <div class="manageStaffContainText">
                                     <a href="/ProjectPRJ321Version10/DeleteStaffServlet"> <input type="button" value="delete"></a>
+                                </div>
+                            </div> 
+                        </td>
+                        <td>
+                            <div class="manageStaffContain">
+                                <div class="manageStaffContainText">
+                                    <a href="/ProjectPRJ321Version10/AddStaffServlet"> <input type="button" value="Add"></a>
                                 </div>
                             </div> 
                         </td>

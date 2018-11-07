@@ -11,7 +11,7 @@
     <title>header</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link rel="stylesheet" type="text/css" href="CSS/homStyle.css">
+    <link rel="stylesheet" type="text/css" href="CSS/homeStyle.css">
     <body>
         <!--slide show-->
         <div style="width: 100%;height: 50px;background: linear-gradient(0.25turn,rgb(233, 180, 69),rgb(249, 100, 0));">
@@ -190,28 +190,25 @@
                 <%
                     session = request.getSession(false);
                     if (session.getAttribute("name") == null) {
-                %>
-
-                <%
-                } else {
-                    String name = (String) session.getAttribute("name");
+                    } else if ((String) session.getAttribute("name") != null
+                            && session.getAttribute("chucVu").equals("Quanly")) {
+                      
                 %>
                 <a href="#manage" style="float: right;" onclick="addSectionActive(7)"> <i class="fas fa-users" style="font-size: 20px;" ></i> <b>Manage</b></a>
                 <%
+                    
                     }
                 %>
             </div>           
         </nav>
-            <canvas id="canvasClock" onclick="topFunction()"></canvas>
+        <canvas id="canvasClock" onclick="topFunction()"></canvas>
     </body>
     <script type="text/javascript">
         var error = "<%= request.getAttribute("error")%>";
         if (error !== "null") {
             document.getElementById("modalLogin").style.display = "block";
-        } else {
-            document.getElementById("modalLogin").style.display = "none";
         }
     </script>
-    <script type="text/javascript" src="JS/clock.js">       
+    <script type="text/javascript" src="JS/clock.js">
     </script>
 </html>

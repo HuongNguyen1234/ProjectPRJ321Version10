@@ -15,7 +15,18 @@
         <link rel="stylesheet" href="CSS/employee.css" type="text/css">
     </head>
     <body>
-        
+        <%
+       
+            DAO dao= new DAO();
+            HttpSession t=request.getSession();
+            String idt= t.getAttribute("id").toString();
+            Staff s=dao.getStaffById(idt);
+            request.setAttribute("ten", s.getTen());
+            request.setAttribute("diaChi", s.getDiaChi());
+            request.setAttribute("sdt", s.getSdt());
+            request.setAttribute("maBC", s.getMaBC());
+        %>
+        <form>
         <div class="employeeContainHeader">
             <div class="employeeContainHeaderSub">   
                 <div class="employeeContainHeaderFirst">   
@@ -42,7 +53,7 @@
                 <div class="employeeBannerMainOdd">
                     <div class="employeeBannerFirstOdd"></div>           
                         <div class="employeeBannerContainText">
-                         ${staff.getTen()}
+                         ${ten}
                         </div>
                     <div class="employeeBannerLastOdd"></div>                 
                 </div>
@@ -66,7 +77,7 @@
                 <div class="employeeBannerMain">
                     <div class="employeeBannerFirst"></div>           
                         <div class="employeeBannerContainText">
-                            ${staff.getMaBC()}
+                            ${maBC}
                         </div>
                     <div class="employeeBannerLast"></div>                 
                 </div>
@@ -98,29 +109,7 @@
                 </div>
             </div>
         </div> 
-<!--        <div class="employeeContainInformation">
-            <div class="employeeContainSub">
-                <div class="employeeBannerMiddle">
-                </div>
-                <div class="employeeBanner" >
-                    <div class="employeeBannerFirst"></div>           
-                            Tên
-                        </div>
-                    <div class="employeeBannerLast"></div>  
-                </div>
-                <div class="employeeBannerMiddle">
-                </div>
-                <div class="employeeBannerMain">
-                    <div class="employeeBannerFirst"></div>           
-                        <div class="employeeBannerContainText">
-                          
-                        </div>
-                    <div class="employeeBannerLast"></div>                 
-                </div>
-                <div class="employeeBannerMiddle">
-                </div>
-            </div>-->
-        </div> 
+
         <div class="employeeContainInformation">
             <div class="employeeContainSub">
                 <div class="employeeBannerMiddleOdd">
@@ -137,7 +126,7 @@
                 <div class="employeeBannerMainOdd">
                     <div class="employeeBannerFirstOdd"></div>           
                         <div class="employeeBannerContainText">
-                             ${staff.getDiaChi()}
+                             ${diaChi}
                         </div>
                     <div class="employeeBannerLastOdd"></div>                 
                 </div>
@@ -161,7 +150,7 @@
                 <div class="employeeBannerMain">
                     <div class="employeeBannerFirst"></div>           
                         <div class="employeeBannerContainText">
-                             ${staff.getSdt()}
+                             ${sdt}
                         </div>
                     <div class="employeeBannerLast"></div>                 
                 </div>
@@ -185,7 +174,7 @@
                 <div class="employeeBannerMainOdd">
                     <div class="employeeBannerFirstOdd"></div>           
                         <div class="employeeBannerContainText">
-                             ${staff.getChucVu()}
+                            ${sessionScope.chucVu}
                         </div>
                     <div class="employeeBannerLastOdd"></div>                 
                 </div>
@@ -193,5 +182,6 @@
                 </div>
             </div>
         </div> 
+    </form>
     </body>
 </html>

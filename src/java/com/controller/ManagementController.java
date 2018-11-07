@@ -5,7 +5,6 @@
  */
 package com.controller;
 
-import com.entity.Manage;
 import com.entity.Staff;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,6 @@ import java.util.List;
  */
 public class ManagementController {
     
-    private Manage manage;
     private List<Staff> staff;
 
     public ManagementController() {
@@ -32,9 +30,10 @@ public class ManagementController {
         return staff;
     }
 
-    public void setStaff(Staff staff) {
-        this.staff = (List<Staff>) staff;
+    public void setStaff(List<Staff> staff) {
+        this.staff = staff;
     }
-    
+
+  
     
 }

@@ -9,7 +9,6 @@ import com.controller.ListPostController;
 import com.data1.DAO;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -103,7 +102,7 @@ public class Journal {
         } catch (Exception ex) {
             Logger.getLogger(Journal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         String dateString = format.format(thoiGian);
         return dateString + " : " + tt + " tại " + dc + ".";
     }

@@ -14,12 +14,16 @@ import java.util.Date;
  * @author huong karatedo
  */
 public class NewClass {
-    public static void main(String[] args) throws ParseException {
-        Date date = java.util.Calendar.getInstance().getTime();
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+     
 
-        String dateString = format.format(date);
-//        Date date1 = format.parse("2009-12-31");
-        System.out.println(dateString);
+    public static void main(String... args) throws Exception {
+        String czech = "Český";
+        String japanese = "27,5";
+        float i=Float.parseFloat(japanese.replace(",","."));
+        System.out.println(i);
+       
     }
+
 }
+    
+

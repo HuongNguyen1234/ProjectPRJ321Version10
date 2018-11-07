@@ -90,8 +90,8 @@ public class QrCodeGetInfoOrderServlet extends HttpServlet {
                 request.setAttribute("maDH", order.getMaDH());
             
 //                request.getRequestDispatcher("status.jsp").forward(request, response);
-            }
                 request.getRequestDispatcher("scanCodeQR.jsp").forward(request, response);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

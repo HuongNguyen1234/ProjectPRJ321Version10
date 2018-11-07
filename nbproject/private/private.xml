@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/ki4/PRJ321/ProjectPRJ321Version10/web/employee.jsp</file>
-            <file>file:/F:/ki4/PRJ321/ProjectPRJ321Version10/src/java/com/function/QrCodeGetInfoOrderServlet.java</file>
+            <file>file:/F:/ki4/PRJ321/ProjectPRJ321Version10/web/WEB-INF/tags/header.tag</file>
+            <file>file:/F:/ki4/PRJ321/ProjectPRJ321Version10/web/home.jsp</file>
+            <file>file:/F:/ki4/PRJ321/ProjectPRJ321Version10/src/java/com/data1/DAO.java</file>
+            <file>file:/F:/ki4/PRJ321/ProjectPRJ321Version10/web/manageStaff.jsp</file>
+            <file>file:/F:/ki4/PRJ321/ProjectPRJ321Version10/web/chargeAndDelivery.jsp</file>
+            <file>file:/F:/ki4/PRJ321/ProjectPRJ321Version10/src/java/com/controller/ManagementController.java</file>
+            <file>file:/F:/ki4/PRJ321/ProjectPRJ321Version10/src/java/com/entity/Staff.java</file>
             <file>file:/F:/ki4/PRJ321/ProjectPRJ321Version10/web/scanCodeQR.jsp</file>
         </group>
     </open-files>
