@@ -110,7 +110,37 @@ public class DAO {
 
     }
 
-    public Post getPost(float mBC) throws SQLException, Exception {
+    public List<Post> getAllPost() throws SQLException, Exception {
+        String result = "";
+        String xSql = "select * from BuuCuc ";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Post> list = new ArrayList<>();
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                float maBC = rs.getFloat("maBC");
+                String tenBC = rs.getString("TenBC");
+                float tinh = rs.getFloat("MaTinh");
+                float huyen = rs.getFloat("MaHuyen");
+                String xa = rs.getString("Xa");
+                String thon = rs.getString("Thon");
+                Post p = new Post(maBC, tenBC, tinh, huyen, xa, thon);
+                list.add(p);
+            }
+            return list;
+
+        } catch (SQLException ex) {
+            throw ex;
+        } finally {
+            closeConnection(rs, ps, conn);
+        }
+    }
+
+    public Post getPost(int mBC) throws SQLException, Exception {
         String result = "";
         String xSql = "select * from BuuCuc where MaBC = ?";
         Connection conn = null;
@@ -130,6 +160,39 @@ public class DAO {
                 String thon = rs.getString("Thon");
 
                 Post p = new Post(maBC, tenBC, tinh, huyen, xa, thon);
+                return p;
+            }
+
+        } catch (SQLException ex) {
+            throw ex;
+        } finally {
+            closeConnection(rs, ps, conn);
+        }
+        return null;
+    }
+
+    public Post getBuuCucDen(String xa, String huyen, String tinh) throws SQLException, Exception {
+        String result = "";
+        String xSql = "select * from BuuCuc where  Xa=? and MaHuyen=(select MaHuyen from Huyen where Ten = ?) "
+                + "and MaTinh=(select MaTinh from Tinh where Ten= ?)";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            ps.setString(1, xa);
+            ps.setString(2, huyen);
+            ps.setString(3, tinh);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                float maBC = rs.getFloat("maBC");
+                String tenBC = rs.getString("TenBC");
+                float tinh1 = rs.getFloat("MaTinh");
+                float huyen1 = rs.getFloat("MaHuyen");
+                String xa1 = rs.getString("Xa");
+                String thon = rs.getString("Thon");
+                Post p = new Post(maBC, tenBC, tinh1, huyen1, xa1, thon);
                 return p;
             }
 
@@ -206,7 +269,8 @@ public class DAO {
         }
 
     }
-    public Staff getStaffById(String id)throws SQLException, Exception{
+
+    public Staff getStaffById(String id) throws SQLException, Exception {
         String xSql = "select * from NhanVien where Id=?";
         Connection conn = null;
         PreparedStatement ps = null;
@@ -226,13 +290,14 @@ public class DAO {
                 String userName = rs.getString("UserName");
                 String password = rs.getString("Password");
                 Staff s = new Staff(id, ten, diaChi, sdt, chucVu, maBC, userName, password);
-               return s;
+                return s;
             }
         } catch (SQLException ex) {
             throw ex;
         }
         return null;
     }
+
     public String getChucVuStaff(String id) throws SQLException, Exception {
         String xSql = "select * from NhanVien where Id=?";
         Connection conn = null;
@@ -675,7 +740,6 @@ public class DAO {
             closeConnection(rs, ps, conn);
         }
     }
-    
 
     public void addJournal(Journal j) throws SQLException, Exception {
         String xsql = "insert into Journal (IdHT,MaDH,ThoiGian,IdTrangThai,DiaChi)" + "values(?,?,?,?,?)";

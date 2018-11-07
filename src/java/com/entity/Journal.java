@@ -5,8 +5,13 @@
  */
 package com.entity;
 
+import com.controller.ListPostController;
+import com.data1.DAO;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -70,18 +75,37 @@ public class Journal {
 
     @Override
     public String toString() {
-        String tt;
-        if (trangThai.equals("1d")) {
-            tt = "Đã nhận đơn";
-        } else if (trangThai.equals("2d")) {
-            tt = "Đang vẫn chuyển";
-        } else {
-            tt = "Đã Giao Thành Công";
+        String tt = null;
+        String dc = null;
+        DAO dao = new DAO();
+        try {
+            Order or = dao.getOrderByDH(maDH);
+            Post p = dao.getPost(or.getMaBC());
+            String tentinh = dao.getTenTinh(p.getMatinh());
+            String tenhuyen = dao.getTenTinh(p.getMaHuyen());
+            ListPostController list = new ListPostController();
+            if (trangThai.equals("1d")) {
+                tt = "Đã nhận đơn";
+
+                dc = p.getXa() + p.getThon() + tenhuyen + tentinh;
+            } else if (trangThai.equals("2d")) {
+                tt = "Đang vẫn chuyển";
+                ListPostController listp = (ListPostController) dao.getAllPost();
+                String ten = or.getDiaChiNhan();
+                String[] tempArray;
+                tempArray = ten.split(",");
+                Post postTen = dao.getBuuCucDen(tempArray[0], tempArray[1], tempArray[2]);
+                dc = p.diaChiPost();
+            } else {
+                tt = "Đã Giao Thành Công";
+                dc = or.getDiaChiNhan();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Journal.class.getName()).log(Level.SEVERE, null, ex);
         }
-//        Date date = java.util.Calendar.getInstance().getTime();
         SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
         String dateString = format.format(thoiGian);
-        return dateString + " : " + tt + " tại " + diaChi + ".";
+        return dateString + " : " + tt + " tại " + dc + ".";
     }
 
 }

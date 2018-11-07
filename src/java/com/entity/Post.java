@@ -87,7 +87,9 @@ public class Post {
     public void setThon(String thon) {
         this.thon = thon;
     }
-   
+   public String diaChiPost() throws Exception{
+       return "Mã bưu cục:"+maBC+"Địa Chỉ: "+thon+","+xa+","+getTenHuyen(MaHuyen)+","+getTenTinh(Matinh);
+   }
 
     @Override
     public String toString() {

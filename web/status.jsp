@@ -16,6 +16,7 @@
         <title>Status</title>
     </head>
     <body>
+        
         <!--===============================================Search bar=================================================================-->
         <!--        <div class="searchItemStatus">           
                     <div class="searchItemStatusContainText">
@@ -305,5 +306,6 @@
                     document.getElementById("save").style.display = "none";                                      
                 }       
         </script>
+        
     </body>
 </html>

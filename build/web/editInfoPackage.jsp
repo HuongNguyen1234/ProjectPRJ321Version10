@@ -6,7 +6,10 @@
 
 <%@page import="com.controller.MienController"%>
 <%@page import="com.data1.DAO"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%--<%@page contentType="text/html" pageEncoding="UTF-8"%>--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -17,6 +20,7 @@
         <title>Package Information</title>
     </head>
     <body>
+       
         <div class="grid-container">
             <div id = "header">
                 <header>    
@@ -99,13 +103,9 @@
                     <c:redirect url="/OrderShowMienServlet?mien=11c"/>
                 </c:if>
                 <%
-                    //        if (request.getParameter("tinh") == null) {
-                    //            request.getRequestDispatcher("/ShowHuyenServlet?tinh=1").forward(request, response);
-                    //        }
+                  
                     DAO dao = new DAO();
-                    //            TinhController listTinh = new TinhController();
                     MienController listMien = new MienController();
-                    //            listTinh.setListTinh(dao.getAllTinhBuuCuc());
                     listMien.setMien(dao.getMien());
 
                 %>

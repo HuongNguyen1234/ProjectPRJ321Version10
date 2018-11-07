@@ -6,6 +6,7 @@
 package com.function;
 
 import com.data1.DAO;
+import com.entity.Journal;
 import com.entity.Order;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.LuminanceSource;
@@ -18,6 +19,10 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -41,7 +46,7 @@ public class QrCodeGetInfoOrderServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try {
             DAO dao = new DAO();
@@ -63,20 +68,35 @@ public class QrCodeGetInfoOrderServlet extends HttpServlet {
             }
 
             if (result != null) {
-                String maDH = result.getText();
-                Order or = dao.getOrderByDH(maDH);
-                request.setAttribute("maDH", or.getMaDH());
-                request.setAttribute("diaChiGui", or.getDiaChiGui());
-                request.setAttribute("diaChiNhan", or.getDiaChiNhan());
-                request.setAttribute("maDH", or.getMaDH());
-                request.setAttribute("maDH", or.getMaDH());
+//                String maDH = result.getText();
+//                Order or = dao.getOrderByDH(maDH);
+//                request.setAttribute("maDH", or.getMaDH());
+//                request.setAttribute("diaChiGui", or.getDiaChiGui());
+//                request.setAttribute("diaChiNhan", or.getDiaChiNhan());
+//                request.setAttribute("maDH", or.getMaDH());
+//                request.setAttribute("maDH", or.getMaDH());
+                Order order = dao.getOrderByDH(result.getText());
+                String t = dao.getTenTrangThai(order.getIdTrangThai());
+                List<Journal> jo = new ArrayList<>();
+                jo = dao.getListJournal(order.getMaDH());
+                String journalListToString = "";
+                for (Journal j : jo) {
+                    journalListToString += j.toString() + "\n <br>";
+                }
+                request.setAttribute("journalList", journalListToString);
+                request.setAttribute("khoiLuong", order.getKhoiLuong());
+                request.setAttribute("tenTrangThai", t);
+                request.setAttribute("IdTrangThai", order.getIdTrangThai());
+                request.setAttribute("maDH", order.getMaDH());
+            
+//                request.getRequestDispatcher("status.jsp").forward(request, response);
             }
                 request.getRequestDispatcher("scanCodeQR.jsp").forward(request, response);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+}
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -90,7 +110,11 @@ public class QrCodeGetInfoOrderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(QrCodeGetInfoOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -104,7 +128,11 @@ public class QrCodeGetInfoOrderServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(QrCodeGetInfoOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
