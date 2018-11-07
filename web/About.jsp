@@ -11,9 +11,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="CSS/aboutt.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
-        <div class="MemberContain">
+        <div class="MemberContain" id="idMemberContain1">
             <div class="infoMember">
                 <img src="Image/avatar6.png" width="300px" height="300px" class="infoMemberImage">  
                 <div class="infoMemberImageHidden">
@@ -45,7 +46,7 @@
                 </div>
             </div>      
         </div>
-        <div class="MemberContain">
+        <div class="MemberContain" id="idMemberContain2">
             <div class="infoMember">
                 <img src="Image/avatar6.png" width="300px" height="300px" class="infoMemberImage">  
                 <div class="infoMemberImageHidden">
@@ -77,7 +78,7 @@
                 </div>
             </div>      
         </div>
-        <div class="MemberContain">
+        <div class="MemberContain" id="idMemberContain3">
             <div class="infoMember">
                 <img src="Image/avatar6.png" width="300px" height="300px" class="infoMemberImage">  
                 <div class="infoMemberImageHidden">
@@ -110,5 +111,25 @@
             </div>      
         </div>
         <script type="text/javascript" src="JS/about.js"></script>
+        <script type="text/javascript" >
+            $(window).scroll(function(){  
+//                alert(document.documentElement.scrollTop);
+                if(document.documentElement.scrollTop < 170){
+                    $("#idMemberContain1").slideUp("fast");
+                } else {
+                    $("#idMemberContain1").slideDown("slow");
+                }
+                if(document.documentElement.scrollTop < 600){
+                    $("#idMemberContain2").slideUp("fast");
+                } else {
+                    $("#idMemberContain2").slideDown("slow");
+                }
+                if(document.documentElement.scrollTop < 1070){
+                    $("#idMemberContain3").slideUp("fast");
+                } else {
+                    $("#idMemberContain3").slideDown("slow");
+                }
+            });
+        </script>
     </body>
 </html>
