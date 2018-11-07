@@ -13,29 +13,7 @@
         <title>Package Information</title>
     </head>
     <body>
-        <div class="headTableStatus">
-            <div class="headSubnetTableStatus">
-                <div><i class="fas fa-barcode"> Bưu gửi số</i></div>
-                <p name="containInfor"><b><input name="maDH" type="text" value="${maDH}" disabled></b></p>
-            </div>
-            <div class="headSubnetTableStatus">
-                <div><i class="fas fa-barcode"> Trạng thái</i></div>
-                <p name="containInfor"><b><input name="tenTrangThai" type="text" value="${tenTrangThai}" disabled></b></p>
-            </div>          
-            <div class="headSubnetTableStatus" >
-                <div><i class="fas fa-balance-scale"> Khối lượng (gram)</i></div>
-                <p name="containInfor"><b><input name="infor" type="text" value="${khoiLuong}" disabled></b></p>
-            </div>
-        </div>
-
-        <div class="mainTableStatus">
-            <fieldset>
-                <legend>Thông tin trạng thái</legend>
-                <div id="StatusTableTextArea" class="containStatusTableText">
-                    <p> ${journalList}</p>
-                </div>
-            </fieldset>
-        </div>    
+          
 <!--        <div class="InforPackageHeader">
             <img src="Image/packageinformation.png" style="width: 80px;position: absolute;top: -60px;margin: 0 auto;left: 0;right: 0;">                       
             <h2>Thông tin đơn hàng</h2>   

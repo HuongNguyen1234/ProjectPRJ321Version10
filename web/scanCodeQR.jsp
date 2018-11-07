@@ -10,23 +10,47 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="CSS/scanCode.css">
+        <link rel="stylesheet" type="text/css" href="CSS/confirInfoPackage.css">
         <title>Scan Code QR</title>
     </head>
     <body>
         <div style="position: relative;margin-top: 50px;height: 150px;color: white;background: linear-gradient(0.25turn,rgb(233, 180, 69),rgb(249, 100, 0)); ">
             <div style="position: absolute;top: 0;bottom: 0;right: 0;left: 0;font-size: 40px;margin:auto;width: 50%;height: 50px; ">Scan Code QR</div>
         </div>
-        <div class="scanCodeContainer">       
+        <div class="scanCodeContainer">    
+            <!--Information of Package-->
             <div class="scanCodeSub" style="width: 70%;">
-                <jsp:include page="InforPackage.jsp"/>
+                <div class="headTableStatus">
+                    <div class="headSubnetTableStatus">
+                        <div><i class="fas fa-barcode"> Bưu gửi số</i></div>
+                        <p name="containInfor"><b><input name="maDH" type="text" value="${maDH}" disabled></b></p>
+                    </div>
+                    <div class="headSubnetTableStatus">
+                        <div><i class="fas fa-barcode"> Trạng thái</i></div>
+                        <p name="containInfor"><b><input name="tenTrangThai" type="text" value="${tenTrangThai}" disabled></b></p>
+                    </div>          
+                    <div class="headSubnetTableStatus" >
+                        <div><i class="fas fa-balance-scale"> Khối lượng (gram)</i></div>
+                        <p name="containInfor"><b><input name="infor" type="text" value="${khoiLuong}" disabled></b></p>
+                    </div>
+                </div>
+                <div class="mainTableStatus">
+                    <fieldset>
+                        <legend>Thông tin trạng thái</legend>
+                        <div id="StatusTableTextArea" class="containStatusTableText">
+                            <p> ${journalList}</p>
+                        </div>
+                    </fieldset>
+                </div>  
             </div>
+                        
+            <!--Scan QR Code-->
             <div class="scanCodeSub" style="width: 30%;">
                 <div class="scanCodeSubContainVideo">
                     <video id="videoID1" autoplay></video>
                 </div>        
                 <center>
                     <h1><b>Quét Mã QR</b></h1>
-
                     <form id="myForm1" method="POST" action="/ProjectPRJ321Version10/QrCodeGetInfoOrderServlet">
                         <div> 
                             <input class="buttonScanCodeSubContain" type="button" value="Send" onclick="send1()" /> 
@@ -73,7 +97,7 @@
             ;
 
             function conf() {
-                    alert("<%= request.getAttribute("show")%>");
+                alert("<%= request.getAttribute("show")%>");
                 var r = confirm("Press a button!");
                 if (r === true) {
             <%request.setAttribute("show", "OK");%>
@@ -87,34 +111,34 @@
 
         </script>
         <script type="text/javascript">
-                var textArea = document.getElementById("StatusTableTextArea");
+            var textArea = document.getElementById("StatusTableTextArea");
 
-                function Active(x) {
-                    var status = document.getElementsByName("status");
-                    //remove all the active
-                    for (var i = 0; i < status.length; i++) {
-                        status[i].classList.remove("ActiveClass");
-                    }
-
-                    //add the active for it
-                    for (var i = 0; i < status.length; i++) {
-                        if (i !== x) {
-                            status[i].classList.add("ActiveClass");
-                        } else {
-                            break;
-                        }
-                    }
-                    // x = 1 là trạng thái nhận yêu cầu đặt hàng
-                    // x = 2 là trạng thái đã chuyển giao cho bộ phận giao nhận
-                    // x = 3 là trạng thái đã giao hàng
+            function Active(x) {
+                var status = document.getElementsByName("status");
+                //remove all the active
+                for (var i = 0; i < status.length; i++) {
+                    status[i].classList.remove("ActiveClass");
                 }
 
-                //deactive class
-                var containInfor = document.getElementsByName("containInfor");
-                for (var i = 0; i < containInfor.length; i++) {
-                    containInfor[i].classList.add("ActiveInputClass");
-                    containInfor[i].classList.remove("InActiveInputClass");
+                //add the active for it
+                for (var i = 0; i < status.length; i++) {
+                    if (i !== x) {
+                        status[i].classList.add("ActiveClass");
+                    } else {
+                        break;
+                    }
                 }
+                // x = 1 là trạng thái nhận yêu cầu đặt hàng
+                // x = 2 là trạng thái đã chuyển giao cho bộ phận giao nhận
+                // x = 3 là trạng thái đã giao hàng
+            }
+
+            //deactive class
+            var containInfor = document.getElementsByName("containInfor");
+            for (var i = 0; i < containInfor.length; i++) {
+                containInfor[i].classList.add("ActiveInputClass");
+                containInfor[i].classList.remove("InActiveInputClass");
+            }
         </script>
     </body>
 </html>
