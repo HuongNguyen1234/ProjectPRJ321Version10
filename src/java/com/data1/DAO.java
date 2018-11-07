@@ -67,7 +67,7 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
 
@@ -103,7 +103,7 @@ public class DAO {
             }
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
         return null;
@@ -135,7 +135,7 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
         return null;
@@ -170,23 +170,24 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
         return null;
     }
 
-    public Staff getStaff(float mBC) throws SQLException, Exception {
+    public List<Staff> getStaff() throws SQLException, Exception {
         String result = "";
-        String xSql = "select * from NhanVien where MaBC = ?";
+        String xSql = "select * from NhanVien ";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
-            ps.setFloat(1, mBC);
+//            ps.setFloat(1, mBC);
             rs = ps.executeQuery();
+            List<Staff> listStaff = new ArrayList<>();
             while (rs.next()) {
                 String id = rs.getString("Id");
                 String ten = rs.getString("Ten");
@@ -197,15 +198,74 @@ public class DAO {
                 String userName = rs.getString("UserName");
                 String password = rs.getString("Password");
                 Staff s = new Staff(id, ten, diaChi, sdt, chucVu, maBC, userName, password);
-                return s;
+                listStaff.add(s);
             }
-
+            return listStaff;
         } catch (SQLException ex) {
             throw ex;
-        }finally{
-            closeConnection(rs, ps, conn);
+        }
+
+    }
+    public Staff getStaffById(String id)throws SQLException, Exception{
+        String xSql = "select * from NhanVien where Id=?";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String i = rs.getString("Id");
+                String ten = rs.getString("Ten");
+                String diaChi = rs.getString("DiaChi");
+                int sdt = rs.getInt("Sdt");
+                String chucVu = rs.getString("ChucVu");
+                int maBC = rs.getInt("maBC");
+                String userName = rs.getString("UserName");
+                String password = rs.getString("Password");
+                Staff s = new Staff(id, ten, diaChi, sdt, chucVu, maBC, userName, password);
+               return s;
+            }
+        } catch (SQLException ex) {
+            throw ex;
         }
         return null;
+    }
+    public String getChucVuStaff(String id) throws SQLException, Exception {
+        String xSql = "select * from NhanVien where Id=?";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String chucVu = rs.getString("ChucVu");
+                return chucVu;
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return null;
+    }
+
+    public void getDeleteStaff(String id) throws SQLException, Exception {
+        String xSql = "DELETE FROM NhanVien WHERE id = ?";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = db.getConnection();
+            ps = conn.prepareStatement(xSql);
+            ps.setString(1, id);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+
     }
 
     public List<Tinh> getAllTinhBuuCuc() throws SQLException, Exception {
@@ -229,7 +289,7 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
 
@@ -261,7 +321,7 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
     }
@@ -275,7 +335,7 @@ public class DAO {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
             ps.setFloat(1, maHuyen);
-           rs = ps.executeQuery();
+            rs = ps.executeQuery();
             List<Huyen> list = new ArrayList<>();
             while (rs.next()) {
 
@@ -285,7 +345,7 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
         return null;
@@ -310,7 +370,7 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
 
@@ -326,7 +386,7 @@ public class DAO {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
             ps.setFloat(1, huyen);
-             rs = ps.executeQuery();
+            rs = ps.executeQuery();
             List<Post> list = new ArrayList<>();
             while (rs.next()) {
                 float maBc = rs.getFloat("MaBC");
@@ -343,7 +403,7 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
     }
@@ -356,7 +416,7 @@ public class DAO {
         try {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
-             rs = ps.executeQuery();
+            rs = ps.executeQuery();
             List<Mien> list = new ArrayList<>();
             while (rs.next()) {
                 String maDH = rs.getString("MaMien");
@@ -367,7 +427,7 @@ public class DAO {
             return list;
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
     }
@@ -392,7 +452,7 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
         return null;
@@ -408,7 +468,7 @@ public class DAO {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
             ps.setString(1, maMien);
-             rs = ps.executeQuery();
+            rs = ps.executeQuery();
             while (rs.next()) {
                 String ma = rs.getString("TenMien");
                 return ma;
@@ -416,7 +476,7 @@ public class DAO {
             }
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
         return null;
@@ -448,7 +508,7 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
     }
@@ -472,7 +532,7 @@ public class DAO {
 
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
         return null;
@@ -488,7 +548,7 @@ public class DAO {
             conn = db.getConnection();
             ps = conn.prepareStatement(xSql);
             ps.setString(1, mDH);
-             rs = ps.executeQuery();
+            rs = ps.executeQuery();
             List<Journal> list = new ArrayList<>();
             while (rs.next()) {
                 String IdHT = rs.getString("IdHT");
@@ -496,14 +556,14 @@ public class DAO {
                 Date thoiGian = rs.getDate("ThoiGian");
                 String trangThai = rs.getString("IdTrangThai");
                 String DiaChi = rs.getString("DiaChi");
-                Journal jo = new Journal(IdHT, maDH, trangThai,  thoiGian, DiaChi);
+                Journal jo = new Journal(IdHT, maDH, trangThai, thoiGian, DiaChi);
                 list.add(jo);
             }
-                return list;
+            return list;
 
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
     }
@@ -552,7 +612,7 @@ public class DAO {
             ps.executeUpdate();
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
     }
@@ -588,7 +648,7 @@ public class DAO {
             ps.setFloat(3, s.getGiaDV());
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
     }
@@ -611,10 +671,11 @@ public class DAO {
             ps.setString(8, staff.getPassword());
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
     }
+    
 
     public void addJournal(Journal j) throws SQLException, Exception {
         String xsql = "insert into Journal (IdHT,MaDH,ThoiGian,IdTrangThai,DiaChi)" + "values(?,?,?,?,?)";
@@ -632,10 +693,11 @@ public class DAO {
             ps.executeUpdate();
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
     }
+
     public void updateTrangThaiOrder(String maDH, String iDTrangThaiTiepTheo) throws SQLException, Exception {
         String xsql = "update Orders set IdTrangThai = ? where MaDH = ?";
         Connection conn = null;
@@ -649,7 +711,7 @@ public class DAO {
             ps.executeUpdate();
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
     }
@@ -667,7 +729,7 @@ public class DAO {
             ps.executeUpdate();
         } catch (SQLException ex) {
             throw ex;
-        }finally{
+        } finally {
             closeConnection(rs, ps, conn);
         }
     }

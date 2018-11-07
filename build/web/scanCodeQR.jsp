@@ -68,6 +68,7 @@
             </div>
         </div>
         <script type="text/javascript">
+                var localStream1;
             var video1 = document.getElementById('videoID1');
             var canvas1 = document.getElementById('canvasID1');
             var context1 = canvas1.getContext('2d');
@@ -77,15 +78,24 @@
                     || navigator.mozGetUserMedia
                     || navigator.msGetUserMedia;
             navigator.getUserMedia(
-                    {video: true},
-                    function (stream) {
-                        video.src = window.URL.createObjectURL(stream);
-                    },
-                    function (e) {
-                        console.log('An error happened:', e);
+                    { video : true }, 
+                    function(stream) { 
+                        video1.src = window.URL.createObjectURL(stream); 
+                        localStream1 = stream;
+                    }, 
+                    function(e) { 
+                        console.log('An error happened:', e); 
                     }
-            );
-            function send1() {
+                            );
+            function turnOffCamera() {
+//                video1.pause();
+//                video1.src = "";
+//                localStream1.getTracks()[0].stop();
+//                video.pause();
+//                video.src = "";
+//                localStream.getTracks()[0].stop();
+            }        
+            function send1() { 
                 context1.drawImage(video1, 0, 0, canvas1.width, canvas1.height);
                 var imageData = canvas1.toDataURL();
                 var xmlhttp = new XMLHttpRequest();

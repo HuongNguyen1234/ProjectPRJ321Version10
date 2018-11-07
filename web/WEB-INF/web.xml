@@ -44,6 +44,14 @@
         <servlet-name>QrCodeGetInfoOrderServlet</servlet-name>
         <servlet-class>com.function.QrCodeGetInfoOrderServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowInforStaffServlet</servlet-name>
+        <servlet-class>ShowInforStaffServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteStaffServlet</servlet-name>
+        <servlet-class>com.function.DeleteStaffServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddInforOrderServlet</servlet-name>
         <url-pattern>/AddInforOrderServlet</url-pattern>
@@ -87,6 +95,14 @@
     <servlet-mapping>
         <servlet-name>QrCodeGetInfoOrderServlet</servlet-name>
         <url-pattern>/QrCodeGetInfoOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowInforStaffServlet</servlet-name>
+        <url-pattern>/ShowInforStaffServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteStaffServlet</servlet-name>
+        <url-pattern>/DeleteStaffServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

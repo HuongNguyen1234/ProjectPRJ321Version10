@@ -4,6 +4,8 @@
     Author     : Nguyen Bao Long
 --%>
 
+<%@page import="com.entity.Staff"%>
+<%@page import="com.data1.DAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,6 +15,7 @@
         <link rel="stylesheet" href="CSS/employee.css" type="text/css">
     </head>
     <body>
+        
         <div class="employeeContainHeader">
             <div class="employeeContainHeaderSub">   
                 <div class="employeeContainHeaderFirst">   
@@ -39,7 +42,7 @@
                 <div class="employeeBannerMainOdd">
                     <div class="employeeBannerFirstOdd"></div>           
                         <div class="employeeBannerContainText">
-                            LongNB
+                         ${staff.getTen()}
                         </div>
                     <div class="employeeBannerLastOdd"></div>                 
                 </div>
@@ -63,7 +66,7 @@
                 <div class="employeeBannerMain">
                     <div class="employeeBannerFirst"></div>           
                         <div class="employeeBannerContainText">
-                            14
+                            ${staff.getMaBC()}
                         </div>
                     <div class="employeeBannerLast"></div>                 
                 </div>
@@ -87,7 +90,7 @@
                 <div class="employeeBannerMainOdd">
                     <div class="employeeBannerFirstOdd"></div>           
                         <div class="employeeBannerContainText">
-                            SE32233
+                            ${sessionScope.id}
                         </div>
                     <div class="employeeBannerLastOdd"></div>                 
                 </div>
@@ -95,13 +98,12 @@
                 </div>
             </div>
         </div> 
-        <div class="employeeContainInformation">
+<!--        <div class="employeeContainInformation">
             <div class="employeeContainSub">
                 <div class="employeeBannerMiddle">
                 </div>
                 <div class="employeeBanner" >
                     <div class="employeeBannerFirst"></div>           
-                        <div class="employeeBannerContainText">
                             Tên
                         </div>
                     <div class="employeeBannerLast"></div>  
@@ -111,13 +113,13 @@
                 <div class="employeeBannerMain">
                     <div class="employeeBannerFirst"></div>           
                         <div class="employeeBannerContainText">
-                            Nguyễn Bảo Long
+                          
                         </div>
                     <div class="employeeBannerLast"></div>                 
                 </div>
                 <div class="employeeBannerMiddle">
                 </div>
-            </div>
+            </div>-->
         </div> 
         <div class="employeeContainInformation">
             <div class="employeeContainSub">
@@ -135,7 +137,7 @@
                 <div class="employeeBannerMainOdd">
                     <div class="employeeBannerFirstOdd"></div>           
                         <div class="employeeBannerContainText">
-                            FPT
+                             ${staff.getDiaChi()}
                         </div>
                     <div class="employeeBannerLastOdd"></div>                 
                 </div>
@@ -159,7 +161,7 @@
                 <div class="employeeBannerMain">
                     <div class="employeeBannerFirst"></div>           
                         <div class="employeeBannerContainText">
-                            0934538675
+                             ${staff.getSdt()}
                         </div>
                     <div class="employeeBannerLast"></div>                 
                 </div>
@@ -183,7 +185,7 @@
                 <div class="employeeBannerMainOdd">
                     <div class="employeeBannerFirstOdd"></div>           
                         <div class="employeeBannerContainText">
-                            Admin
+                             ${staff.getChucVu()}
                         </div>
                     <div class="employeeBannerLastOdd"></div>                 
                 </div>

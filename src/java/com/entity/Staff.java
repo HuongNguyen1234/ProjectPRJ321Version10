@@ -15,21 +15,11 @@ public class Staff {
    private String diaChi;
    private int sdt;
    private String chucVu;
-   private float maBC;
+   private int maBC;
    private String userName;
    private String password;
 
-    public Staff(String id, String ten, String diaChi, int sdt, String chucVu, float maBC) {
-        this.id = id;
-        this.ten = ten;
-        this.diaChi = diaChi;
-        this.sdt = sdt;
-        this.chucVu = chucVu;
-        this.maBC = maBC;
-        
-    }
-
-    public Staff(String id, String ten, String diaChi, int sdt, String chucVu, float maBC, String userName, String password) {
+    public Staff(String id, String ten, String diaChi, int sdt, String chucVu, int maBC, String userName, String password) {
         this.id = id;
         this.ten = ten;
         this.diaChi = diaChi;
@@ -81,10 +71,10 @@ public class Staff {
     }
 
     public int getMaBC() {
-        return (int)maBC;
+        return maBC;
     }
 
-    public void setMaBC(float maBC) {
+    public void setMaBC(int maBC) {
         this.maBC = maBC;
     }
 
@@ -103,10 +93,5 @@ public class Staff {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    
-
-    
-
    
 }
