@@ -407,28 +407,28 @@
         <script type="text/javascript" src="JS/clock.js"></script>
         <script type="text/javascript" >
             $(window).on('load', function () {
-                if(document.documentElement.scrollTop < 170){   
-                    $("#main").slideUp(50);
-                    $(".InforPackageHeader").fadeOut(50);
-                    $(".InforPackageTable").fadeOut(50);
-                } else {
-                    $("#main").slideDown(50);
-                    $(".InforPackageHeader").fadeIn(1000);
-                    $(".InforPackageTable").fadeIn(3000);
-                }
+//                if(document.documentElement.scrollTop < 170){   
+//                    $("#main").slideUp(50);
+//                    $(".InforPackageHeader").fadeOut(50);
+//                    $(".InforPackageTable").fadeOut(50);
+//                } else {
+//                    $("#main").slideDown(50);
+//                    $(".InforPackageHeader").fadeIn(1000);
+//                    $(".InforPackageTable").fadeIn(3000);
+//                }
             });
-            $(window).scroll(function(){  
-//                alert(document.documentElement.scrollTop);
-                if(document.documentElement.scrollTop < 170){ 
-                    $("#main").slideUp(50);
-                    $(".InforPackageHeader").fadeOut(50);
-                    $(".InforPackageTable").fadeOut(50);
-                } else {                 
-                    $("#main").slideDown(1000);
-                    $(".InforPackageHeader").fadeIn(3000);
-                    $(".InforPackageTable").fadeIn(3000);
-                }
-            });
+//            $(window).scroll(function(){  
+////                alert(document.documentElement.scrollTop);
+//                if(document.documentElement.scrollTop < 170){ 
+//                    $("#main").slideUp(50);
+//                    $(".InforPackageHeader").fadeOut(50);
+//                    $(".InforPackageTable").fadeOut(50);
+//                } else {                 
+//                    $("#main").slideDown(1000);
+//                    $(".InforPackageHeader").fadeIn(3000);
+//                    $(".InforPackageTable").fadeIn(3000);
+//                }
+//            });
         </script>
         <!--<button onclick="addSectionActive(6)" style="width: 10%;height: 50px;border-radius: 5px;background-color: rgb(255, 116, 23)"><b>SAVE</b></button>-->
     </body>

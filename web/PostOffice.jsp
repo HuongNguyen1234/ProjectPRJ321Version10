@@ -220,19 +220,19 @@
 //                    $(".listPostOffice").fadeIn(3000);
             });
             
-            $(window).scroll(function(){  
-                if(document.documentElement.scrollTop < 170){   
-                    $("#main").slideUp(50);
-                    $(".postOfficeTable").fadeOut(50);
-                    $(".searchPosHeader").fadeOut(50);
-                    $(".listPostOffice").fadeOut(50);
-                } else {                 
-                    $("#main").slideDown(100);
-                    $(".postOfficeTable").fadeIn(3000);
-                    $(".searchPosHeader").fadeIn(3000);
-                    $(".listPostOffice").fadeIn(3000);
-                }
-            });
+//            $(window).scroll(function(){  
+//                if(document.documentElement.scrollTop < 170){   
+//                    $("#main").slideUp(50);
+//                    $(".postOfficeTable").fadeOut(50);
+//                    $(".searchPosHeader").fadeOut(50);
+//                    $(".listPostOffice").fadeOut(50);
+//                } else {                 
+//                    $("#main").slideDown(100);
+//                    $(".postOfficeTable").fadeIn(3000);
+//                    $(".searchPosHeader").fadeIn(3000);
+//                    $(".listPostOffice").fadeIn(3000);
+//                }
+//            });
         </script>
     </body>
 </html>
