@@ -11,14 +11,14 @@
     <title>header</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link rel="stylesheet" type="text/css" href="CSS/homeStyle.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/homeStyle.css">
     <body>
         <!--slide show-->
         <div style="width: 100%;height: 50px;background: linear-gradient(0.25turn,rgb(233, 180, 69),rgb(249, 100, 0));">
             <div style="width: 150px;float: left;height: 10px;">
-                <img src="Image/logo.png"  style="position: absolute;left: 15px;z-index: 2;" width="80" height="50" onclick="">
+                <img src="Image/logo.png"  style="position: absolute;left: 15px;z-index: 2;" width="80" height="50" >
             </div>
-
+            
             <%
                 session = request.getSession(false);
                 if (session.getAttribute("name") == null) {
@@ -110,6 +110,7 @@
                 }
             %>
         </div>
+        
         <div class="slideshow-container" >          
             <div class="mySlides fade">
                 <img src="Image/flashbox.jpg" style="width:100%;position: absolute;height: 550px;" >
@@ -117,10 +118,7 @@
                 <div class= "flashPostContain">
                     <center><div class="flashPostHeader" >FLASH POST</div></center>  
                     <div class="flashPostContent">
-                        XUYÊN SUỐT 50 NĂM PHÁT TRIỂN , CÙNG VỚI SỰ TIN TƯỞNG CỦA NGƯỜI DÙNG ,
-                        FLASHPOST ĐANG NGÀY CÀNG VỮNG MẠNH VÀ VƯƠN RA THẾ GIỚI . CÙNG VỚI CÁC NHÀ ĐẦU TƯ , FLASHPOST ĐÃ CHỨNG MINH RẰNG
-                        FLASHPOST LÀ NƠI ĐẶT NIỀM TIN SỐ 1 CỦA HỌ . HÃY CÙNG FLASHPOST NHÌN LẠI MỘT SỐ THÀNH TỰU TIÊU BIỂU XUYÊN SUỐT 50 NĂM
-                        PHÁT TRIỂN CỦA FLASHPOST .
+                        CELEBRATING 50 YEARS OF DEVELOPMENT, ALONG WITH THE CONSOLE OF CONSUMERS, FLASHPOST IS STRONG AND DIFFICULT TODAY. ALONG WITH INVESTORS, FLASHPOST HAS BEEN CONFIRMED THAT FLASHPOST IS THE PLACE OF THEIR FAITH. FLASHPOST VISITS SOME OF THE FLASHPOST'S 50 YEARS OF DEVELOPMENT.
                     </div>
                     <center><button class="flashPostButton" onclick="checkwin()">Flash Post</button></center>             
                 </div>                
@@ -132,10 +130,7 @@
                 <div class= "flashPostContain">
                     <center><div class="flashPostHeader" >FLASH POST</div></center>  
                     <div class="flashPostContent">
-                        XUYÊN SUỐT 50 NĂM PHÁT TRIỂN , CÙNG VỚI SỰ TIN TƯỞNG CỦA NGƯỜI DÙNG ,
-                        FLASHPOST ĐANG NGÀY CÀNG VỮNG MẠNH VÀ VƯƠN RA THẾ GIỚI . CÙNG VỚI CÁC NHÀ ĐẦU TƯ , FLASHPOST ĐÃ CHỨNG MINH RẰNG
-                        FLASHPOST LÀ NƠI ĐẶT NIỀM TIN SỐ 1 CỦA HỌ . HÃY CÙNG FLASHPOST NHÌN LẠI MỘT SỐ THÀNH TỰU TIÊU BIỂU XUYÊN SUỐT 50 NĂM
-                        PHÁT TRIỂN CỦA FLASHPOST .
+                        CELEBRATING 50 YEARS OF DEVELOPMENT, ALONG WITH THE CONSOLE OF CONSUMERS, FLASHPOST IS STRONG AND DIFFICULT TODAY. ALONG WITH INVESTORS, FLASHPOST HAS BEEN CONFIRMED THAT FLASHPOST IS THE PLACE OF THEIR FAITH. FLASHPOST VISITS SOME OF THE FLASHPOST'S 50 YEARS OF DEVELOPMENT.
                     </div>
                     <center><button class="flashPostButton" onclick="checkwin()">Flash Post</button></center>             
                 </div>     
@@ -146,10 +141,7 @@
                 <div class= "flashPostContain">
                     <center><div class="flashPostHeader" >FLASH POST</div></center>  
                     <div class="flashPostContent">
-                        XUYÊN SUỐT 50 NĂM PHÁT TRIỂN , CÙNG VỚI SỰ TIN TƯỞNG CỦA NGƯỜI DÙNG ,
-                        FLASHPOST ĐANG NGÀY CÀNG VỮNG MẠNH VÀ VƯƠN RA THẾ GIỚI . CÙNG VỚI CÁC NHÀ ĐẦU TƯ , FLASHPOST ĐÃ CHỨNG MINH RẰNG
-                        FLASHPOST LÀ NƠI ĐẶT NIỀM TIN SỐ 1 CỦA HỌ . HÃY CÙNG FLASHPOST NHÌN LẠI MỘT SỐ THÀNH TỰU TIÊU BIỂU XUYÊN SUỐT 50 NĂM
-                        PHÁT TRIỂN CỦA FLASHPOST .
+                        CELEBRATING 50 YEARS OF DEVELOPMENT, ALONG WITH THE CONSOLE OF CONSUMERS, FLASHPOST IS STRONG AND DIFFICULT TODAY. ALONG WITH INVESTORS, FLASHPOST HAS BEEN CONFIRMED THAT FLASHPOST IS THE PLACE OF THEIR FAITH. FLASHPOST VISITS SOME OF THE FLASHPOST'S 50 YEARS OF DEVELOPMENT.
                     </div>
                     <center><button class="flashPostButton" onclick="checkwin()">Flash Post</button></center>             
                 </div>             
@@ -163,7 +155,7 @@
             </div>
 
         </div>
-
+        
         <!--slide show-->    
         <nav>          
             <div class="navbar">         
@@ -174,16 +166,16 @@
                     <div class="subnav-content">
                         <!--                <a href="#Tính Giá Cước" onclick="addSectionActive(1)"><i class="fas fa-money-check-alt"></i> Tính giá cước</a>
                                       <a href="#Mạng lưới Bưu cục" onclick="addSectionActive(3)"><i class="fas fa-globe"></i> Mạng lưới Bưu cục</a>-->
-                        <a href="/ProjectPRJ321Version10/chargeAndDelivery.jsp"><i class="fas fa-money-check-alt"></i> Tính giá cước</a>
-                        <a href="/ProjectPRJ321Version10/PostOffice.jsp"><i class="fas fa-globe"></i> Mạng lưới Bưu cục</a>
-                        <a href="#Quét ="/ProjectPRJ321Version10mã QR" onclick="addSectionActive(5)"><i class="fas fa-qrcode"></i> Quét mã QR</a>
+                        <a href="/ProjectPRJ321Version10/chargeAndDelivery.jsp"><i class="fas fa-money-check-alt"></i> Calculate Rates</a>
+                        <a href="/ProjectPRJ321Version10/PostOffice.jsp"><i class="fas fa-globe"></i> Postal Network</a>
+                        <a href="#Quét ="/ProjectPRJ321Version10mã QR" onclick="addSectionActive(5)"><i class="fas fa-qrcode"></i> Scan Code QR</a>
                     </div>
                 </div> 
                 <div class="subnav">
                     <button class="subnavbtn"><i class="fas fa-address-book"></i> Contact <i class="fa fa-caret-down"></i></button>
                     <div class="subnav-content">
-                        <a href="/ProjectPRJ321Version10/editInfoPackage.jsp" ><i class="fas fa-clipboard-list"></i> Điền thông tin đơn hàng</a>
-                        <a href="#Cập nhật trạng thái hành trình" onclick="addSectionActive(2)"><i class="fas fa-chart-area"></i> Cập nhật trạng thái hành trình</a>
+                        <a href="/ProjectPRJ321Version10/editInfoPackage.jsp" ><i class="fas fa-clipboard-list"></i> Fill in your order information</a>
+                        <a href="#Cập nhật trạng thái hành trình" onclick="addSectionActive(2)"><i class="fas fa-chart-area"></i> Status Update</a>
 
                     </div>
                 </div>
@@ -201,6 +193,7 @@
                 %>
             </div>           
         </nav>
+            
         <canvas id="canvasClock" onclick="topFunction()"></canvas>
     </body>
     <script type="text/javascript">
@@ -209,6 +202,9 @@
             document.getElementById("modalLogin").style.display = "block";
         }
     </script>
+<!--    <script type="text/javascript" src="JS/homeStyle.js">
+        
+    </script>-->
     <script type="text/javascript" src="JS/clock.js">
     </script>
 </html>

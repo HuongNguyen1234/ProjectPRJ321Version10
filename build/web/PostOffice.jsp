@@ -17,6 +17,8 @@
         <title>Post Office</title>
         <link rel="stylesheet" type="text/css" href="CSS/posOfficeStyle.css">  
         <link rel="stylesheet" type="text/css" href="CSS/homeStyle.css">   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     </head>
     <body>
         <div class="grid-container">
@@ -32,10 +34,7 @@
                             <div class= "flashPostContain">
                                 <center><div class="flashPostHeader" >FLASH POST</div></center>  
                                 <div class="flashPostContent">
-                                    XUYÊN SUỐT 50 NĂM PHÁT TRIỂN , CÙNG VỚI SỰ TIN TƯỞNG CỦA NGƯỜI DÙNG ,
-                                    FLASHPOST ĐANG NGÀY CÀNG VỮNG MẠNH VÀ VƯƠN RA THẾ GIỚI . CÙNG VỚI CÁC NHÀ ĐẦU TƯ , FLASHPOST ĐÃ CHỨNG MINH RẰNG
-                                    FLASHPOST LÀ NƠI ĐẶT NIỀM TIN SỐ 1 CỦA HỌ . HÃY CÙNG FLASHPOST NHÌN LẠI MỘT SỐ THÀNH TỰU TIÊU BIỂU XUYÊN SUỐT 50 NĂM
-                                    PHÁT TRIỂN CỦA FLASHPOST .
+                                    CELEBRATING 50 YEARS OF DEVELOPMENT, ALONG WITH THE CONSOLE OF CONSUMERS, FLASHPOST IS STRONG AND DIFFICULT TODAY. ALONG WITH INVESTORS, FLASHPOST HAS BEEN CONFIRMED THAT FLASHPOST IS THE PLACE OF THEIR FAITH. FLASHPOST VISITS SOME OF THE FLASHPOST'S 50 YEARS OF DEVELOPMENT.
                                 </div>
                                 <center><button class="flashPostButton" onclick="checkwin()">Flash Post</button></center>             
                             </div>                
@@ -47,10 +46,7 @@
                             <div class= "flashPostContain">
                                 <center><div class="flashPostHeader" >FLASH POST</div></center>  
                                 <div class="flashPostContent">
-                                    XUYÊN SUỐT 50 NĂM PHÁT TRIỂN , CÙNG VỚI SỰ TIN TƯỞNG CỦA NGƯỜI DÙNG ,
-                                    FLASHPOST ĐANG NGÀY CÀNG VỮNG MẠNH VÀ VƯƠN RA THẾ GIỚI . CÙNG VỚI CÁC NHÀ ĐẦU TƯ , FLASHPOST ĐÃ CHỨNG MINH RẰNG
-                                    FLASHPOST LÀ NƠI ĐẶT NIỀM TIN SỐ 1 CỦA HỌ . HÃY CÙNG FLASHPOST NHÌN LẠI MỘT SỐ THÀNH TỰU TIÊU BIỂU XUYÊN SUỐT 50 NĂM
-                                    PHÁT TRIỂN CỦA FLASHPOST .
+                                    CELEBRATING 50 YEARS OF DEVELOPMENT, ALONG WITH THE CONSOLE OF CONSUMERS, FLASHPOST IS STRONG AND DIFFICULT TODAY. ALONG WITH INVESTORS, FLASHPOST HAS BEEN CONFIRMED THAT FLASHPOST IS THE PLACE OF THEIR FAITH. FLASHPOST VISITS SOME OF THE FLASHPOST'S 50 YEARS OF DEVELOPMENT.
                                 </div>
                                 <center><button class="flashPostButton" onclick="checkwin()">Flash Post</button></center>             
                             </div>     
@@ -61,10 +57,7 @@
                             <div class= "flashPostContain">
                                 <center><div class="flashPostHeader" >FLASH POST</div></center>  
                                 <div class="flashPostContent">
-                                    XUYÊN SUỐT 50 NĂM PHÁT TRIỂN , CÙNG VỚI SỰ TIN TƯỞNG CỦA NGƯỜI DÙNG ,
-                                    FLASHPOST ĐANG NGÀY CÀNG VỮNG MẠNH VÀ VƯƠN RA THẾ GIỚI . CÙNG VỚI CÁC NHÀ ĐẦU TƯ , FLASHPOST ĐÃ CHỨNG MINH RẰNG
-                                    FLASHPOST LÀ NƠI ĐẶT NIỀM TIN SỐ 1 CỦA HỌ . HÃY CÙNG FLASHPOST NHÌN LẠI MỘT SỐ THÀNH TỰU TIÊU BIỂU XUYÊN SUỐT 50 NĂM
-                                    PHÁT TRIỂN CỦA FLASHPOST .
+                                    CELEBRATING 50 YEARS OF DEVELOPMENT, ALONG WITH THE CONSOLE OF CONSUMERS, FLASHPOST IS STRONG AND DIFFICULT TODAY. ALONG WITH INVESTORS, FLASHPOST HAS BEEN CONFIRMED THAT FLASHPOST IS THE PLACE OF THEIR FAITH. FLASHPOST VISITS SOME OF THE FLASHPOST'S 50 YEARS OF DEVELOPMENT.
                                 </div>
                                 <center><button class="flashPostButton" onclick="checkwin()">Flash Post</button></center>             
                             </div>             
@@ -93,7 +86,7 @@
                     <div class="searchPosHeader">
                         <img src="Image/crown.png" alt="" style="width: 100px;position: absolute;top: -60px;margin: 0 auto;left: 0;right: 0;">
                         <div>
-                            <h2>Mạng lưới dịch vụ bưu điện</h2>        
+                            <h2>Postal Service Network</h2>        
                         </div>
                     </div>
                 </center> 
@@ -113,12 +106,12 @@
                         <tr>
                             <td>
                                 <div class="labelPostOfficeTable">
-                                    <b>Tỉnh/Thành phố</b>
+                                    <b>Province / City</b>
                                 </div>                   
                             </td>
                             <td>
                                 <div class="labelPostOfficeTable">
-                                    <b>Quận/Huyện</b>
+                                    <b>District</b>
                                 </div>
                             </td>
                         </tr>
@@ -159,7 +152,7 @@
                 </form>
                 <div class="listPostOffice" style="margin-bottom: 100px;">
                     <div class="listPostOfficeTextHeader">
-                        <h2 style="text-align: center">Danh sách bưu cục</h2>
+                        <h2 style="text-align: center">List of post offices</h2>
                     </div>
                     <div class="listPostOfficeTextAreaContain">
                         <textarea class="listPostOfficeTextArea" >
@@ -216,5 +209,30 @@
         </script>
         <script type="text/javascript" src="JS/clock.js">
         </script>       
+        <script type="text/javascript" >
+            $(window).on('load', function () { 
+//                    $("#main").slideUp(50);               
+//                    $(".postOfficeTable").fadeOut(50);
+//                    $(".searchPosHeader").fadeOut(50);
+//                    $(".listPostOffice").fadeOut(50);
+//                    $(".postOfficeTable").fadeIn(3000);
+//                    $(".searchPosHeader").fadeIn(3000);
+//                    $(".listPostOffice").fadeIn(3000);
+            });
+            
+            $(window).scroll(function(){  
+                if(document.documentElement.scrollTop < 170){   
+                    $("#main").slideUp(50);
+                    $(".postOfficeTable").fadeOut(50);
+                    $(".searchPosHeader").fadeOut(50);
+                    $(".listPostOffice").fadeOut(50);
+                } else {                 
+                    $("#main").slideDown(100);
+                    $(".postOfficeTable").fadeIn(3000);
+                    $(".searchPosHeader").fadeIn(3000);
+                    $(".listPostOffice").fadeIn(3000);
+                }
+            });
+        </script>
     </body>
 </html>

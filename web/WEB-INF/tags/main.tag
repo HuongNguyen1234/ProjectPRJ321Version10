@@ -8,16 +8,19 @@
 
 <html>
     <head>
+        
         <title>main</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">      
     </head>
     <body>
         <div class="containMain" style="text-align: center;">
+            
             <section name="section" id="home">  
                 <!--home-->
                 <jsp:include page="homePage.jsp"/>
             </section>
+            
             <section name="section"  id="chargeAndDelivery">           
  
             </section>    
@@ -43,7 +46,7 @@
                 <jsp:include page="About.jsp"/>    
             </section> 
             <section name="section" >
-                <jsp:include page="employee.jsp"/>    
+                 
             </section> 
         </div>
         <script type="text/javascript">

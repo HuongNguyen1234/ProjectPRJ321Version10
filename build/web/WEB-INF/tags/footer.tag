@@ -5,11 +5,13 @@
 --%>
 
 <%@tag description="put the tag description here" pageEncoding="UTF-8"%>
+
 <html>
     <head>
         <title>footer</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+        <link rel="stylesheet" type="text/css" href="../../CSS/homeStyle.css">
     </head>
     <body>    
         <div class="footerImageContain" >       

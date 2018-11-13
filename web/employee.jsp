@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="CSS/employee.css" type="text/css">
     </head>
     <body>
+        
         <%
        
             DAO dao= new DAO();
@@ -26,7 +27,7 @@
             request.setAttribute("sdt", s.getSdt());
             request.setAttribute("maBC", s.getMaBC());
         %>
-        <form>
+       
         <div class="employeeContainHeader">
             <div class="employeeContainHeaderSub">   
                 <div class="employeeContainHeaderFirst">   
@@ -182,6 +183,5 @@
                 </div>
             </div>
         </div> 
-    </form>
     </body>
 </html>

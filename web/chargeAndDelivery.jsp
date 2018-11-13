@@ -17,6 +17,8 @@
         <title>Charge and Delivery</title>
         <link rel="stylesheet" type="text/css" href="CSS/chargStyle.css">
         <link rel="stylesheet" type="text/css" href="CSS/homeStyle.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     </head>
     <body>
         <c:if test="${currentTinh == null}&&${currentTinh1 == null}&&${currentMien==null}">
@@ -35,10 +37,7 @@
                             <div class= "flashPostContain">
                                 <center><div class="flashPostHeader" >FLASH POST</div></center>  
                                 <div class="flashPostContent">
-                                    XUYÊN SUỐT 50 NĂM PHÁT TRIỂN , CÙNG VỚI SỰ TIN TƯỞNG CỦA NGƯỜI DÙNG ,
-                                    FLASHPOST ĐANG NGÀY CÀNG VỮNG MẠNH VÀ VƯƠN RA THẾ GIỚI . CÙNG VỚI CÁC NHÀ ĐẦU TƯ , FLASHPOST ĐÃ CHỨNG MINH RẰNG
-                                    FLASHPOST LÀ NƠI ĐẶT NIỀM TIN SỐ 1 CỦA HỌ . HÃY CÙNG FLASHPOST NHÌN LẠI MỘT SỐ THÀNH TỰU TIÊU BIỂU XUYÊN SUỐT 50 NĂM
-                                    PHÁT TRIỂN CỦA FLASHPOST .
+                                    CELEBRATING 50 YEARS OF DEVELOPMENT, ALONG WITH THE CONSOLE OF CONSUMERS, FLASHPOST IS STRONG AND DIFFICULT TODAY. ALONG WITH INVESTORS, FLASHPOST HAS BEEN CONFIRMED THAT FLASHPOST IS THE PLACE OF THEIR FAITH. FLASHPOST VISITS SOME OF THE FLASHPOST'S 50 YEARS OF DEVELOPMENT.
                                 </div>
                                 <center><button class="flashPostButton" onclick="checkwin()">Flash Post</button></center>             
                             </div>                
@@ -51,10 +50,7 @@
                             <div class= "flashPostContain">
                                 <center><div class="flashPostHeader" >FLASH POST</div></center>  
                                 <div class="flashPostContent">
-                                    XUYÊN SUỐT 50 NĂM PHÁT TRIỂN , CÙNG VỚI SỰ TIN TƯỞNG CỦA NGƯỜI DÙNG ,
-                                    FLASHPOST ĐANG NGÀY CÀNG VỮNG MẠNH VÀ VƯƠN RA THẾ GIỚI . CÙNG VỚI CÁC NHÀ ĐẦU TƯ , FLASHPOST ĐÃ CHỨNG MINH RẰNG
-                                    FLASHPOST LÀ NƠI ĐẶT NIỀM TIN SỐ 1 CỦA HỌ . HÃY CÙNG FLASHPOST NHÌN LẠI MỘT SỐ THÀNH TỰU TIÊU BIỂU XUYÊN SUỐT 50 NĂM
-                                    PHÁT TRIỂN CỦA FLASHPOST .
+                                    CELEBRATING 50 YEARS OF DEVELOPMENT, ALONG WITH THE CONSOLE OF CONSUMERS, FLASHPOST IS STRONG AND DIFFICULT TODAY. ALONG WITH INVESTORS, FLASHPOST HAS BEEN CONFIRMED THAT FLASHPOST IS THE PLACE OF THEIR FAITH. FLASHPOST VISITS SOME OF THE FLASHPOST'S 50 YEARS OF DEVELOPMENT.
                                 </div>
                                 <center><button class="flashPostButton" onclick="checkwin()">Flash Post</button></center>             
                             </div>     
@@ -66,10 +62,7 @@
                             <div class= "flashPostContain">
                                 <center><div class="flashPostHeader" >FLASH POST</div></center>  
                                 <div class="flashPostContent">
-                                    XUYÊN SUỐT 50 NĂM PHÁT TRIỂN , CÙNG VỚI SỰ TIN TƯỞNG CỦA NGƯỜI DÙNG ,
-                                    FLASHPOST ĐANG NGÀY CÀNG VỮNG MẠNH VÀ VƯƠN RA THẾ GIỚI . CÙNG VỚI CÁC NHÀ ĐẦU TƯ , FLASHPOST ĐÃ CHỨNG MINH RẰNG
-                                    FLASHPOST LÀ NƠI ĐẶT NIỀM TIN SỐ 1 CỦA HỌ . HÃY CÙNG FLASHPOST NHÌN LẠI MỘT SỐ THÀNH TỰU TIÊU BIỂU XUYÊN SUỐT 50 NĂM
-                                    PHÁT TRIỂN CỦA FLASHPOST .
+                                    CELEBRATING 50 YEARS OF DEVELOPMENT, ALONG WITH THE CONSOLE OF CONSUMERS, FLASHPOST IS STRONG AND DIFFICULT TODAY. ALONG WITH INVESTORS, FLASHPOST HAS BEEN CONFIRMED THAT FLASHPOST IS THE PLACE OF THEIR FAITH. FLASHPOST VISITS SOME OF THE FLASHPOST'S 50 YEARS OF DEVELOPMENT.
                                 </div>
                                 <center><button class="flashPostButton" onclick="checkwin()">Flash Post</button></center>             
                             </div>             
@@ -156,7 +149,7 @@
                                     <div class="bannersodd">
                                         <center>
                                             <div class="containText">
-                                                Miền Gửi
+                                                Send Domain
                                             </div>
                                         </center>
                                     </div>
@@ -306,5 +299,24 @@
         <script src="JS/chargeStyle.js" type="text/javascript"></script>
         <script type="text/javascript" src="JS/homeStyle.js"></script>
         <script type="text/javascript" src="JS/clock.js"></script>
+        <script type="text/javascript" >
+//            $(window).on('load', function () {
+//                if(document.documentElement.scrollTop < 170){   
+//                    $(".chargeAndDeliveryTable").animate({width: "0"});;
+//                    $(".chargeAndDeliveryTable").slideUp(50);
+//                } else {
+//                    $(".chargeAndDeliveryTable").animate({width: "100%"},1000);
+//                }
+//            });
+//            $(window).scroll(function(){  
+////                alert(document.documentElement.scrollTop);
+//                if(document.documentElement.scrollTop < 170){ 
+////                    $(".chargeAndDeliveryTable").slideUp(50);
+//                } else {                 
+//                    $(".chargeAndDeliveryTable").slideDown(1000);
+//                    $(".chargeAndDeliveryTable").animate({width: "100%"},1000);
+//                }
+//            });
+        </script>
     </body>
 </html>

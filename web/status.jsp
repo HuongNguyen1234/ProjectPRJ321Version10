@@ -54,12 +54,12 @@
 
                 <div class="headTableStatus">
                     <div class="headSubnetTableStatus">
-                        <div><i class="fas fa-barcode"> Bưu gửi số</i></div>
+                        <div><i class="fas fa-barcode"> Post Code</i></div>
                         <p name="containInfor"><b><input name="maDH" type="text" value="${maDH}" disabled></b></p>
                     </div>
 
                     <div class="headSubnetTableStatus">
-                        <div><i class="fas fa-barcode"> Trạng thái</i></div>
+                        <div><i class="fas fa-barcode"> Status</i></div>
                         <p name="containInfor"><b><input name="tenTrangThai" type="text" value="${tenTrangThai}" disabled></b></p>
                     </div>          
 
@@ -96,13 +96,13 @@
                                     </div>   -->
                     <!--==========================================================================================================================-->
                     <div class="headSubnetTableStatus" >
-                        <div><i class="fas fa-balance-scale"> Khối lượng (gram)</i></div>
+                        <div><i class="fas fa-balance-scale"> Weight (gram)</i></div>
                         <p name="containInfor"><b><input name="infor" type="text" value="${khoiLuong}" disabled></b></p>
                     </div>
                 </div>
                 <div class="mainTableStatus">
                     <fieldset>
-                        <legend>Thông tin trạng thái</legend>
+                        <legend>Information Of Status</legend>
                         <div id="StatusTableTextArea" class="containStatusTableText">
                             <p> ${journalList}</p>
                         </div>
@@ -182,13 +182,13 @@
                 <div class="scanCodeSubContainVideo">
                     <video id="videoID" autoplay></video>                  
                 </div>           
-                <center><h1><b>Quét Mã QR</b></h1> 
+                <center><h1><b>Scan QR Code</b></h1> 
                 <form id="myForm" method="POST" action="/ProjectPRJ321Version10/QrCodeServlet">    
                     <div> 
                         <input class="buttonScanCodeSubContain" type="button" value="Send" onclick="send()" />                        
                     </div>
                     <div>
-                        <input type="text" style="background-color: rgb(235, 167, 58);border: none;"  name="qrCode" value="${qrCode}" id="qrCode"/>       
+                        <input type="hidden" style="background-color: rgb(235, 167, 58);border: none;"  name="qrCode" value="${qrCode}" id="qrCode"/>       
                     </div>
                 </form>
                 </center>

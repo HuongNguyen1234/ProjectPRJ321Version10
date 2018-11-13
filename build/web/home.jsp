@@ -13,7 +13,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS/homeStyle.css">       
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">       
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+        <style>
+            
+        </style>
     </head>
     <body onload="loadPage()">        
     <div class="grid-container">
@@ -22,13 +25,16 @@
         <header>    
             <t:header></t:header>
         </header>
+
         </div>
         <!-----------------------------------------------------------menuleft-------------------------------------------------->
         <!--<div id = "menuleft">menu</div>-->
         <!-------------------------------------------------------------main---------------------------------------------------->
         <div id = "main" >
+            
             <t:main></t:main>
             <!--can use it for jsp-->
+            
             <%--<%@ include file = "chargeAndDelivery.jsp" %>--%> 
         </div>  
         <!-----------------------------------------------------------menuright------------------------------------------------->
